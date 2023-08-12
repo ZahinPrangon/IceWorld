@@ -9,9 +9,9 @@ import Image from "next/image";
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
 
-interface Props {
-  children: React.ReactNode;
-}
+// interface Props {
+//   children: React.ReactNode;
+// }
 
 const Links = [
   {

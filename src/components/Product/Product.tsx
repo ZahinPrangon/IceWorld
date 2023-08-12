@@ -4,11 +4,11 @@ import React from "react";
 
 import HeroProductFeatures from "../HeroProductWrapper/HeroProductWrapper";
 
-type Props = {
-  name: string;
-  description: string;
-  image: string;
-};
+// type Props = {
+//   name: string;
+//   description: string;
+//   image: string;
+// };
 
 const IceProducts = [
   {
