@@ -1,0 +1,54 @@
+/* eslint-disable react/no-array-index-key */
+import { Box, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import React from "react";
+
+type CardProps = {
+  imageUrl: string;
+  title: string;
+  // description: string;
+  subTitle: string;
+  price: string;
+  discountedPrice: string;
+  discount: string;
+  features: string[];
+  href: string;
+  onClick: (href: string) => void;
+};
+
+const Card = (props: CardProps) => {
+  return (
+    <Box
+      boxShadow="0 29px 21px -12px rgba(0,0,0,.1)"
+      padding="1.25rem"
+      backgroundColor="rgba(246,246,247)"
+      onClick={() => props.onClick(props.href)}
+    >
+      <Image
+        src={props.imageUrl}
+        alt={props.title}
+        width="300px"
+        height="300px"
+      />
+      <Box pb="1.25rem" borderBottom="1px solid rgba(75, 73, 85, 0.1)">
+        <Text
+          letterSpacing="0.1em"
+          fontWeight="900"
+          textTransform="uppercase"
+          fontSize="20px"
+        >
+          {props.title}
+        </Text>
+        <Text fontSize="20px" fontWeight="700">
+          {props.price}
+        </Text>
+      </Box>
+      <UnorderedList pt="1.25rem">
+        {props.features.map((feature, idx) => {
+          return <ListItem key={idx}>{feature}</ListItem>;
+        })}
+      </UnorderedList>
+    </Box>
+  );
+};
+
+export default Card;
