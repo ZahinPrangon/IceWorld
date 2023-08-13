@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import { Box } from "@chakra-ui/react";
 import React from "react";
 

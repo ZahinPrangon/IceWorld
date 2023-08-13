@@ -27,7 +27,7 @@ const ProgressLine = ({
   const [widths, setWidths] = useState(
     visualParts.map(() => {
       return "0";
-    })
+    }),
   );
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const ProgressLine = ({
       setWidths(
         visualParts.map((item) => {
           return item.percentage;
-        })
+        }),
       );
     });
   }, [visualParts]);

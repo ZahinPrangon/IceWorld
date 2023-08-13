@@ -1,13 +1,15 @@
+/* eslint-disable unused-imports/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-implied-eval */
 import { Box, Image } from "@chakra-ui/react";
-import { MotionConfig, AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
 
-let intervalId: any;
+// let intervalId: any;
 
 const Carousel = () => {
-  const [slide, setSlide] = useState(0);
-  const [progress, setProgress] = useState(0);
+  // const [slide, setSlide] = useState(0);
+  // const [progress, setProgress] = useState(0);
 
   const images = [
     {
@@ -49,42 +51,42 @@ const Carousel = () => {
   //   };
   // }, []);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (progress < 5) {
-        setProgress((prevProgress) => prevProgress + 1);
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 1000); // Change progress every 1 second
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (progress < 5) {
+  //       setProgress((prevProgress) => prevProgress + 1);
+  //     } else {
+  //       clearInterval(intervalId);
+  //     }
+  //   }, 1000); // Change progress every 1 second
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [progress]);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, [progress]);
 
-  const autoNextSlide = () => {
-    setSlide((slide) => (slide === images.length - 1 ? 0 : slide + 1));
-  };
-  const prevSlide = () => {
-    clearInterval(intervalId);
-    setSlide((slide) => (slide === 0 ? images.length - 1 : slide - 1));
-    startInterval();
-  };
+  // const autoNextSlide = () => {
+  //   setSlide((slide) => (slide === images.length - 1 ? 0 : slide + 1));
+  // };
+  // const prevSlide = () => {
+  //   clearInterval(intervalId);
+  //   setSlide((slide) => (slide === 0 ? images.length - 1 : slide - 1));
+  //   // startInterval();
+  // };
 
-  const nextSlide = () => {
-    clearInterval(intervalId);
-    setSlide((slide) => (slide === images.length - 1 ? 0 : slide + 1));
-    startInterval();
-  };
+  // const nextSlide = () => {
+  //   clearInterval(intervalId);
+  //   setSlide((slide) => (slide === images.length - 1 ? 0 : slide + 1));
+  //   // startInterval();
+  // };
 
-  const startInterval = () => {
-    intervalId = setInterval(autoNextSlide, 5000); // Restart the interval
-  };
+  // const startInterval = () => {
+  //   intervalId = setInterval(autoNextSlide, 5000); // Restart the interval
+  // };
 
   const handleSwipe = useSwipeable({
-    onSwipedLeft: nextSlide,
-    onSwipedRight: prevSlide,
+    // onSwipedLeft: nextSlide,
+    // onSwipedRight: prevSlide,
     swipeDuration: 100,
     preventScrollOnSwipe: true,
     trackMouse: true,
@@ -105,7 +107,7 @@ const Carousel = () => {
             <MobileImage
               key={item.id}
               index={idx}
-              slide={slide}
+              slide={0}
               imageUrl={item.imageUrl}
             />
           ))}

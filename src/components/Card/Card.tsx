@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/no-array-index-key */
 import { Box, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import React from "react";

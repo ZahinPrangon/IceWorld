@@ -10,9 +10,8 @@ import ProductGallery from "../ProductGallery/ProductGallery";
 
 const Product = () => {
   const [index, setIndex] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(
-    ProductDetailsMetaData[0]
-  );
+  const s = ProductDetailsMetaData[0];
+  const [selectedProduct, setSelectedProduct] = useState(s);
   const onChangeIndex = (i: number) => {
     setIndex(i);
     setSelectedProduct(ProductDetailsMetaData[i]);
@@ -41,7 +40,7 @@ const Product = () => {
         <ProductDetails
           description="Elevate your moment"
           onClick={() => {
-            console.log("clicked");
+            // console.log("clicked");
           }}
           selectedProduct={selectedProduct}
           setSelectedProduct={onChangeIndex}
