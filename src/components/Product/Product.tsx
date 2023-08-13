@@ -71,16 +71,36 @@ const Product = () => {
         <Image src="/ice-hero.gif" alt="ice-cloud" />
       </Flex>
 
-      <Flex>
-        <Image src="/touch-details.png" alt="ice-touch-details-image" />
-
+      <Flex
+        justifyContent="center"
+        // alignItems="center"
+        wrap={{ xs: "wrap", xl: "nowrap" }}
+        px={{ xs: "0", xl: "64px" }}
+      >
+        <Image
+          src="/touch-details.png"
+          alt="ice-touch-details-image"
+          width="500px"
+          // width="500px"
+          // width
+          height="100%"
+          alignSelf="center"
+        />
+        <Image
+          src="/model-2.png"
+          alt="ice-cloud-model"
+          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          width="100%"
+          objectFit="cover"
+          maxW="700px"
+        />
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
       </Flex>
 
-      <Container color="white">
+      <Container color="white" pt="48px">
         <Text
           mb="30px"
-          textAlign="center"
+          textAlign={{ xs: "center", xl: "center" }}
           letterSpacing="0.7px"
           lineHeight="18.2px"
           fontSize="14px"
@@ -92,7 +112,7 @@ const Product = () => {
           fontWeight="400"
           lineHeight="30.6px"
           fontSize="25.5px"
-          textAlign="center"
+          textAlign={{ xs: "center", xl: "center" }}
         >
           Sound of Silence
         </Text>

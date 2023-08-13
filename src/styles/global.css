@@ -8,8 +8,8 @@
 
 .glowing-circle {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #00aaff; /* Circle's base color */
   animation: glow 2s ease-in-out infinite; /* Apply the glow animation */
@@ -23,17 +23,17 @@
   right: -10px;
   bottom: -10px;
   border-radius: 50%;
-  background-color: #00aaff;
+  background-color: #38B6FF;
   opacity: 0;
   animation: glow-pulse 2s ease-in-out infinite;
 }
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 10px #00aaff; /* Glow effect */
+    box-shadow: 0 0 10px #38B6FF; /* Glow effect */
   }
   50% {
-    box-shadow: 0 0 5px #00aaff, 0 0 40px #00aaff; /* More intense glow */
+    box-shadow: 0 0 5px #38B6FF, 0 0 40px #38B6FF; /* More intense glow */
   }
 }
 

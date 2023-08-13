@@ -34,7 +34,7 @@ const productHeroFeatures = [
   {
     id: 2,
     title: "In stock, ready to ship",
-    icon: <Box className="glowing-circle" width="16px" height="16px" />,
+    icon: <Box className="glowing-circle" mr="3px" ml="4px" />,
   },
 ];
 const ProductDetails = (props: ProductDetailsProps) => {
