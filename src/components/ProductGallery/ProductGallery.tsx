@@ -25,14 +25,14 @@ export default function ProductGallery(props: ProductGalleryProps) {
     }
   }, [props.index]);
 
-  const onClickGalleryItem = (e: any, index: number) => {
+  const onClickGalleryItem = (_: any, index: number) => {
     props.setIndex(index);
   };
 
   return (
     <ImageGallery
       ref={galleryRef}
-      height="100%"
+      // height="100%"
       items={props.images}
       showPlayButton={false}
       showFullscreenButton={false}

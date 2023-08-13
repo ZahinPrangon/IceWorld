@@ -83,14 +83,6 @@ const Socials = [
   },
 ];
 
-const HeaderTextStyles = {
-  fontSize: "20px",
-  marginBottom: "24px",
-  fontWeight: "700",
-  paddingTop: "0px",
-  lineHeight: "1.1",
-};
-
 const CollapsibleFooter = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { isOpen: isOpen2, onToggle: onToggle2 } = useDisclosure();
