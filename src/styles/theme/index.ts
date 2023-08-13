@@ -14,6 +14,9 @@ export const theme = extendTheme({
     heading: poppins.style.fontFamily,
     body: poppins.style.fontFamily,
   },
+  fontSizes: {
+    heading: "30px",
+  },
   colors: {
     light: {
       100: "rgba(51, 51, 51, 0.6)",

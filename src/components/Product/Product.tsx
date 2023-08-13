@@ -1,65 +1,105 @@
 /* eslint-disable react/no-array-index-key */
-import { Box, Grid, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import { Container, Flex, Grid, Image, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+
+import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
 
 import HeroProductFeatures from "../HeroProductWrapper/HeroProductWrapper";
+import ProductDetails from "../ProductDetails/ProductDetails";
+import ProductGallery from "../ProductGallery/ProductGallery";
 
-// type Props = {
-//   name: string;
-//   description: string;
-//   image: string;
-// };
-
-const IceProducts = [
-  {
-    name: "Ice Matte",
-    description: "Some BS",
-    features: [
-      "🎵 Immersive music experience with superior bass quality ",
-      "💪 Powerful 10 mm dynamic drivers for crystal clear sound",
-      "🔋 Up to 24 hours of playtime and 6 hours of continuous use",
-      "📞 Dual mic to ensure consistent call clarity ",
-      "💦 IPX4 sweat and water resistance for worry-free use",
-      "☁️ 0.4g ulta lightweight so easy to carry everywhere ",
-      "3️⃣ Small, Medium and Large eartips for comfortable use of all ear size",
-      "🎮 Low latency gaming mode for lag-free gaming sessions",
-    ],
-  },
-];
 const Product = () => {
+  const [index, setIndex] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(
+    ProductDetailsMetaData[0]
+  );
+  const onChangeIndex = (i: number) => {
+    setIndex(i);
+    setSelectedProduct(ProductDetailsMetaData[i]);
+  };
+
+  const images = ProductDetailsMetaData.map((product: any) => product.images);
+
   return (
-    <Box>
+    <>
       <Grid
-        templateColumns="repeat(2, 1fr)"
-        marginTop="4rem"
+        templateColumns={{ sm: "1fr", md: "2fr 1fr" }}
         maxWidth="1280px"
         justifyContent="center"
         marginX="auto"
         gap="20px"
-        background="white"
+        background="black"
         marginBottom="6rem"
+        color="white"
+        px="14px"
       >
-        <Image src="/ice-white.png" alt="ice-world" />
-        <Box marginTop="3rem" px="1.25rem">
-          <Text
-            // as="h1"
-            // size="2xl"
-            fontSize="64px"
-            textTransform="uppercase"
-            color="black"
-            mb="20px"
-          >
-            Ice Cloud
-          </Text>
-          {IceProducts[0]?.features.map((feature, idx) => (
-            <Text key={idx} fontSize="16px">
-              {feature}
-            </Text>
-          ))}
-        </Box>
+        <ProductGallery
+          images={images}
+          index={index}
+          setIndex={onChangeIndex}
+        />
+        <ProductDetails
+          description="Elevate your moment"
+          onClick={() => {
+            console.log("clicked");
+          }}
+          selectedProduct={selectedProduct}
+          setSelectedProduct={onChangeIndex}
+          details={ProductDetailsMetaData}
+        />
       </Grid>
+
+      <Flex flexDirection="column" color="white">
+        <Text
+          mb="30px"
+          textAlign="center"
+          letterSpacing="0.7px"
+          lineHeight="18.2px"
+          fontSize="14px"
+        >
+          ACTIVE NOISE CANCELLATION
+        </Text>
+        <Text
+          mb="30px"
+          fontWeight="400"
+          lineHeight="30.6px"
+          fontSize="25.5px"
+          textAlign="center"
+        >
+          Sound of Silence
+        </Text>
+        <Image src="/ice-hero.gif" alt="ice-cloud" />
+      </Flex>
+
+      <Flex>
+        <Image src="/touch-details.png" alt="ice-touch-details-image" />
+
+        {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
+      </Flex>
+
+      <Container color="white">
+        <Text
+          mb="30px"
+          textAlign="center"
+          letterSpacing="0.7px"
+          lineHeight="18.2px"
+          fontSize="14px"
+        >
+          PREMIUM HARDWARE
+        </Text>
+        <Text
+          mb="30px"
+          fontWeight="400"
+          lineHeight="30.6px"
+          fontSize="25.5px"
+          textAlign="center"
+        >
+          Sound of Silence
+        </Text>
+        <Image src="/hardware.gif" alt="ice-earbud-image" loading="lazy" />
+      </Container>
       <HeroProductFeatures />
-    </Box>
+    </>
   );
 };
 

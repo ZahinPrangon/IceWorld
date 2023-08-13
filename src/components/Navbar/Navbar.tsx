@@ -2,16 +2,15 @@
 
 "use client";
 
+import "./Navbar.css";
+
 import { Link } from "@chakra-ui/next-js";
-import { Box, Flex, HStack } from "@chakra-ui/react";
+import { Box, Flex, Hide, HStack, Show } from "@chakra-ui/react";
 import Image from "next/image";
+import { BsEarbuds } from "react-icons/bs";
 
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
-
-// interface Props {
-//   children: React.ReactNode;
-// }
 
 const Links = [
   {
@@ -30,6 +29,7 @@ const NavLink = (props: NavLinkProps) => {
   return (
     <Link
       href={props.href}
+      className="hover-underline-animation"
       style={{
         color: "lightblue",
       }}
@@ -72,11 +72,17 @@ export default function Navbar() {
             />
           </Link>
         </HStack>
-        <HStack as="nav" spacing="12px">
-          {Links.map((link) => (
-            <NavLink key={link.id} href={link.href} name={link.name} />
-          ))}
-        </HStack>
+        <Hide below="md">
+          <HStack as="nav" spacing="12px">
+            {Links.map((link) => (
+              <NavLink key={link.id} href={link.href} name={link.name} />
+            ))}
+          </HStack>
+        </Hide>
+
+        <Show below="md">
+          <BsEarbuds color="white" size="30px" />
+        </Show>
       </Flex>
     </Box>
   );
