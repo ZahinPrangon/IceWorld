@@ -70,7 +70,8 @@ const Footer = () => {
     <Box
       pt="90px"
       pb="60px"
-      background="white"
+      color="white"
+      // background="white"
       // position="absolute"
       width="100%"
       bottom="0px"
@@ -91,7 +92,7 @@ const Footer = () => {
             <Flex flexDirection="column">
               <Text {...HeaderTextStyles}>{column.name}</Text>
               {column.listings.map((listing) => (
-                <Box color="black" key={listing.id}>
+                <Box color="white" key={listing.id}>
                   {listing.name}
                 </Box>
               ))}

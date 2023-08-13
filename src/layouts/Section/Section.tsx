@@ -16,6 +16,7 @@ const Section = (props: SectionProps) => {
         alignItems: "center",
         margin: "2.25rem 12px 2.25rem 12px",
         display: "flex",
+        color: "white",
       }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -23,7 +24,7 @@ const Section = (props: SectionProps) => {
     >
       <Text
         as="h1"
-        pb="1.25rem"
+        // pb="1.25rem"
         fontSize={{ sm: "32px", md: "64px", lg: "64px" }}
       >
         {props.title}

@@ -11,8 +11,7 @@ import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
 const CardMetaData = [
   {
     id: 1,
-    imageUrl:
-      "https://www.mivi.in/cdn-cgi/image/width=2000,f=auto,quality=90/assets/nav/duopods-f30.png",
+    imageUrl: "/ice-white.png",
     title: "Ice Matte",
     subTitle: "True Wireless Earbuds",
     price: "৳ 1,500",
@@ -28,8 +27,7 @@ const CardMetaData = [
   },
   {
     id: 2,
-    imageUrl:
-      "	https://www.mivi.in/cdn-cgi/image/width=2000,f=auto,quality=90/assets/nav/duopods-f40.png",
+    imageUrl: "ice-black.png",
     title: "Ice Cloud",
     subTitle: "True Wireless Earbuds",
     price: "৳ 1,500",

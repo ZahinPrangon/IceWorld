@@ -18,9 +18,11 @@ type CardProps = {
 const Card = (props: CardProps) => {
   return (
     <Box
-      boxShadow="0 29px 21px -12px rgba(0,0,0,.1)"
+      // boxShadow="0px 10px 100px 25px  #05B4F9"
+      border="1px solid white"
+      borderRadius="20px"
       padding="1.25rem"
-      backgroundColor="rgba(246,246,247)"
+      backgroundColor="black"
       onClick={() => props.onClick(props.href)}
     >
       <Image
@@ -29,7 +31,7 @@ const Card = (props: CardProps) => {
         width="300px"
         height="300px"
       />
-      <Box pb="1.25rem" borderBottom="1px solid rgba(75, 73, 85, 0.1)">
+      <Box pb="1.25rem" borderBottom="1px solid white">
         <Text
           letterSpacing="0.1em"
           fontWeight="900"

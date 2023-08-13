@@ -1,18 +1,13 @@
 import { ChakraProvider, Flex } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
-import { Raleway } from "next/font/google";
 
 import Layout from "@/components/layout";
-
-const poppins = Raleway({
-  weight: "400",
-  subsets: ["latin"],
-});
+import theme from "@/styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
-      <main className={poppins.className}>
+    <ChakraProvider theme={theme}>
+      <main>
         <Layout>
           <Flex
             position="relative"

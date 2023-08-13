@@ -39,10 +39,7 @@ const Product = () => {
         background="white"
         marginBottom="6rem"
       >
-        <Image
-          src="https://scontent.fcgp13-1.fna.fbcdn.net/v/t39.30808-6/362899094_184180311317366_863277743415034894_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=1qTfb0lOTBYAX-wipbq&_nc_ht=scontent.fcgp13-1.fna&oh=00_AfD6XadaUyN8vQDGVFEi-Y17lRY5Fgw147qD9VosOQmh_w&oe=64D49FBB"
-          alt="ice-world"
-        />
+        <Image src="/ice-white.png" alt="ice-world" />
         <Box marginTop="3rem" px="1.25rem">
           <Text
             // as="h1"
