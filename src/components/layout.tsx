@@ -1,6 +1,4 @@
 /* eslint-disable import/no-named-as-default */
-import "../styles/global.css";
-
 import { ChakraProvider, Flex } from "@chakra-ui/react";
 import type { PropsWithChildren } from "react";
 import React from "react";

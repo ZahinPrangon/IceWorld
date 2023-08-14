@@ -1,3 +1,5 @@
+import "../styles/global.css";
+
 import { Flex } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 
