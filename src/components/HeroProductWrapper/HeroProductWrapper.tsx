@@ -31,6 +31,7 @@ const HeroProductWrapper = () => {
       px="20px"
       gap="8px"
       color="white"
+      mt="24px"
       backgroundColor="#000F15"
       // marginBottom="6rem"
       // mx="6px"

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
 
-import HeroProductFeatures from "../HeroProductWrapper/HeroProductWrapper";
+import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductGallery from "../ProductGallery/ProductGallery";
 
@@ -75,24 +75,25 @@ const Product = () => {
         // alignItems="center"
         wrap={{ xs: "wrap", xl: "nowrap" }}
         px={{ xs: "0", xl: "64px" }}
+        pt="48px"
       >
         <Image
-          src="/touch-details.png"
+          src="/fast-charging.png"
           alt="ice-touch-details-image"
-          width="500px"
-          // width="500px"
-          // width
+          width={{ xs: "100%", md: "50%" }}
           height="100%"
           alignSelf="center"
         />
+
         <Image
-          src="/model-2.png"
+          src="/model-1.png"
           alt="ice-cloud-model"
           animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-          width="100%"
+          width={{ xs: "100%", md: "48%" }}
           objectFit="cover"
           maxW="700px"
         />
+
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
       </Flex>
 
@@ -117,7 +118,33 @@ const Product = () => {
         </Text>
         <Image src="/hardware.gif" alt="ice-earbud-image" loading="lazy" />
       </Container>
-      <HeroProductFeatures />
+      <Flex
+        justifyContent="center"
+        // alignItems="center"
+        wrap={{ xs: "wrap", xl: "nowrap" }}
+        px={{ xs: "0", xl: "64px" }}
+      >
+        <Image
+          src="/model-2.png"
+          alt="ice-cloud-model"
+          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          width={{ xs: "100%", md: "48%" }}
+          objectFit="cover"
+          maxW="700px"
+        />
+        <Image
+          src="/touch-details.png"
+          alt="ice-touch-details-image"
+          width={{ xs: "100%", md: "50%" }}
+          height="100%"
+          alignSelf="center"
+        />
+
+        {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
+      </Flex>
+
+      <HeroProductWrapper />
+      {/* <Image src="/hero-footer.png" alt="ice-cloud" /> */}
     </>
   );
 };
