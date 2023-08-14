@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/no-array-index-key */
-import { Box, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import { Box, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import Image from "next/image";
 import React from "react";
 
 type CardProps = {
@@ -29,9 +30,13 @@ const Card = (props: CardProps) => {
       <Image
         src={props.imageUrl}
         alt={props.title}
-        width="300px"
-        height="300px"
-        loading="eager"
+        // style={{
+        //   width: "300px",
+        //   height: "300px",
+        // }}
+        width={300}
+        height={300}
+        priority
       />
       <Box pb="1.25rem" borderBottom="1px solid white">
         <Text

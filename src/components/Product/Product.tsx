@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
-import { Container, Flex, Grid, Image, Text } from "@chakra-ui/react";
+import { Container, Flex, Grid, Text } from "@chakra-ui/react";
+import Image from "next/image";
 import React, { useState } from "react";
 
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
@@ -67,7 +68,13 @@ const Product = () => {
         >
           Sound of Silence
         </Text>
-        <Image src="/ice-hero.gif" alt="ice-cloud" loading="eager" />
+        <Image
+          src="/ice-hero.gif"
+          alt="ice-cloud"
+          priority
+          width={100}
+          height={100}
+        />
       </Flex>
 
       <Flex
@@ -80,20 +87,32 @@ const Product = () => {
         <Image
           src="/fast-charging.png"
           alt="ice-touch-details-image"
-          width={{ xs: "100%", md: "50%" }}
-          height="100%"
-          alignSelf="center"
-          loading="eager"
+          style={{
+            alignSelf: "center",
+            width: "50%",
+            height: "auto",
+          }}
+          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          // alignSelf="center"
+          priority
+          sizes="100vw"
+          width={0}
+          height={0}
+          // style={{}} // optional
         />
 
         <Image
           src="/model-1.png"
           alt="ice-cloud-model"
-          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-          width={{ xs: "100%", md: "48%" }}
-          objectFit="cover"
-          maxW="700px"
+          // animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          // width={{ xs: "100%", md: "48%" }}
+          // objectFit="cover"
+          // maxW="700px"
+          // width="700px"
+          // height="700px"
           loading="eager"
+          width={100}
+          height={100}
         />
 
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
@@ -106,7 +125,6 @@ const Product = () => {
           letterSpacing="0.7px"
           lineHeight="18.2px"
           fontSize="14px"
-          loading="eager"
         >
           PREMIUM HARDWARE
         </Text>
@@ -119,7 +137,13 @@ const Product = () => {
         >
           Sound of Silence
         </Text>
-        <Image src="/hardware.gif" alt="ice-earbud-image" loading="eager" />
+        <Image
+          src="/hardware.gif"
+          alt="ice-earbud-image"
+          priority
+          width={100}
+          height={100}
+        />
       </Container>
       <Flex
         justifyContent="center"
@@ -130,19 +154,26 @@ const Product = () => {
         <Image
           src="/model-2.png"
           alt="ice-cloud-model"
-          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-          width={{ xs: "100%", md: "48%" }}
-          objectFit="cover"
-          maxW="700px"
-          loading="eager"
+          // width={}
+          // animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          // width={{ xs: "100%", md: "48%" }}
+          // objectFit="cover"
+          // maxW="700px"
+          // loading="eager"
+          width={100}
+          height={100}
+          priority
         />
         <Image
           src="/touch-details.png"
           alt="ice-touch-details-image"
-          width={{ xs: "100%", md: "50%" }}
-          height="100%"
-          alignSelf="center"
+          // width={{ xs: "100%", md: "50%" }}
+          // height="100%"
+          // alignSelf="center"
+          width={100}
+          height={100}
           loading="eager"
+          priority
         />
 
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}

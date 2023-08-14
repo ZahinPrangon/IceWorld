@@ -1,8 +1,9 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-implied-eval */
-import { Box, Image } from "@chakra-ui/react";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { Box } from "@chakra-ui/react";
+import { AnimatePresence, MotionConfig } from "framer-motion";
+import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 
 // let intervalId: any;
@@ -16,18 +17,6 @@ const Carousel = () => {
       imageUrl: "/ice_landing_1.png",
       alt: "Landing 1",
       id: 1,
-    },
-    {
-      imageUrl:
-        "https://s.yimg.com/uu/api/res/1.2/ILvD8zEFyG7nYK9HIdjysQ--~B/aD0xMjAwO3c9MjAwMDthcHBpZD15dGFjaHlvbg--/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2022-12/01af5a80-75ab-11ed-a3fd-ffe215618d28.cf.jpg",
-      alt: "Landing 1",
-      id: 2,
-    },
-    {
-      imageUrl:
-        "https://i0.wp.com/www.ear-fidelity.com/wp-content/uploads/2022/10/P1054788s-scaled.jpg?fit=2560%2C1707&ssl=1",
-      alt: "Landing 1",
-      id: 3,
     },
     // {
     //   imageUrl:
@@ -146,19 +135,25 @@ const MobileImage = ({ imageUrl, slide, index }: MobileImageProps) => {
     //   }}
     // />
     <Image
-      as={motion.img}
+      // as={motion.img}
       src={imageUrl}
-      width="100%"
-      height="100%"
-      display={slide === index ? "block" : "none"}
-      objectFit="cover"
+      style={{
+        display: slide === index ? "block" : "none",
+        objectFit: "cover",
+        width: "100%",
+        height: "100%",
+      }}
       alt="landing-image"
-      draggable={false}
+      sizes="100vw"
+      width={0}
+      height={0}
       // draggable={false}
-      initial={{ opacity: 0 }} // Initial opacity when an image enters the scene
-      animate={{ opacity: slide === index ? 1 : 0 }} // Animate opacity when an image is displayed
-      exit={{ opacity: 0 }} // Animate opacity when an image exits the scene
-      loading="eager"
+      // draggable={false}
+      // initial={{ opacity: 0 }} // Initial opacity when an image enters the scene
+      // animate={{ opacity: slide === index ? 1 : 0 }} // Animate opacity when an image is displayed
+      // exit={{ opacity: 0 }} // Animate opacity when an image exits the scene
+      // loading="eager"
+      priority
     />
   );
 };

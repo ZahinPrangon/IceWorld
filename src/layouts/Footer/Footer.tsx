@@ -195,7 +195,7 @@ const Footer = () => {
               width={60}
               height={60}
               alt="iceworld-logo"
-              loading="eager"
+              priority
             />
           </GridItem>
           {FooterColumn.map((column) => (

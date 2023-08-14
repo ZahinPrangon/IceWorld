@@ -62,12 +62,7 @@ export default function Navbar() {
               width="70"
               height="70"
               className="hover:no-underline"
-              // style={{
-              //   textDecoration: "none",
-              //   &:hover: {
-              //     color: "lightblue",
-              //   },
-              // }}
+              priority
             />
           </Link>
         </HStack>

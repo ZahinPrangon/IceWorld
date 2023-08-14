@@ -28,7 +28,7 @@ const CardMetaData = [
   },
   {
     id: 2,
-    imageUrl: "ice-black.png",
+    imageUrl: "/ice-black.png",
     heading: "Ice Cloud",
     title: "Matte Black",
     subTitle: "True Wireless Earbuds",
