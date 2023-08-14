@@ -2,8 +2,6 @@
 
 "use client";
 
-import "./Navbar.css";
-
 import { Link } from "@chakra-ui/next-js";
 import { Box, Flex, Hide, HStack, Show } from "@chakra-ui/react";
 import Image from "next/image";

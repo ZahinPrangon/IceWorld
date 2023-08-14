@@ -1,5 +1,4 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import "./ProgressLine.css";
 
 import { Box } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
