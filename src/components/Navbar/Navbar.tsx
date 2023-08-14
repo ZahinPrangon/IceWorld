@@ -35,6 +35,7 @@ const NavLink = (props: NavLinkProps) => {
         textDecoration: "none",
         border: "none",
       }}
+      userSelect="none"
     >
       {props.name}
     </Link>
@@ -79,7 +80,16 @@ export default function Navbar() {
         </Hide>
 
         <Show below="md">
-          <BsEarbuds color="white" size="30px" href="/products/ice" />
+          <Link
+            href="/products/ice"
+            _hover={{
+              textDecoration: "none",
+              border: "none",
+            }}
+            userSelect="none"
+          >
+            <BsEarbuds color="white" size="30px" />
+          </Link>
         </Show>
       </Flex>
     </Box>
