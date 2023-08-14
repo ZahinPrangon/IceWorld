@@ -1,7 +1,7 @@
 export const ProductDetailsMetaData = [
   {
     id: 1,
-    lineupName: "Ice Cloud",
+    lineupName: "Pearl White",
     color: "white",
     price: 1450,
     images: {
@@ -11,7 +11,7 @@ export const ProductDetailsMetaData = [
   },
   {
     id: 2,
-    lineupName: "Ice Black",
+    lineupName: "Matte Black",
     color: "black",
     price: 1550,
     images: {

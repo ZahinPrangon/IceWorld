@@ -12,7 +12,8 @@ const CardMetaData = [
   {
     id: 1,
     imageUrl: "/ice-white.png",
-    title: "Ice Matte",
+    heading: "Ice Cloud",
+    title: "Pearl White",
     subTitle: "True Wireless Earbuds",
     price: "৳ 1,500",
     discountedPrice: "৳ 1,999",
@@ -28,7 +29,8 @@ const CardMetaData = [
   {
     id: 2,
     imageUrl: "ice-black.png",
-    title: "Ice Cloud",
+    heading: "Ice Cloud",
+    title: "Matte Black",
     subTitle: "True Wireless Earbuds",
     price: "৳ 1,500",
     discountedPrice: "৳ 1,999",

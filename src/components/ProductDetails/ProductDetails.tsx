@@ -49,7 +49,13 @@ const ProductDetails = (props: ProductDetailsProps) => {
         {props.selectedProduct.lineupName}
       </Heading>
       <Box>
-        <Heading as="h3" fontSize="16px" textAlign="center" mb="16px">
+        <Heading
+          as="h3"
+          fontSize="16px"
+          textAlign="center"
+          mb="16px"
+          letterSpacing="0.4em"
+        >
           {props.description}
         </Heading>
       </Box>
