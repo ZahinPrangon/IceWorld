@@ -79,7 +79,7 @@ export default function Navbar() {
         </Hide>
 
         <Show below="md">
-          <BsEarbuds color="white" size="30px" />
+          <BsEarbuds color="white" size="30px" href="/products/ice" />
         </Show>
       </Flex>
     </Box>
