@@ -31,6 +31,7 @@ const Card = (props: CardProps) => {
         alt={props.title}
         width="300px"
         height="300px"
+        loading="eager"
       />
       <Box pb="1.25rem" borderBottom="1px solid white">
         <Text

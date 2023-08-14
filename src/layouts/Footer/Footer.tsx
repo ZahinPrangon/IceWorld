@@ -190,7 +190,13 @@ const Footer = () => {
             justifyContent="center"
             alignItems="center"
           >
-            <Image src={Logo} width={60} height={60} alt="iceworld-logo" />
+            <Image
+              src={Logo}
+              width={60}
+              height={60}
+              alt="iceworld-logo"
+              loading="eager"
+            />
           </GridItem>
           {FooterColumn.map((column) => (
             <GridItem key={column.id} colSpan={1}>

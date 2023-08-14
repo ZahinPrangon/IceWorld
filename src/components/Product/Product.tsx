@@ -67,7 +67,7 @@ const Product = () => {
         >
           Sound of Silence
         </Text>
-        <Image src="/ice-hero.gif" alt="ice-cloud" />
+        <Image src="/ice-hero.gif" alt="ice-cloud" loading="eager" />
       </Flex>
 
       <Flex
@@ -83,6 +83,7 @@ const Product = () => {
           width={{ xs: "100%", md: "50%" }}
           height="100%"
           alignSelf="center"
+          loading="eager"
         />
 
         <Image
@@ -92,6 +93,7 @@ const Product = () => {
           width={{ xs: "100%", md: "48%" }}
           objectFit="cover"
           maxW="700px"
+          loading="eager"
         />
 
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
@@ -104,6 +106,7 @@ const Product = () => {
           letterSpacing="0.7px"
           lineHeight="18.2px"
           fontSize="14px"
+          loading="eager"
         >
           PREMIUM HARDWARE
         </Text>
@@ -116,7 +119,7 @@ const Product = () => {
         >
           Sound of Silence
         </Text>
-        <Image src="/hardware.gif" alt="ice-earbud-image" loading="lazy" />
+        <Image src="/hardware.gif" alt="ice-earbud-image" loading="eager" />
       </Container>
       <Flex
         justifyContent="center"
@@ -131,6 +134,7 @@ const Product = () => {
           width={{ xs: "100%", md: "48%" }}
           objectFit="cover"
           maxW="700px"
+          loading="eager"
         />
         <Image
           src="/touch-details.png"
@@ -138,6 +142,7 @@ const Product = () => {
           width={{ xs: "100%", md: "50%" }}
           height="100%"
           alignSelf="center"
+          loading="eager"
         />
 
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}

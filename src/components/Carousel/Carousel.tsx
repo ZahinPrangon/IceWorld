@@ -158,6 +158,7 @@ const MobileImage = ({ imageUrl, slide, index }: MobileImageProps) => {
       initial={{ opacity: 0 }} // Initial opacity when an image enters the scene
       animate={{ opacity: slide === index ? 1 : 0 }} // Animate opacity when an image is displayed
       exit={{ opacity: 0 }} // Animate opacity when an image exits the scene
+      loading="eager"
     />
   );
 };
