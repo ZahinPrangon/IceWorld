@@ -1,4 +1,6 @@
+import type { StyleFunctionProps } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -9,6 +11,13 @@ const poppins = Poppins({
 export const theme = extendTheme({
   config: {
     useSystemColorMode: true,
+  },
+  styles: {
+    global: (props: StyleFunctionProps) => ({
+      body: {
+        bg: mode("#000000", "#000000")(props),
+      },
+    }),
   },
   fonts: {
     heading: poppins.style.fontFamily,

@@ -180,7 +180,7 @@ const Footer = () => {
       color="white"
       width="100%"
       bottom="0px"
-      height="20rem"
+      // height="20rem"
     >
       <Hide below="md">
         <Grid templateColumns="repeat(4, 2fr)" gap={4} px="20px">

@@ -6,6 +6,10 @@
   border: 2px solid white !important;
 } */
 
+body {
+  background-color: #000000;
+}
+
 .glowing-circle {
   position: relative;
   width: 10px;
