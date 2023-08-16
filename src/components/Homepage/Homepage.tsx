@@ -1,5 +1,4 @@
 import { Flex } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import React from "react";
 
 import Section from "@/layouts/Section/Section";
@@ -7,45 +6,45 @@ import Section from "@/layouts/Section/Section";
 import Carousel from "../Carousel/Carousel";
 import Product from "../Product/Product";
 
-const CardMetaData = [
-  {
-    id: 1,
-    imageUrl: "/ice-white.jpeg",
-    heading: "Ice Cloud",
-    title: "Pearl White",
-    subTitle: "True Wireless Earbuds",
-    price: "৳ 1,500",
-    discountedPrice: "৳ 1,999",
-    discount: "43% OFF",
-    features: [
-      "Fast Charging",
-      "Touch Controls",
-      "IPX4 Sweatproof",
-      "Bluetooth 5.0",
-    ],
-    href: "/products/ice",
-  },
-  {
-    id: 2,
-    imageUrl: "/ice-white.jpeg",
-    heading: "Ice Cloud",
-    title: "Matte Black",
-    subTitle: "True Wireless Earbuds",
-    price: "৳ 1,500",
-    discountedPrice: "৳ 1,999",
-    discount: "43% OFF",
-    features: [
-      "Fast Charging",
-      "Touch Controls",
-      "IPX4 Sweatproof",
-      "Bluetooth 5.0",
-    ],
-    href: "/products/ice",
-  },
-];
+// const CardMetaData = [
+//   {
+//     id: 1,
+//     imageUrl: "/ice-white.jpeg",
+//     heading: "Ice Cloud",
+//     title: "Pearl White",
+//     subTitle: "True Wireless Earbuds",
+//     price: "৳ 1,500",
+//     discountedPrice: "৳ 1,999",
+//     discount: "43% OFF",
+//     features: [
+//       "Fast Charging",
+//       "Touch Controls",
+//       "IPX4 Sweatproof",
+//       "Bluetooth 5.0",
+//     ],
+//     href: "/products/ice",
+//   },
+//   {
+//     id: 2,
+//     imageUrl: "/ice-white.jpeg",
+//     heading: "Ice Cloud",
+//     title: "Matte Black",
+//     subTitle: "True Wireless Earbuds",
+//     price: "৳ 1,500",
+//     discountedPrice: "৳ 1,999",
+//     discount: "43% OFF",
+//     features: [
+//       "Fast Charging",
+//       "Touch Controls",
+//       "IPX4 Sweatproof",
+//       "Bluetooth 5.0",
+//     ],
+//     href: "/products/ice",
+//   },
+// ];
 
 const Homepage = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <Flex flexDir="column">

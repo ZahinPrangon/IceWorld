@@ -9,37 +9,37 @@ import Image from "next/image";
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
 
-const Links = [
-  // {
-  //   id: 1,
-  //   name: "Earbuds",
-  //   href: "/products/ice",
-  // },
-];
+// const Links = [
+//   // {
+//   //   id: 1,
+//   //   name: "Earbuds",
+//   //   href: "/products/ice",
+//   // },
+// ];
 
-type NavLinkProps = {
-  href: string;
-  name: string;
-};
+// type NavLinkProps = {
+//   href: string;
+//   name: string;
+// };
 
-const NavLink = (props: NavLinkProps) => {
-  return (
-    <Link
-      href={props.href}
-      className="hover-underline-animation"
-      style={{
-        color: "lightblue",
-      }}
-      _hover={{
-        textDecoration: "none",
-        border: "none",
-      }}
-      userSelect="none"
-    >
-      {props.name}
-    </Link>
-  );
-};
+// const NavLink = (props: NavLinkProps) => {
+//   return (
+//     <Link
+//       href={props.href}
+//       className="hover-underline-animation"
+//       style={{
+//         color: "lightblue",
+//       }}
+//       _hover={{
+//         textDecoration: "none",
+//         border: "none",
+//       }}
+//       userSelect="none"
+//     >
+//       {props.name}
+//     </Link>
+//   );
+// };
 
 export default function Navbar() {
   return (
@@ -67,9 +67,9 @@ export default function Navbar() {
         </HStack>
         <Hide below="md">
           <HStack as="nav" spacing="12px">
-            {Links.map((link) => (
+            {/* {Links.map((link) => (
               <NavLink key={link.id} href={link.href} name={link.name} />
-            ))}
+            ))} */}
           </HStack>
         </Hide>
 

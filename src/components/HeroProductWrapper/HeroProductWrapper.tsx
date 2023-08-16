@@ -25,7 +25,7 @@ const HeroProductFeatures = [
   },
   {
     id: 3,
-    description: "Bluetooth v 5.3",
+    description: "Bluetooth v5.3",
     icon: <BsBluetooth size="30px" color="white" />,
   },
   {
