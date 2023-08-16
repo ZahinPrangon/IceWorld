@@ -1,6 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { Box, Flex, Grid, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Flex, Grid, Image as ChakraImage } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
@@ -50,7 +49,7 @@ const Product = () => {
         />
       </Grid>
 
-      <Flex flexDirection="column" color="white">
+      {/* <Flex flexDirection="column" color="white">
         <Text
           mb="30px"
           textAlign="center"
@@ -70,10 +69,76 @@ const Product = () => {
           Sound of Silence
         </Text>
         <Box position="relative">
-          <Image src="/ice-hero.gif" alt="ice-cloud" fill unoptimized />
+          <ChakraImage src="/ice-hero.gif" alt="ice-cloud" />
         </Box>
+      </Flex> */}
+
+      <Flex
+        justifyContent="center"
+        wrap={{ xs: "wrap", xl: "nowrap" }}
+        px={{ xs: "0", xl: "64px" }}
+      >
+        <ChakraImage
+          src="/touch-details.png"
+          alt="ice-touch-details-image"
+          width={{ xs: "100%", md: "50%" }}
+          height="100%"
+          alignSelf="center"
+          loading="eager"
+        />
+        <ChakraImage
+          src="/ice-model-2.jpeg"
+          alt="ice-cloud-model"
+          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          width={{ xs: "100%", md: "48%" }}
+          objectFit="cover"
+          maxW="700px"
+          loading="eager"
+        />
+        {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
       </Flex>
 
+      <Flex
+        justifyContent="center"
+        // alignItems="center"
+        wrap={{ xs: "wrap", xl: "nowrap" }}
+        px={{ xs: "0", xl: "64px" }}
+        pt="48px"
+      >
+        {/* <Box
+          position="relative"
+          width={{ xs: "100%", md: "50%" }}
+          height="100%"
+          alignSelf="center"
+        > */}
+        <ChakraImage
+          src="/ice-model-1.jpeg"
+          alt="ice-cloud-model"
+          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          width={{ xs: "100%", md: "48%" }}
+          objectFit="cover"
+          maxW="700px"
+          loading="eager"
+        />
+        <ChakraImage
+          src="/fast-charging.png"
+          alt="ice-touch-details-image"
+          width={{ xs: "100%", md: "50%" }}
+          height="100%"
+          alignSelf="center"
+        />
+
+        {/* </Box> */}
+
+        {/* <Box
+  animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+  width={{ xs: "100%", md: "48%" }}
+  objectFit="cover"
+  maxW="700px"
+>
+  <Image src="/ice-model-2.jpeg" alt="ice-cloud-model" fill priority />
+</Box> */}
+      </Flex>
       <HeroProductWrapper />
     </>
   );
