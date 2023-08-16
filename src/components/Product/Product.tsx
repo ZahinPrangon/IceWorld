@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { Flex, Grid, Image as ChakraImage } from "@chakra-ui/react";
+import { Flex, Grid, Image as ChakraImage, Show } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
@@ -19,7 +19,6 @@ const Product = () => {
 
   const images = ProductDetailsMetaData.map((product: any) => product.images);
 
-  // const images
   return (
     <>
       <Grid
@@ -49,43 +48,48 @@ const Product = () => {
         />
       </Grid>
 
-      {/* <Flex flexDirection="column" color="white">
-        <Text
-          mb="30px"
-          textAlign="center"
-          letterSpacing="0.7px"
-          lineHeight="18.2px"
-          fontSize="14px"
-        >
-          ACTIVE NOISE CANCELLATION
-        </Text>
-        <Text
-          mb="30px"
-          fontWeight="400"
-          lineHeight="30.6px"
-          fontSize="25.5px"
-          textAlign="center"
-        >
-          Sound of Silence
-        </Text>
-        <Box position="relative">
-          <ChakraImage src="/ice-hero.gif" alt="ice-cloud" />
-        </Box>
-      </Flex> */}
+      <Flex
+        flexDir="column"
+        justifyContent="center"
+        wrap={{ xs: "wrap", xl: "nowrap" }}
+        pt={{ xs: "0px", md: "48px" }}
+        gap="24px"
+      >
+        <ChakraImage
+          src="/10mm-driver.jpeg"
+          alt="ice-touch-details-image"
+          width={{ xs: "100%", md: "35%" }}
+          height="100%"
+          alignSelf="center"
+          px={{ xs: "24px", md: "0px" }}
+        />
+        <ChakraImage src="/ice-hero.gif" />
+        {/* <ChakraImage
+          src="/ice-model-2.jpeg"
+          alt="ice-cloud-model"
+          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+          width={{ xs: "100%", md: "48%" }}
+          objectFit="cover"
+          maxW="700px"
+          loading="eager"
+        /> */}
+      </Flex>
 
       <Flex
         justifyContent="center"
         wrap={{ xs: "wrap", xl: "nowrap" }}
-        px={{ xs: "0", xl: "64px" }}
+        pt={{ xs: "0px", md: "48px" }}
+        gap="24px"
       >
         <ChakraImage
-          src="/touch-details.png"
+          src="/fast-charging.jpeg"
           alt="ice-touch-details-image"
-          width={{ xs: "100%", md: "50%" }}
+          width={{ xs: "100%", md: "35%" }}
           height="100%"
           alignSelf="center"
-          loading="eager"
+          px={{ xs: "24px", md: "0px" }}
         />
+
         <ChakraImage
           src="/ice-model-2.jpeg"
           alt="ice-cloud-model"
@@ -100,17 +104,23 @@ const Product = () => {
 
       <Flex
         justifyContent="center"
-        // alignItems="center"
         wrap={{ xs: "wrap", xl: "nowrap" }}
-        px={{ xs: "0", xl: "64px" }}
+        // px={{ xs: "0", xl: "64px" }}
         pt="48px"
+        gap="24px"
+        mb="64px"
       >
-        {/* <Box
-          position="relative"
-          width={{ xs: "100%", md: "50%" }}
-          height="100%"
-          alignSelf="center"
-        > */}
+        <Show below="md">
+          <ChakraImage
+            src="/touch-details.jpeg"
+            alt="ice-touch-details-image"
+            width={{ xs: "100%", md: "35%" }}
+            height="100%"
+            alignSelf="center"
+            loading="eager"
+            px={{ xs: "24px", md: "0px" }}
+          />
+        </Show>
         <ChakraImage
           src="/ice-model-1.jpeg"
           alt="ice-cloud-model"
@@ -120,16 +130,17 @@ const Product = () => {
           maxW="700px"
           loading="eager"
         />
-        <ChakraImage
-          src="/fast-charging.png"
-          alt="ice-touch-details-image"
-          width={{ xs: "100%", md: "50%" }}
-          height="100%"
-          alignSelf="center"
-        />
-
-        {/* </Box> */}
-
+        <Show above="md">
+          <ChakraImage
+            src="/touch-details.jpeg"
+            alt="ice-touch-details-image"
+            width={{ xs: "100%", md: "35%" }}
+            height="100%"
+            alignSelf="center"
+            loading="eager"
+            px={{ xs: "24px", md: "0px" }}
+          />
+        </Show>
         {/* <Box
   animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
   width={{ xs: "100%", md: "48%" }}

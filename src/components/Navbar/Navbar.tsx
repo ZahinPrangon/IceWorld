@@ -3,19 +3,18 @@
 "use client";
 
 import { Link } from "@chakra-ui/next-js";
-import { Box, Flex, Hide, HStack, Show } from "@chakra-ui/react";
+import { Box, Flex, Hide, HStack } from "@chakra-ui/react";
 import Image from "next/image";
-import { BsEarbuds } from "react-icons/bs";
 
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
 
 const Links = [
-  {
-    id: 1,
-    name: "Earbuds",
-    href: "/products/ice",
-  },
+  // {
+  //   id: 1,
+  //   name: "Earbuds",
+  //   href: "/products/ice",
+  // },
 ];
 
 type NavLinkProps = {
@@ -74,7 +73,7 @@ export default function Navbar() {
           </HStack>
         </Hide>
 
-        <Show below="md">
+        {/* <Show below="md">
           <Link
             href="/products/ice"
             _hover={{
@@ -85,7 +84,7 @@ export default function Navbar() {
           >
             <BsEarbuds color="white" size="30px" />
           </Link>
-        </Show>
+        </Show> */}
       </Flex>
     </Box>
   );

@@ -2,11 +2,10 @@ import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 
-import Card from "@/components/Card/Card";
 import Section from "@/layouts/Section/Section";
 
 import Carousel from "../Carousel/Carousel";
-import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
+import Product from "../Product/Product";
 
 const CardMetaData = [
   {
@@ -58,7 +57,7 @@ const Homepage = () => {
               comfort.
             "
       >
-        <Flex gap="1.5rem" flexWrap="wrap" justifyContent="center">
+        {/* <Flex gap="1.5rem" flexWrap="wrap" justifyContent="center">
           {CardMetaData.map((card) => {
             return (
               <Card
@@ -75,9 +74,10 @@ const Homepage = () => {
               />
             );
           })}
-        </Flex>
+        </Flex> */}
       </Section>
-      <HeroProductWrapper />
+      {/* <HeroProductWrapper /> */}
+      <Product />
       {/* <Section
         title="Reviews"
         subTitle="Customers ❤️ us. Here's what they have to say about our products."
