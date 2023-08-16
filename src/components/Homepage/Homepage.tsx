@@ -11,7 +11,7 @@ import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
 const CardMetaData = [
   {
     id: 1,
-    imageUrl: "/ice-white.png",
+    imageUrl: "/ice-white.jpeg",
     heading: "Ice Cloud",
     title: "Pearl White",
     subTitle: "True Wireless Earbuds",
@@ -28,7 +28,7 @@ const CardMetaData = [
   },
   {
     id: 2,
-    imageUrl: "/ice-black.png",
+    imageUrl: "/ice-white.jpeg",
     heading: "Ice Cloud",
     title: "Matte Black",
     subTitle: "True Wireless Earbuds",
