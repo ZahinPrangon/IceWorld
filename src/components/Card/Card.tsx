@@ -27,17 +27,17 @@ const Card = (props: CardProps) => {
       backgroundColor="black"
       onClick={() => props.onClick(props.href)}
     >
-      <Image
-        src={props.imageUrl}
-        alt={props.title}
-        // style={{
-        //   width: "300px",
-        //   height: "300px",
-        // }}
-        width={300}
-        height={300}
-        priority
-      />
+      <Box position="relative" width="300px" height="300px" objectFit="contain">
+        <Image
+          src={props.imageUrl}
+          alt={props.title}
+          fill
+          // width={300}
+          // height={300}
+          priority
+          // placeholder="blur"
+        />
+      </Box>
       <Box pb="1.25rem" borderBottom="1px solid white">
         <Text
           letterSpacing="0.1em"

@@ -137,6 +137,7 @@ const MobileImage = ({ imageUrl, slide, index }: MobileImageProps) => {
     <Image
       // as={motion.img}
       src={imageUrl}
+      // fill
       style={{
         display: slide === index ? "block" : "none",
         objectFit: "cover",
