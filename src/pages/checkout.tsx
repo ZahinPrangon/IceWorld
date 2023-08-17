@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
@@ -13,7 +14,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import CartProduct from "@/components/CartProduct/CartProduct";
 import CheckoutProductList from "@/components/CheckoutProductList/CheckoutProductList";
@@ -21,7 +22,7 @@ import { useAppSelector } from "@/hooks/redux";
 
 const checkout = () => {
   const selectedProducts = useAppSelector(
-    (state) => state.cart.selectedProducts,
+    (state) => state.cart.selectedProducts
   );
   const [formData, setFormData] = useState({
     name: "",
@@ -37,16 +38,37 @@ const checkout = () => {
     }));
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    // console.log(formData); // You can do something with the collected data here
-  };
+  // const handleSubmit = (event: any) => {
+  //   event.preventDefault();
+  //   // console.log(formData); // You can do something with the collected data here
+  // };
 
   const phoneNumber = "+923335067653"; // Replace with the recipient's phone number
   const message = "Hello, this is my message!"; // Replace with your message
 
   const encodedMessage = encodeURIComponent(message);
   const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
+  const formRef = useRef<any>();
+
+  const sendEmail = () => {
+    // e.preventDefault();
+    // emailjs
+    //   .sendForm(
+    //     "service_087ozop",
+    //     "template_5smm84l",
+    //     formRef.current,
+    //     "T6MZxkJ3gNMvU1kGi"
+    //   )
+    //   .then(
+    //     (result: any) => {
+    //       console.log(result.text);
+    //     },
+    //     (error: any) => {
+    //       console.log(error.text);
+    //     }
+    //   );
+  };
 
   return (
     <Box height="100%">
@@ -78,14 +100,14 @@ const checkout = () => {
                   px={1}
                   pt="20px"
                   mb={1}
-                  fontSize="17px"
-                  lineHeight="21px"
+                  fontSize="21px"
+                  lineHeight="24px"
                   fontWeight={500}
                 >
                   Checkout
                 </Text>
                 <Box p={1}>
-                  <form onSubmit={handleSubmit}>
+                  <form ref={formRef} onSubmit={sendEmail}>
                     <VStack
                       spacing={4}
                       fontSize="17px"
@@ -110,17 +132,8 @@ const checkout = () => {
                           onChange={handleInputChange}
                         />
                       </FormControl>
-                      <FormControl>
-                        <FormLabel>City</FormLabel>
-                        <Input
-                          type="text"
-                          name="city"
-                          value={formData.city}
-                          onChange={handleInputChange}
-                        />
-                      </FormControl>
                       <Button type="submit" colorScheme="blue">
-                        Submit
+                        Checkout
                       </Button>
                     </VStack>
                   </form>

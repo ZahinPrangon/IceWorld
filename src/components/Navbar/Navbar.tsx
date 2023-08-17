@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable prettier/prettier */
 /* eslint-disable import/no-extraneous-dependencies */
 
 "use client";
@@ -6,13 +8,25 @@ import { Link } from "@chakra-ui/next-js";
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
-import { useAppSelector } from "@/hooks/redux";
-import { cartSelectors } from "@/store/cart.slice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import {
+  cartSelectors,
+  onCloseCart,
+  onCloseMenu,
+  onOpenCart,
+  onOpenMenu,
+} from "@/store/cart.slice";
 
 const Links = [
+  {
+    id: 2,
+    navName: "aboutUs",
+    name: <RxHamburgerMenu size="30px" />,
+  },
   {
     id: 1,
     navName: "checkout",
@@ -22,18 +36,38 @@ const Links = [
 ];
 
 type NavLinkProps = {
-  href: string;
+  href?: string;
   name: string | JSX.Element;
   navName: string;
 };
 
 const NavLink = (props: NavLinkProps) => {
+  const dispatch = useAppDispatch();
+
+  const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
+  const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
+
   const calculateTotalQuantity = useAppSelector(
-    cartSelectors.calculateTotalQuantity,
+    cartSelectors.calculateTotalQuantity
   );
+
+  const onClickNavbar = () => {
+    if (props.navName === "checkout") {
+      if (isCartOpen) {
+        dispatch(onCloseCart());
+      }
+      dispatch(onOpenCart());
+    } else if (props.navName === "aboutUs") {
+      if (isMenuOpen) {
+        dispatch(onCloseMenu());
+      }
+      dispatch(onOpenMenu());
+    }
+  };
+
   return (
-    <Link
-      href={props.href}
+    <Box
+      // href={props.href}
       // className="hover-underline-animation"
       style={{
         color: "lightblue",
@@ -44,6 +78,8 @@ const NavLink = (props: NavLinkProps) => {
       }}
       userSelect="none"
       position="relative"
+      cursor="pointer"
+      onClick={onClickNavbar}
     >
       {props.name}
       {props.navName === "checkout" && calculateTotalQuantity !== 0 && (
@@ -59,7 +95,7 @@ const NavLink = (props: NavLinkProps) => {
           backgroundColor="#38B6FF"
         />
       )}
-    </Link>
+    </Box>
   );
 };
 

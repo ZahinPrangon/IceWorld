@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Flex, Grid, GridItem, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
@@ -25,14 +26,14 @@ const CartProduct = (props: CartProductProps) => {
       updateProduct({
         productId: props.productId,
         updateType: "DEC",
-      }),
+      })
     );
   };
 
   return (
     <Flex color="white" borderBottom="1px solid #38B6FF">
       {/* <Box position="relative"> */}
-      <Image src={props.image} alt={props.lineupName} w="150px" h="150px" />
+      <Image src={props.image} alt={props.lineupName} w="100px" h="100px" />
       <VStack justifyContent="center" gap="20px" alignItems="flex-start">
         <Text
           color="white"
@@ -77,7 +78,7 @@ const CartProduct = (props: CartProductProps) => {
                 updateProduct({
                   productId: props.productId,
                   updateType: "INC",
-                }),
+                })
               )
             }
           >

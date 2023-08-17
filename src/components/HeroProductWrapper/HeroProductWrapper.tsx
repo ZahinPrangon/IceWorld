@@ -10,30 +10,6 @@ import { RiBatteryChargeLine } from "react-icons/ri";
 
 const HeroProductFeatures = [
   {
-    id: 2,
-    description: "Up to 24 hours of playtime",
-    icon: <RiBatteryChargeLine size="35px" color="white" />,
-  },
-  {
-    id: 4,
-    description: "6+ Hrs Playtime Continuously",
-    icon: <HiPlay size="35px" color="white" />,
-  },
-
-  {
-    id: 3,
-    description: "Powerful 10 mm dynamic drivers",
-    icon: (
-      <AiTwotoneSound
-        size="30px"
-        color="white"
-        style={{
-          marginLeft: "3px",
-        }}
-      />
-    ),
-  },
-  {
     id: 6,
     description: "Environmental Noise Cancellation",
     icon: <BsSoundwave size="35px" color="white" />,
@@ -51,12 +27,36 @@ const HeroProductFeatures = [
       />
     ),
   },
-
   {
     id: 5,
     description: "Dual Mic Clarity",
     icon: <IoIosMic size="35px" color="white" />,
   },
+  {
+    id: 2,
+    description: "Up to 24 hours of playtime",
+    icon: <RiBatteryChargeLine size="35px" color="white" />,
+  },
+  {
+    id: 4,
+    description: "6+ Hrs Non-Stop",
+    icon: <HiPlay size="35px" color="white" />,
+  },
+
+  {
+    id: 3,
+    description: "Powerful 10 mm dynamic drivers",
+    icon: (
+      <AiTwotoneSound
+        size="30px"
+        color="white"
+        style={{
+          marginLeft: "3px",
+        }}
+      />
+    ),
+  },
+
   {
     id: 6,
     description: "Smart Touch Controls",
@@ -68,8 +68,8 @@ const HeroProductWrapper = () => {
     <Grid
       justifyContent="center"
       alignItems="center"
-      py="30px"
-      px={{ xs: "40px", md: "60px" }}
+      // py="30px"
+      p={{ xs: "30px 20px 30px 50px", md: "30px 20px 30px 30px" }}
       gap="16px"
       color="white"
       backgroundColor="#000F15"
@@ -81,7 +81,7 @@ const HeroProductWrapper = () => {
             alignItems="center"
             // justifyContent="space-between"
             flexDirection={{ xs: "row", md: "column" }}
-            fontSize={{ xs: "11px", md: "14px" }}
+            fontSize={{ xs: "13px", md: "14px" }}
             letterSpacing="0.05em"
             textAlign="center"
             gap={{ xs: "24px", md: "4px" }}

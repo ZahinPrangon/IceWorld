@@ -1,21 +1,19 @@
 /* eslint-disable react/no-array-index-key */
-import {
-  Flex,
-  Grid,
-  Image as ChakraImage,
-  Show,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Flex, Grid, Image as ChakraImage, Show } from "@chakra-ui/react";
 import React, { useState } from "react";
 
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { onCloseCart, onCloseMenu, onOpenCart } from "@/store/cart.slice";
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
 
 import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
+import NavSidebar from "../NavSidebar/NavSidebar";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductGallery from "../ProductGallery/ProductGallery";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Product = () => {
+  const dispatch = useAppDispatch();
   const [index, setIndex] = useState(0);
   const s = ProductDetailsMetaData[0];
   const [selectedProduct, setSelectedProduct] = useState(s);
@@ -23,8 +21,9 @@ const Product = () => {
     setIndex(i);
     setSelectedProduct(ProductDetailsMetaData[i]);
   };
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
+  const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
   const images = ProductDetailsMetaData.map((product: any) => product.images);
 
   return (
@@ -50,7 +49,9 @@ const Product = () => {
           selectedProduct={selectedProduct}
           setSelectedProduct={onChangeIndex}
           details={ProductDetailsMetaData}
-          onOpen={() => onOpen()}
+          onOpen={() => {
+            dispatch(onOpenCart());
+          }}
         />
       </Grid>
 
@@ -72,15 +73,6 @@ const Product = () => {
         />
         <ChakraImage src="/ice-hero.gif" />
         <ChakraImage src="/sound-banner.jpeg" px="20px" />
-        {/* <ChakraImage
-          src="/ice-model-2.jpeg"
-          alt="ice-cloud-model"
-          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-          width={{ xs: "100%", md: "48%" }}
-          objectFit="cover"
-          maxW="700px"
-          loading="eager"
-        /> */}
       </Flex>
 
       <Flex
@@ -151,17 +143,20 @@ const Product = () => {
             px={{ xs: "24px", md: "0px" }}
           />
         </Show>
-        {/* <Box
-  animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-  width={{ xs: "100%", md: "48%" }}
-  objectFit="cover"
-  maxW="700px"
->
-  <Image src="/ice-model-2.jpeg" alt="ice-cloud-model" fill priority />
-</Box> */}
       </Flex>
       <HeroProductWrapper />
-      <Sidebar isOpen={isOpen} onClose={onClose} />
+      <Sidebar
+        isOpen={isCartOpen ?? false}
+        onClose={() => {
+          dispatch(onCloseCart());
+        }}
+      />
+      <NavSidebar
+        isOpen={isMenuOpen ?? false}
+        onClose={() => {
+          dispatch(onCloseMenu());
+        }}
+      />
     </>
   );
 };

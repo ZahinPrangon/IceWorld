@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 import {
   Box,
@@ -15,8 +16,8 @@ import {
 import { useRouter } from "next/router";
 import React from "react";
 
-import { useAppSelector } from "@/hooks/redux";
-import { cartSelectors } from "@/store/cart.slice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { cartSelectors, onCloseCart } from "@/store/cart.slice";
 
 import CartProduct from "../CartProduct/CartProduct";
 
@@ -26,14 +27,15 @@ type SidebarProps = {
 };
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
   const selectedProducts = useAppSelector(
-    (state) => state.cart.selectedProducts,
+    (state) => state.cart.selectedProducts
   );
   const getTotalPrice = useAppSelector(cartSelectors.calculateTotalPrice);
 
   const onClickCheckout = () => {
     router.push("/checkout");
+    dispatch(onCloseCart());
   };
   return (
     <Drawer
@@ -41,7 +43,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       placement="right"
       onClose={onClose}
       allowPinchZoom
-      size="sm"
+      size={{ xs: "xs", md: "sm" }}
     >
       <DrawerOverlay />
       <DrawerContent

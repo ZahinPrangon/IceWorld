@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-param-reassign */
 import { createSelector, createSlice } from "@reduxjs/toolkit";
@@ -7,11 +8,14 @@ import type { RootState } from ".";
 export interface CartSlice {
   currentProduct?: any;
   selectedProducts: Record<string, SelectedProduct>;
+  isCartOpen?: boolean;
+  isMenuOpen?: boolean;
 }
 
 type SelectedProduct = {
   product: any;
   quantity: number;
+  isMenuOpen?: boolean;
 };
 
 // const getSelectedProductsOnInit = () => {
@@ -72,6 +76,18 @@ export const cartSlice = createSlice({
     removeProduct: (state, action) => {
       delete state.selectedProducts[action.payload.productId];
     },
+    onOpenCart: (state) => {
+      state.isCartOpen = true;
+    },
+    onCloseCart: (state) => {
+      state.isCartOpen = false;
+    },
+    onOpenMenu: (state) => {
+      state.isMenuOpen = true;
+    },
+    onCloseMenu: (state) => {
+      state.isMenuOpen = false;
+    },
   },
 });
 
@@ -83,7 +99,7 @@ const calculateTotalPrice = createSelector(
     let totalPrice = 0;
 
     for (const [productId, selectedProduct] of Object.entries(
-      selectedProducts,
+      selectedProducts
     )) {
       if (Object.prototype.hasOwnProperty.call(selectedProducts, productId)) {
         if (selectedProduct && selectedProduct.product) {
@@ -94,7 +110,7 @@ const calculateTotalPrice = createSelector(
     }
 
     return totalPrice;
-  },
+  }
 );
 
 const calculateTotalQuantity = createSelector(
@@ -102,7 +118,7 @@ const calculateTotalQuantity = createSelector(
   (selectedProducts) => {
     let totalQuantity = 0;
     for (const [productId, selectedProduct] of Object.entries(
-      selectedProducts,
+      selectedProducts
     )) {
       if (Object.prototype.hasOwnProperty.call(selectedProducts, productId)) {
         if (selectedProduct && selectedProduct.product) {
@@ -112,7 +128,7 @@ const calculateTotalQuantity = createSelector(
     }
 
     return totalQuantity;
-  },
+  }
 );
 
 export const cartSelectors = {
@@ -121,6 +137,14 @@ export const cartSelectors = {
   calculateTotalQuantity,
 };
 // Action creators are generated for each case reducer function
-export const { updateProduct, addToCart, removeProduct } = cartSlice.actions;
+export const {
+  updateProduct,
+  addToCart,
+  removeProduct,
+  onOpenCart,
+  onCloseCart,
+  onOpenMenu,
+  onCloseMenu,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

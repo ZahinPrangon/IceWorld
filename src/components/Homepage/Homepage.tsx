@@ -5,6 +5,7 @@ import Section from "@/layouts/Section/Section";
 
 import Carousel from "../Carousel/Carousel";
 import Product from "../Product/Product";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 // const CardMetaData = [
 //   {
@@ -82,6 +83,7 @@ const Homepage = () => {
       >
         <Reviews />
       </Section> */}
+      <ScrollToTopButton />
     </Flex>
   );
 };

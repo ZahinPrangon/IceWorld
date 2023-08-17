@@ -88,7 +88,7 @@ const Socials = [
   {
     id: 2,
     name: "Instagram",
-    href: "https://www.facebook.com/icebd.official",
+    href: "https://www.instagram.com/icebd.official",
     icon: (
       <SocialIcon
         // url="https://jaketrent.com"
