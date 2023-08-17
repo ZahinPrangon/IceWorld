@@ -1,5 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-import { Flex, Grid, Image as ChakraImage, Show } from "@chakra-ui/react";
+import {
+  Flex,
+  Grid,
+  Image as ChakraImage,
+  Show,
+  useDisclosure,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
@@ -7,6 +13,7 @@ import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
 import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductGallery from "../ProductGallery/ProductGallery";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Product = () => {
   const [index, setIndex] = useState(0);
@@ -16,6 +23,7 @@ const Product = () => {
     setIndex(i);
     setSelectedProduct(ProductDetailsMetaData[i]);
   };
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const images = ProductDetailsMetaData.map((product: any) => product.images);
 
@@ -39,12 +47,10 @@ const Product = () => {
         />
         <ProductDetails
           description="Elevate your moment"
-          onClick={() => {
-            // console.log("clicked");
-          }}
           selectedProduct={selectedProduct}
           setSelectedProduct={onChangeIndex}
           details={ProductDetailsMetaData}
+          onOpen={() => onOpen()}
         />
       </Grid>
 
@@ -151,6 +157,7 @@ const Product = () => {
 </Box> */}
       </Flex>
       <HeroProductWrapper />
+      <Sidebar isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

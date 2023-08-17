@@ -41,6 +41,7 @@ export default function ProductGallery(props: ProductGalleryProps) {
       onThumbnailClick={onClickGalleryItem}
       // onSlide={onClickSideArrow}
       // slideToIndex={setSlideIndex}
+      // onImageLoad={props.setIndex}
     />
   );
 }

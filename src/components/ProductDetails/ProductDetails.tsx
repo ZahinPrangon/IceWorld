@@ -5,14 +5,18 @@ import { BsFillBoxFill } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { TbShieldCheckFilled } from "react-icons/tb";
 
+import { useAppDispatch } from "@/hooks/redux";
+import { addToCart } from "@/store/cart.slice";
+
 import ProductPicker from "../ProductPicker/ProductPicker";
 
 type ProductDetailsProps = {
   description: string;
-  onClick: (index: number) => void;
+  // onClick: (index: number) => void;
   selectedProduct: any;
   setSelectedProduct: (index: number) => void;
   details: any[];
+  onOpen: () => void;
 };
 
 const productHeroFeatures = [
@@ -38,9 +42,14 @@ const productHeroFeatures = [
   },
 ];
 const ProductDetails = (props: ProductDetailsProps) => {
+  const dispatch = useAppDispatch();
   const handleProductPickerClick = (index: number) => {
     props.setSelectedProduct(index); // Update the selected product index
-    props.onClick(index); // Call the onClick handler
+  };
+
+  const handleBuyNowClick = () => {
+    props.onOpen();
+    dispatch(addToCart({ selectedProduct: props.selectedProduct }));
   };
 
   return (
@@ -74,7 +83,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
         })}
       </Flex>
       <Button
-        onClick={() => {}}
+        onClick={handleBuyNowClick}
         border="1px solid white"
         minH="50px"
         backgroundColor="transparent"

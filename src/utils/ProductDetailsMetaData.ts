@@ -8,6 +8,7 @@ export const ProductDetailsMetaData = [
       original: "/ice-white-product.jpeg",
       thumbnail: "/ice-white-product.jpeg",
     },
+    cartImage: "/ice-white-cart.jpeg",
   },
   // {
   //   id: 2,
@@ -28,5 +29,6 @@ export const ProductDetailsMetaData = [
       original: "/ice-black.jpeg",
       thumbnail: "/ice-black.jpeg",
     },
+    cartImage: "/ice-black-cart.jpeg",
   },
 ];

@@ -3,43 +3,65 @@
 "use client";
 
 import { Link } from "@chakra-ui/next-js";
-import { Box, Flex, Hide, HStack } from "@chakra-ui/react";
+import { Box, Flex, Hide, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
+import { GiShoppingBag } from "react-icons/gi";
 
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
+import { useAppSelector } from "@/hooks/redux";
+import { cartSelectors } from "@/store/cart.slice";
 
-// const Links = [
-//   // {
-//   //   id: 1,
-//   //   name: "Earbuds",
-//   //   href: "/products/ice",
-//   // },
-// ];
+const Links = [
+  {
+    id: 1,
+    navName: "checkout",
+    name: <GiShoppingBag size="30px" fill="white" />,
+    href: "/checkout",
+  },
+];
 
-// type NavLinkProps = {
-//   href: string;
-//   name: string;
-// };
+type NavLinkProps = {
+  href: string;
+  name: string | JSX.Element;
+  navName: string;
+};
 
-// const NavLink = (props: NavLinkProps) => {
-//   return (
-//     <Link
-//       href={props.href}
-//       className="hover-underline-animation"
-//       style={{
-//         color: "lightblue",
-//       }}
-//       _hover={{
-//         textDecoration: "none",
-//         border: "none",
-//       }}
-//       userSelect="none"
-//     >
-//       {props.name}
-//     </Link>
-//   );
-// };
+const NavLink = (props: NavLinkProps) => {
+  const calculateTotalQuantity = useAppSelector(
+    cartSelectors.calculateTotalQuantity
+  );
+  return (
+    <Link
+      href={props.href}
+      // className="hover-underline-animation"
+      style={{
+        color: "lightblue",
+      }}
+      _hover={{
+        textDecoration: "none",
+        border: "none",
+      }}
+      userSelect="none"
+      position="relative"
+    >
+      {props.name}
+      {props.navName === "checkout" && calculateTotalQuantity !== 0 && (
+        <Text
+          position="absolute"
+          bottom="0"
+          right="0"
+          color="red"
+          borderRadius="50%"
+          height="15px"
+          width="15px"
+          // border="2px solid black"
+          backgroundColor="#00ffb7"
+        />
+      )}
+    </Link>
+  );
+};
 
 export default function Navbar() {
   return (
@@ -67,9 +89,14 @@ export default function Navbar() {
         </HStack>
         <Hide below="md">
           <HStack as="nav" spacing="12px">
-            {/* {Links.map((link) => (
-              <NavLink key={link.id} href={link.href} name={link.name} />
-            ))} */}
+            {Links.map((link) => (
+              <NavLink
+                key={link.id}
+                href={link.href}
+                name={link.name}
+                navName={link.navName}
+              />
+            ))}
           </HStack>
         </Hide>
 
