@@ -108,8 +108,8 @@ const CollapsibleFooter = () => {
   const { isOpen: isOpen3, onToggle: onToggle3 } = useDisclosure();
 
   return (
-    <Box pb="16px">
-      <Box px="16px">
+    <Box pb="48px">
+      <Box>
         <Flex
           onClick={onToggle}
           justifyContent="space-between"
@@ -117,6 +117,8 @@ const CollapsibleFooter = () => {
           alignItems="center"
           borderBottom="1px solid white"
           {...listingHeaderStyles}
+          px="16px"
+          borderTop="1px solid white"
         >
           <Text>{FooterColumn[0]?.name}</Text>
           {isOpen ? <BsChevronUp /> : <BsChevronDown />}
@@ -159,6 +161,7 @@ const CollapsibleFooter = () => {
           alignItems="center"
           borderBottom="1px solid white"
           {...listingHeaderStyles}
+          px="16px"
         >
           <Text>Follow Us</Text>
           {isOpen3 ? <BsChevronUp /> : <BsChevronDown />}

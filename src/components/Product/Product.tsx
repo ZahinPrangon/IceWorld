@@ -69,7 +69,7 @@ const Product = () => {
           width={{ xs: "100%", md: "35%" }}
           height="100%"
           alignSelf="center"
-          px={{ xs: "0px", md: "0px" }}
+          px={{ xs: "20px", md: "0px" }}
         />
         <ChakraImage src="/ice-hero.gif" />
         <ChakraImage src="/sound-banner.jpeg" px="20px" />

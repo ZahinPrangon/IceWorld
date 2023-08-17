@@ -61,6 +61,7 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
               letterSpacing="0.05em"
               lineHeight="24px"
               cursor="pointer"
+              height="fit-content"
               onClick={() => {
                 router.push(link.href);
                 dispatch(onCloseMenu());
