@@ -36,7 +36,7 @@ const Product = () => {
         marginX="auto"
         gap="20px"
         background="black"
-        marginBottom="6rem"
+        marginBottom="4rem"
         color="white"
         px="14px"
       >
@@ -60,6 +60,7 @@ const Product = () => {
         wrap={{ xs: "wrap", xl: "nowrap" }}
         pt={{ xs: "0px", md: "48px" }}
         gap="24px"
+        mb="4rem"
       >
         <ChakraImage
           src="/10mm-driver.jpeg"
@@ -67,9 +68,10 @@ const Product = () => {
           width={{ xs: "100%", md: "35%" }}
           height="100%"
           alignSelf="center"
-          px={{ xs: "24px", md: "0px" }}
+          px={{ xs: "0px", md: "0px" }}
         />
         <ChakraImage src="/ice-hero.gif" />
+        <ChakraImage src="/sound-banner.jpeg" px="20px" />
         {/* <ChakraImage
           src="/ice-model-2.jpeg"
           alt="ice-cloud-model"
@@ -84,7 +86,8 @@ const Product = () => {
       <Flex
         justifyContent="center"
         wrap={{ xs: "wrap", xl: "nowrap" }}
-        pt={{ xs: "0px", md: "48px" }}
+        // pt={{ xs: "0px", md: "48px" }}
+        mb="2rem"
         gap="24px"
       >
         <ChakraImage
@@ -105,16 +108,17 @@ const Product = () => {
           maxW="700px"
           loading="eager"
         />
+
+        <ChakraImage src="/battery-banner.jpeg" px="20px" />
+
         {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
       </Flex>
 
       <Flex
         justifyContent="center"
         wrap={{ xs: "wrap", xl: "nowrap" }}
-        // px={{ xs: "0", xl: "64px" }}
-        pt="48px"
         gap="24px"
-        mb="64px"
+        mb="4rem"
       >
         <Show below="md">
           <ChakraImage

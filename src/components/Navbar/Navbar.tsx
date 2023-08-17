@@ -3,9 +3,9 @@
 "use client";
 
 import { Link } from "@chakra-ui/next-js";
-import { Box, Flex, Hide, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import { GiShoppingBag } from "react-icons/gi";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 
 // eslint-disable-next-line import/no-absolute-path
 import Logo from "/public/logo.png";
@@ -16,7 +16,7 @@ const Links = [
   {
     id: 1,
     navName: "checkout",
-    name: <GiShoppingBag size="30px" fill="white" />,
+    name: <HiOutlineShoppingBag size="30px" />,
     href: "/checkout",
   },
 ];
@@ -29,7 +29,7 @@ type NavLinkProps = {
 
 const NavLink = (props: NavLinkProps) => {
   const calculateTotalQuantity = useAppSelector(
-    cartSelectors.calculateTotalQuantity
+    cartSelectors.calculateTotalQuantity,
   );
   return (
     <Link
@@ -56,7 +56,7 @@ const NavLink = (props: NavLinkProps) => {
           height="15px"
           width="15px"
           // border="2px solid black"
-          backgroundColor="#00ffb7"
+          backgroundColor="#38B6FF"
         />
       )}
     </Link>
@@ -87,18 +87,18 @@ export default function Navbar() {
             />
           </Link>
         </HStack>
-        <Hide below="md">
-          <HStack as="nav" spacing="12px">
-            {Links.map((link) => (
-              <NavLink
-                key={link.id}
-                href={link.href}
-                name={link.name}
-                navName={link.navName}
-              />
-            ))}
-          </HStack>
-        </Hide>
+        {/* <Hide below="md"> */}
+        <HStack as="nav" spacing="12px">
+          {Links.map((link) => (
+            <NavLink
+              key={link.id}
+              href={link.href}
+              name={link.name}
+              navName={link.navName}
+            />
+          ))}
+        </HStack>
+        {/* </Hide> */}
 
         {/* <Show below="md">
           <Link

@@ -14,6 +14,12 @@ type SelectedProduct = {
   quantity: number;
 };
 
+// const getSelectedProductsOnInit = () => {
+//   if (typeof window === "undefined") return {};
+//   if (localStorage.getItem("cart") === "") return {};
+//   return JSON.parse(localStorage.getItem("cart") as string) || {};
+// };
+
 const initialState: CartSlice = {
   selectedProducts: {},
 };
@@ -34,6 +40,9 @@ export const cartSlice = createSlice({
       } else if (state.selectedProducts[product.id] !== undefined) {
         state.selectedProducts[product.id]!.quantity -= 1;
       }
+
+      // update the localStorage with the new state
+      // localStorage.setItem("cart", JSON.stringify(state.selectedProducts));
     },
     addToCart: (state, action) => {
       // console.log("state", action);
@@ -74,7 +83,7 @@ const calculateTotalPrice = createSelector(
     let totalPrice = 0;
 
     for (const [productId, selectedProduct] of Object.entries(
-      selectedProducts
+      selectedProducts,
     )) {
       if (Object.prototype.hasOwnProperty.call(selectedProducts, productId)) {
         if (selectedProduct && selectedProduct.product) {
@@ -85,7 +94,7 @@ const calculateTotalPrice = createSelector(
     }
 
     return totalPrice;
-  }
+  },
 );
 
 const calculateTotalQuantity = createSelector(
@@ -93,7 +102,7 @@ const calculateTotalQuantity = createSelector(
   (selectedProducts) => {
     let totalQuantity = 0;
     for (const [productId, selectedProduct] of Object.entries(
-      selectedProducts
+      selectedProducts,
     )) {
       if (Object.prototype.hasOwnProperty.call(selectedProducts, productId)) {
         if (selectedProduct && selectedProduct.product) {
@@ -103,7 +112,7 @@ const calculateTotalQuantity = createSelector(
     }
 
     return totalQuantity;
-  }
+  },
 );
 
 export const cartSelectors = {

@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const router = useRouter();
 
   const selectedProducts = useAppSelector(
-    (state) => state.cart.selectedProducts
+    (state) => state.cart.selectedProducts,
   );
   const getTotalPrice = useAppSelector(cartSelectors.calculateTotalPrice);
 
@@ -59,7 +59,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             xs: "16px",
             md: "25.5px",
           }}
-          borderBottom="1px solid rgb(0, 120, 86)"
+          borderBottom="1px solid #38B6FF"
           mx="20px"
         >
           Cart
@@ -101,7 +101,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               >
                 Order Notes
               </Text>
-              <Textarea pt="20px" border="1px solid rgb(0, 120, 86)" />
+              <Textarea pt="20px" border="1px solid #38B6FF" />
             </Box>
           )}
         </DrawerBody>
@@ -110,7 +110,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           <>
             <DrawerFooter
               p="30px"
-              borderTop="1px solid rgb(0, 120, 86)"
+              borderTop="1px solid #38B6FF"
               display="flex"
               justifyContent="space-between"
             >

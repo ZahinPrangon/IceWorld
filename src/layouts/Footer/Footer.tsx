@@ -6,6 +6,7 @@ import {
   Grid,
   GridItem,
   Hide,
+  Link,
   Show,
   Text,
   useDisclosure,
@@ -13,7 +14,7 @@ import {
 import Image from "next/image";
 import React from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
-import { GrFacebook, GrInstagram } from "react-icons/gr";
+import { SocialIcon } from "react-social-icons";
 
 import Logo from "/public/logo.png";
 // eslint-disable-next-line import/no-absolute-path
@@ -34,22 +35,22 @@ const listingHeaderStyles = {
 };
 
 const FooterColumn = [
-  {
-    id: 1,
-    name: "Products",
-    listings: [
-      {
-        id: 1,
-        name: "Ice",
-        href: "/products/ice",
-      },
-      {
-        id: 2,
-        name: "Coming Soon!",
-        href: "/products/coming-soon",
-      },
-    ],
-  },
+  // {
+  //   id: 1,
+  //   name: "Products",
+  //   listings: [
+  //     {
+  //       id: 1,
+  //       name: "Ice",
+  //       href: "/products/ice",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Coming Soon!",
+  //       href: "/products/coming-soon",
+  //     },
+  //   ],
+  // },
   {
     id: 2,
     name: "About Us",
@@ -73,23 +74,41 @@ const Socials = [
     id: 1,
     name: "Facebook",
     href: "https://www.facebook.com/icebd.official",
-    icon: <GrFacebook size="20px" />,
+    icon: (
+      <SocialIcon
+        // url="https://jaketrent.com"
+        network="facebook"
+        style={{
+          height: "14px",
+          width: "14px",
+        }}
+      />
+    ),
   },
   {
     id: 2,
     name: "Instagram",
     href: "https://www.facebook.com/icebd.official",
-    icon: <GrInstagram size="20px" />,
+    icon: (
+      <SocialIcon
+        // url="https://jaketrent.com"
+        network="instagram"
+        style={{
+          height: "14px",
+          width: "14px",
+        }}
+      />
+    ),
   },
 ];
 
 const CollapsibleFooter = () => {
   const { isOpen, onToggle } = useDisclosure();
-  const { isOpen: isOpen2, onToggle: onToggle2 } = useDisclosure();
+  // const { isOpen: isOpen2, onToggle: onToggle2 } = useDisclosure();
   const { isOpen: isOpen3, onToggle: onToggle3 } = useDisclosure();
 
   return (
-    <Box pb="80px">
+    <Box pb="16px">
       <Box px="16px">
         <Flex
           onClick={onToggle}
@@ -112,7 +131,7 @@ const CollapsibleFooter = () => {
           </Box>
         </Collapse>
 
-        <Flex
+        {/* <Flex
           onClick={onToggle2}
           justifyContent="space-between"
           p="15px 10px 15px 0px"
@@ -122,8 +141,8 @@ const CollapsibleFooter = () => {
         >
           <Text>{FooterColumn[1]?.name}</Text>
           {isOpen2 ? <BsChevronUp /> : <BsChevronDown />}
-        </Flex>
-        <Collapse in={isOpen2} animateOpacity>
+        </Flex> */}
+        {/* <Collapse in={isOpen2} animateOpacity>
           <Box p="8px" {...listingStyles}>
             {FooterColumn[1]?.listings.map((listing) => (
               <Box color="white" key={listing.id} p="6px">
@@ -131,7 +150,7 @@ const CollapsibleFooter = () => {
               </Box>
             ))}
           </Box>
-        </Collapse>
+        </Collapse> */}
 
         <Flex
           onClick={onToggle3}
@@ -147,9 +166,20 @@ const CollapsibleFooter = () => {
         <Collapse in={isOpen3} animateOpacity>
           <Box p="8px" {...listingStyles}>
             {Socials.map((listing) => (
-              <Box color="white" key={listing.id} p="6px">
-                {listing.name}
-              </Box>
+              <Link
+                display="flex"
+                color="white"
+                key={listing.id}
+                p="6px"
+                gap="12px"
+                alignItems="center"
+                as={Link}
+                href={listing.href}
+                target="_blank"
+              >
+                <Box>{listing.icon}</Box>
+                <Box>{listing.name}</Box>
+              </Link>
             ))}
           </Box>
         </Collapse>
@@ -179,6 +209,8 @@ const Footer = () => {
       pb={{ md: "60px" }}
       color="white"
       width="100%"
+      position="absolute"
+      height="4rem"
       bottom="0px"
       // height="20rem"
     >
@@ -232,25 +264,37 @@ const Footer = () => {
             </Flex>
           </GridItem>
         </Grid>
+        <Flex
+          justifyContent="center"
+          position="absolute"
+          bottom="0px"
+          color="#757575"
+          textAlign="center"
+          alignItems="center"
+          width="100%"
+          lineHeight="1.6"
+          marginTop="50px"
+          marginBottom="30px"
+          fontSize="0.75rem"
+        >
+          Copyright © 2023 Ice.{" "}
+        </Flex>
       </Hide>
       <Show below="md">
         <CollapsibleFooter />
+        <Flex
+          justifyContent="center"
+          color="#38B6FF"
+          textAlign="center"
+          alignItems="center"
+          width="100%"
+          lineHeight="1.6"
+          paddingBottom="12px"
+          fontSize="0.75rem"
+        >
+          Copyright © 2023 Ice.{" "}
+        </Flex>
       </Show>
-      <Flex
-        justifyContent="center"
-        position="absolute"
-        bottom="0px"
-        color="#757575"
-        textAlign="center"
-        alignItems="center"
-        width="100%"
-        lineHeight="1.6"
-        marginTop="50px"
-        marginBottom="30px"
-        fontSize="0.75rem"
-      >
-        Copyright © 2023 Ice.{" "}
-      </Flex>
     </Box>
   );
 };

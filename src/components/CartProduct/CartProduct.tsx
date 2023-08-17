@@ -25,11 +25,12 @@ const CartProduct = (props: CartProductProps) => {
       updateProduct({
         productId: props.productId,
         updateType: "DEC",
-      })
+      }),
     );
   };
+
   return (
-    <Flex color="white" borderBottom="1px solid rgb(0, 120, 86)">
+    <Flex color="white" borderBottom="1px solid #38B6FF">
       {/* <Box position="relative"> */}
       <Image src={props.image} alt={props.lineupName} w="150px" h="150px" />
       <VStack justifyContent="center" gap="20px" alignItems="flex-start">
@@ -44,7 +45,7 @@ const CartProduct = (props: CartProductProps) => {
         <Grid
           maxW="100px"
           minW="80px"
-          border="1px solid rgb(0, 120, 86)"
+          border="1px solid #38B6FF"
           templateColumns="repeat(3, 1fr)"
           justifyContent="center"
           height="24px"
@@ -76,7 +77,7 @@ const CartProduct = (props: CartProductProps) => {
                 updateProduct({
                   productId: props.productId,
                   updateType: "INC",
-                })
+                }),
               )
             }
           >
@@ -95,8 +96,6 @@ const CartProduct = (props: CartProductProps) => {
       >
         ৳ {computedPrice}
       </Text>
-
-      {/* </Box> */}
     </Flex>
   );
 };

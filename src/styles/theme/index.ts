@@ -54,6 +54,7 @@ export const theme = extendTheme({
     neutral: "#333333",
     positive: "#34C759",
     negative: "#FF2D55",
+    iceBlue: "#38B6FF",
   },
   breakpoints: {
     xs: "0",

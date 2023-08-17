@@ -16,12 +16,18 @@ const Layout = ({ children }: PropsWithChildren) => {
       <ChakraProvider theme={theme}>
         <Flex
           position="relative"
-          minH="100%"
+          minH="100vh"
           flexDirection="column"
           backgroundColor="black"
         >
           <Navbar />
-          <main>{children}</main>
+          <main
+            style={{
+              paddingBottom: "4rem",
+            }}
+          >
+            {children}
+          </main>
           <Footer />
         </Flex>
       </ChakraProvider>

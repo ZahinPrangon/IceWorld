@@ -8,7 +8,6 @@ import {
   FormLabel,
   Grid,
   GridItem,
-  Heading,
   Input,
   Show,
   Text,
@@ -17,11 +16,12 @@ import {
 import React, { useState } from "react";
 
 import CartProduct from "@/components/CartProduct/CartProduct";
+import CheckoutProductList from "@/components/CheckoutProductList/CheckoutProductList";
 import { useAppSelector } from "@/hooks/redux";
 
 const checkout = () => {
   const selectedProducts = useAppSelector(
-    (state) => state.cart.selectedProducts
+    (state) => state.cart.selectedProducts,
   );
   const [formData, setFormData] = useState({
     name: "",
@@ -41,48 +41,57 @@ const checkout = () => {
     event.preventDefault();
     // console.log(formData); // You can do something with the collected data here
   };
+
+  const phoneNumber = "+923335067653"; // Replace with the recipient's phone number
+  const message = "Hello, this is my message!"; // Replace with your message
+
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+
   return (
-    <Box>
+    <Box height="100%">
       {Object.keys(selectedProducts).length === 0 ? (
-        <Text pt="20px" textAlign="center" color="white">
+        <Flex
+          pt="20px"
+          color="white"
+          justifyContent="center"
+          alignItems="center"
+          my="auto"
+        >
           Your cart is currently empty.
-        </Text>
+        </Flex>
       ) : (
         <>
           <Show below="md">
-            {Object.keys(selectedProducts).map((key) => {
-              const product = selectedProducts[key];
-              if (!product) return;
-              const cartProduct = product.product;
-              return (
-                <CartProduct
-                  lineupName={cartProduct.lineupName}
-                  quantity={product.quantity}
-                  price={cartProduct.price}
-                  image={cartProduct.cartImage}
-                  key={cartProduct.productId}
-                  productId={cartProduct.id}
-                />
-              );
-            })}
+            <CheckoutProductList />
           </Show>
-          <Grid templateColumns="repeat(2, 1fr)">
+          <Grid templateColumns={{ xs: "auto", md: "repeat(2, 1fr)" }}>
             <GridItem>
               <Flex
                 justifyContent={{ xs: "center" }}
                 flexDirection="column"
                 color="white"
-                p="20px"
                 mx={{ xs: "12px", md: "40px" }}
-                // border="1px solid white"
                 borderRadius="20px"
-                // width={{ xs: "auto", md: "50%" }}
-                // px=
               >
-                <Heading>Checkout</Heading>
-                <Box p={4}>
+                <Text
+                  px={1}
+                  pt="20px"
+                  mb={1}
+                  fontSize="17px"
+                  lineHeight="21px"
+                  fontWeight={500}
+                >
+                  Checkout
+                </Text>
+                <Box p={1}>
                   <form onSubmit={handleSubmit}>
-                    <VStack spacing={4}>
+                    <VStack
+                      spacing={4}
+                      fontSize="17px"
+                      lineHeight="21px"
+                      fontWeight={500}
+                    >
                       <FormControl>
                         <FormLabel>Name</FormLabel>
                         <Input
@@ -137,6 +146,9 @@ const checkout = () => {
                 })}
               </Show>
             </GridItem>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              Send WhatsApp Message
+            </a>{" "}
           </Grid>
         </>
       )}

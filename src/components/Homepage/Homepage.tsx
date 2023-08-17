@@ -52,8 +52,7 @@ const Homepage = () => {
       <Section
         title="Earbuds"
         subTitle="
-              Engineered to fit. Great calls and music, designed for compact
-              comfort.
+              Engineered to fit. Great calls and music, designed for comfort.
             "
       >
         {/* <Flex gap="1.5rem" flexWrap="wrap" justifyContent="center">
