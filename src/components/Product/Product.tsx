@@ -78,17 +78,16 @@ const Product = () => {
       <Flex
         justifyContent="center"
         wrap={{ xs: "wrap", xl: "nowrap" }}
-        // pt={{ xs: "0px", md: "48px" }}
         mb="2rem"
         gap="24px"
       >
         <ChakraImage
-          src="/fast-charging.jpeg"
+          src="/fast-charging.png"
           alt="ice-touch-details-image"
           width={{ xs: "100%", md: "35%" }}
           height="100%"
           alignSelf="center"
-          px={{ xs: "24px", md: "0px" }}
+          px={{ xs: "12px", md: "0px" }}
         />
 
         <ChakraImage
@@ -100,10 +99,6 @@ const Product = () => {
           maxW="700px"
           loading="eager"
         />
-
-        <ChakraImage src="/battery-banner.jpeg" px="20px" />
-
-        {/* <Image src="/ice-hero.gif" alt="ice-cloud" /> */}
       </Flex>
 
       <Flex
@@ -114,13 +109,13 @@ const Product = () => {
       >
         <Show below="md">
           <ChakraImage
-            src="/touch-details.jpeg"
-            alt="ice-touch-details-image"
+            src="/touch-controls.jpeg"
+            alt="ice-touch-controls-image"
             width={{ xs: "100%", md: "35%" }}
             height="100%"
             alignSelf="center"
             loading="eager"
-            px={{ xs: "24px", md: "0px" }}
+            px={{ xs: "0px", md: "0px" }}
           />
         </Show>
         <ChakraImage

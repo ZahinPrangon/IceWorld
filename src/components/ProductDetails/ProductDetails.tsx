@@ -27,7 +27,7 @@ const productHeroFeatures = [
   },
   {
     id: 2,
-    title: "30 days free replacement",
+    title: "6 months warranty",
     icon: <TbShieldCheckFilled />,
   },
   {

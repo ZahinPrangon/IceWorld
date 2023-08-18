@@ -111,6 +111,7 @@ export default function Navbar() {
               textDecoration: "none",
               border: "none",
             }}
+            userSelect="none"
           >
             {/* < */}
             <Image
@@ -124,7 +125,7 @@ export default function Navbar() {
           </Link>
         </HStack>
         {/* <Hide below="md"> */}
-        <HStack as="nav" spacing="12px">
+        <HStack as="nav" spacing="12px" userSelect="none">
           {Links.map((link) => (
             <NavLink
               key={link.id}

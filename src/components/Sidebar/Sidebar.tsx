@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 import {
-  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -11,7 +10,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Text,
-  Textarea,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
@@ -88,24 +86,6 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               />
             );
           })}
-
-          {/* <Input placeholder="Type here..." /> */}
-          {Object.keys(selectedProducts).length !== 0 && (
-            <Box mx="20px">
-              <Text
-                fontWeight="400"
-                lineHeight="1.2"
-                fontSize={{
-                  xs: "16px",
-                  // md: "25.5px",
-                }}
-                py="20px"
-              >
-                Order Notes
-              </Text>
-              <Textarea pt="20px" border="1px solid #38B6FF" />
-            </Box>
-          )}
         </DrawerBody>
 
         {Object.keys(selectedProducts).length !== 0 && (

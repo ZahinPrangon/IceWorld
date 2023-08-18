@@ -12,6 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { SocialIcon } from "react-social-icons";
@@ -103,6 +104,7 @@ const Socials = [
 ];
 
 const CollapsibleFooter = () => {
+  const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
   // const { isOpen: isOpen2, onToggle: onToggle2 } = useDisclosure();
   const { isOpen: isOpen3, onToggle: onToggle3 } = useDisclosure();
@@ -126,7 +128,12 @@ const CollapsibleFooter = () => {
         <Collapse in={isOpen} animateOpacity>
           <Box p="8px" {...listingStyles}>
             {FooterColumn[0]?.listings.map((listing) => (
-              <Box color="white" key={listing.id} p="6px">
+              <Box
+                color="white"
+                key={listing.id}
+                p="6px"
+                onClick={() => router.push(listing.href)}
+              >
                 {listing.name}
               </Box>
             ))}
@@ -205,6 +212,7 @@ const CollapsibleFooter = () => {
     </Box>
   );
 };
+
 const Footer = () => {
   return (
     <Box
@@ -215,7 +223,6 @@ const Footer = () => {
       position="absolute"
       height="4rem"
       bottom="0px"
-      // height="20rem"
     >
       <Hide below="md">
         <Grid templateColumns="repeat(4, 2fr)" gap={4} px="20px">

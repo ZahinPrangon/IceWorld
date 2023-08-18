@@ -56,10 +56,10 @@ const CartProduct = (props: CartProductProps) => {
             userSelect="none"
             cursor="pointer"
             textAlign="center"
-            _hover={{
-              backgroundColor: "white",
-              color: "black",
-            }}
+            // _hover={{
+            //   backgroundColor: "white",
+            //   color: "black",
+            // }}
             onClick={onDecrementClick}
           >
             -
@@ -69,10 +69,10 @@ const CartProduct = (props: CartProductProps) => {
             userSelect="none"
             cursor="pointer"
             textAlign="center"
-            _hover={{
-              backgroundColor: "white",
-              color: "black",
-            }}
+            // _hover={{
+            //   backgroundColor: "white",
+            //   color: "black",
+            // }}
             onClick={() =>
               dispatch(
                 updateProduct({

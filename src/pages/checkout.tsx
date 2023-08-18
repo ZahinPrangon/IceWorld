@@ -1,3 +1,5 @@
+/* eslint-disable unused-imports/no-unused-vars */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -24,6 +26,8 @@ const checkout = () => {
   const selectedProducts = useAppSelector(
     (state) => state.cart.selectedProducts
   );
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
@@ -38,40 +42,46 @@ const checkout = () => {
     }));
   };
 
-  // const handleSubmit = (event: any) => {
-  //   event.preventDefault();
-  //   // console.log(formData); // You can do something with the collected data here
-  // };
+  // const phoneNumber = "+923335067653"; // Replace with the recipient's phone number
+  // const message = "Hello, this is my message!"; // Replace with your message
 
-  const phoneNumber = "+923335067653"; // Replace with the recipient's phone number
-  const message = "Hello, this is my message!"; // Replace with your message
-
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+  // const encodedMessage = encodeURIComponent(message);
+  // const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
   const formRef = useRef<any>();
 
-  const sendEmail = () => {
-    // e.preventDefault();
-    // emailjs
-    //   .sendForm(
-    //     "service_087ozop",
-    //     "template_5smm84l",
-    //     formRef.current,
-    //     "T6MZxkJ3gNMvU1kGi"
-    //   )
-    //   .then(
-    //     (result: any) => {
-    //       console.log(result.text);
-    //     },
-    //     (error: any) => {
-    //       console.log(error.text);
-    //     }
-    //   );
-  };
+  // const sendEmail = () => {
+  //   // e.preventDefault();
+  //   // emailjs
+  //   //   .sendForm(
+  //   //     "service_087ozop",
+  //   //     "template_5smm84l",
+  //   //     formRef.current,
+  //   //     "T6MZxkJ3gNMvU1kGi"
+  //   //   )
+  //   //   .then(
+  //   //     (result: any) => {
+  //   //       console.log(result.text);
+  //   //     },
+  //   //     (error: any) => {
+  //   //       console.log(error.text);
+  //   //     }
+  //   //   );
+  // };
 
+  const handleCheckout = () => {
+    setIsLoading(true);
+    // console.log(formData);
+    // Simulate a 5-second delay
+    setTimeout(() => {
+      setIsLoading(false);
+      // Perform actual checkout logic here
+      setOrderConfirmed(true);
+      // console.log("Checkout completed!");
+    }, 5000);
+  };
   return (
-    <Box height="100%">
+    <Box height="100vh">
       {Object.keys(selectedProducts).length === 0 ? (
         <Flex
           pt="20px"
@@ -82,10 +92,10 @@ const checkout = () => {
         >
           Your cart is currently empty.
         </Flex>
-      ) : (
+      ) : !orderConfirmed ? (
         <>
           <Show below="md">
-            <CheckoutProductList />
+            <CheckoutProductList confirmOrderView={false} />
           </Show>
           <Grid templateColumns={{ xs: "auto", md: "repeat(2, 1fr)" }}>
             <GridItem>
@@ -95,6 +105,7 @@ const checkout = () => {
                 color="white"
                 mx={{ xs: "12px", md: "40px" }}
                 borderRadius="20px"
+                paddingTop={{ xs: "120px", md: "0px" }}
               >
                 <Text
                   px={1}
@@ -103,16 +114,18 @@ const checkout = () => {
                   fontSize="21px"
                   lineHeight="24px"
                   fontWeight={500}
+                  alignSelf="center"
                 >
                   Checkout
                 </Text>
                 <Box p={1}>
-                  <form ref={formRef} onSubmit={sendEmail}>
+                  <form ref={formRef}>
                     <VStack
                       spacing={4}
                       fontSize="17px"
                       lineHeight="21px"
                       fontWeight={500}
+                      gap="30px"
                     >
                       <FormControl>
                         <FormLabel>Name</FormLabel>
@@ -132,7 +145,13 @@ const checkout = () => {
                           onChange={handleInputChange}
                         />
                       </FormControl>
-                      <Button type="submit" colorScheme="blue">
+                      <Button
+                        // type="submit"
+                        onClick={handleCheckout}
+                        colorScheme="blue"
+                        isLoading={isLoading}
+                        loadingText="Confirming"
+                      >
                         Checkout
                       </Button>
                     </VStack>
@@ -159,10 +178,17 @@ const checkout = () => {
                 })}
               </Show>
             </GridItem>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            {/* <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
               Send WhatsApp Message
-            </a>{" "}
+            </a>{" "} */}
           </Grid>
+        </>
+      ) : (
+        <>
+          <Show below="md">
+            <CheckoutProductList confirmOrderView />
+          </Show>
+          <Text color="white">Your Order has been confirmed</Text>
         </>
       )}
     </Box>
