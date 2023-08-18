@@ -51,7 +51,7 @@ const Homepage = () => {
     <Flex flexDir="column">
       <Carousel />
       <Section
-        title="Earbuds"
+        title="Ice Cloud"
         subTitle="
               Engineered to fit. Great calls and music, designed for comfort.
             "

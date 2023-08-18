@@ -147,6 +147,8 @@ const checkout = () => {
                       </FormControl>
                       <Button
                         // type="submit"
+                        mx="40px"
+                        mb="20px"
                         onClick={handleCheckout}
                         colorScheme="blue"
                         isLoading={isLoading}

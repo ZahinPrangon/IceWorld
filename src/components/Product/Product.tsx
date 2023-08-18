@@ -1,5 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-import { Flex, Grid, Image as ChakraImage, Show } from "@chakra-ui/react";
+import {
+  Container,
+  Flex,
+  Grid,
+  Image as ChakraImage,
+  Show,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -72,7 +78,14 @@ const Product = () => {
           px={{ xs: "20px", md: "0px" }}
         />
         <ChakraImage src="/ice-hero.gif" />
-        <ChakraImage src="/sound-banner.jpeg" px="20px" />
+        <Show below="md">
+          <ChakraImage src="/sound-banner.jpeg" px="20px" />
+        </Show>
+        <Show above="md">
+          <Container>
+            <ChakraImage src="/sound-banner.jpeg" px="20px" />
+          </Container>
+        </Show>
       </Flex>
 
       <Flex

@@ -26,6 +26,7 @@ const Section = (props: SectionProps) => {
         as="h1"
         // pb="1.25rem"
         fontSize={{ sm: "32px", md: "64px", lg: "64px" }}
+        color="#38B6FF"
       >
         {props.title}
       </Text>

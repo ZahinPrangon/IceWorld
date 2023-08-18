@@ -101,7 +101,15 @@ const NavLink = (props: NavLinkProps) => {
 
 export default function Navbar() {
   return (
-    <Box background="black" px="1.5rem" py="0.5rem" zIndex="1">
+    <Box
+      background="black"
+      px="1.5rem"
+      py="0.5rem"
+      zIndex="99"
+      width="100%"
+      position="fixed"
+      top="0"
+    >
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <HStack spacing={8} alignItems="center">
           <Link

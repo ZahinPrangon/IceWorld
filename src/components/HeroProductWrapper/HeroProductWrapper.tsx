@@ -73,7 +73,7 @@ const HeroProductWrapper = () => {
       gap="16px"
       color="white"
       backgroundColor="#000F15"
-      templateColumns={{ xs: "repeat(1, 1fr)", md: "repeat(6, 1fr)" }}
+      templateColumns={{ xs: "repeat(1, 1fr)", md: "repeat(7, 1fr)" }}
     >
       {HeroProductFeatures.map((feature) => (
         <GridItem key={feature.id} justifyContent="center" alignItems="center">

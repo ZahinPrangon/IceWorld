@@ -120,7 +120,7 @@ const CollapsibleFooter = () => {
           borderBottom="1px solid white"
           {...listingHeaderStyles}
           px="16px"
-          borderTop="1px solid white"
+          // borderTop="1px solid white"
         >
           <Text>{FooterColumn[0]?.name}</Text>
           {isOpen ? <BsChevronUp /> : <BsChevronDown />}
@@ -194,21 +194,6 @@ const CollapsibleFooter = () => {
           </Box>
         </Collapse>
       </Box>
-      {/* <Flex
-        justifyContent="center"
-        flexDir="column"
-        alignItems="center"
-        mt="32px"
-      >
-        <Text
-          pt="15px"
-          fontSize="0.8em"
-          letterSpacing="0.3em"
-          // borderBottom="1px solid white"
-        >
-          Follow Us
-        </Text>
-      </Flex> */}
     </Box>
   );
 };
@@ -216,12 +201,11 @@ const CollapsibleFooter = () => {
 const Footer = () => {
   return (
     <Box
-      pt={{ xs: "45px", md: "90px" }}
-      pb={{ md: "60px" }}
+      pt={{ xs: "45px" }}
       color="white"
       width="100%"
       position="absolute"
-      height="4rem"
+      height={{ xs: "7rem", md: "4rem" }}
       bottom="0px"
     >
       <Hide below="md">
@@ -263,33 +247,41 @@ const Footer = () => {
             <Text {...listingHeaderStyles} pb="30px">
               Follow Us
             </Text>
-            <Flex flexDir="row" gap="6px">
+            <Flex flexDir="column" gap="6px">
               {Socials.map((social) => (
-                <Box key={social.id} marginBottom="16px">
-                  <a href={social.href} target="_blank" rel="noreferrer">
-                    {social.icon}
-                  </a>
-                </Box>
+                <Flex direction="row" key={social.id}>
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    {...listingStyles}
+                    display="flex"
+                  >
+                    <Text mr="12px">{social.icon}</Text>
+                    <Text>{social.name}</Text>
+                  </Link>
+                </Flex>
               ))}
             </Flex>
           </GridItem>
         </Grid>
         <Flex
           justifyContent="center"
-          position="absolute"
-          bottom="0px"
+          // position="absolute"
+          // bottom="0px"
           color="#757575"
           textAlign="center"
           alignItems="center"
           width="100%"
           lineHeight="1.6"
-          marginTop="50px"
-          marginBottom="30px"
+          // marginTop="50px"
+          // marginBottom="30px"
           fontSize="0.75rem"
         >
           Copyright © 2023 Ice.{" "}
         </Flex>
       </Hide>
+
       <Show below="md">
         <CollapsibleFooter />
         <Flex
