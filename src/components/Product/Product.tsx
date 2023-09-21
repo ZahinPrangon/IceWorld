@@ -1,4 +1,7 @@
 /* eslint-disable react/no-array-index-key */
+
+"use client";
+
 import {
   Container,
   Flex,

@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable tailwindcss/no-custom-classname */
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
-import { BsFillBoxFill } from "react-icons/bs";
+import { BsFillBoxFill, BsTruck } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { TbShieldCheckFilled } from "react-icons/tb";
 
@@ -23,22 +24,22 @@ const productHeroFeatures = [
   {
     id: 1,
     title: "Now shipping all over Bangladesh",
-    icon: <BsFillBoxFill />,
+    icon: <BsFillBoxFill size="20px" />,
   },
   {
     id: 2,
     title: "6 months warranty",
-    icon: <TbShieldCheckFilled />,
+    icon: <TbShieldCheckFilled size="20px" />,
   },
   {
     id: 2,
     title: "2 days delivery",
-    icon: <FaShoppingCart />,
+    icon: <FaShoppingCart size="20px" />,
   },
   {
     id: 2,
     title: "In stock, ready to ship",
-    icon: <Box className="glowing-circle" mr="3px" ml="4px" />,
+    icon: <BsTruck size="20px" />,
   },
 ];
 const ProductDetails = (props: ProductDetailsProps) => {
@@ -54,21 +55,10 @@ const ProductDetails = (props: ProductDetailsProps) => {
 
   return (
     <Flex flexDirection="column" my="auto">
-      <Heading as="h2" fontSize="32px" marginBottom="24px">
+      <Heading as="h1" fontSize="32px" marginBottom="24px" textAlign="center">
         {props.selectedProduct.lineupName}
       </Heading>
-      <Box>
-        <Heading
-          as="h3"
-          fontSize="16px"
-          textAlign="center"
-          mb="16px"
-          letterSpacing="0.4em"
-        >
-          {props.description}
-        </Heading>
-      </Box>
-      <Flex mb="14px" wrap="wrap" gap="10px" mt="10px">
+      <Flex mb="14px" wrap="wrap" gap="10px" mt="10px" justifyContent="center">
         {props.details.map((detail, index) => {
           return (
             <ProductPicker
@@ -93,6 +83,10 @@ const ProductDetails = (props: ProductDetailsProps) => {
         color="white"
         textTransform="uppercase"
         variant="unstyled"
+        mx="auto"
+        display="flex"
+        justifyContent="center"
+        px="55px"
       >
         Buy Now
       </Button>
@@ -109,7 +103,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
               key={feature.id}
               alignItems="center"
               mb="16px"
-              gap="6px"
+              gap="12px"
               wrap="wrap"
               ml="8px"
             >

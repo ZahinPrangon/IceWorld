@@ -1,9 +1,12 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-implied-eval */
+
+"use client";
+
 import { Box } from "@chakra-ui/react";
 import { AnimatePresence, MotionConfig } from "framer-motion";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import { useSwipeable } from "react-swipeable";
 
 // let intervalId: any;
@@ -14,7 +17,7 @@ const Carousel = () => {
 
   const images = [
     {
-      imageUrl: "/ice_landing_1.png",
+      imageUrl: "ice_landing_1",
       alt: "Landing 1",
       id: 1,
     },
@@ -134,7 +137,7 @@ const MobileImage = ({ imageUrl, slide, index }: MobileImageProps) => {
     //     objectFit: "cover",
     //   }}
     // />
-    <Image
+    <CldImage
       // as={motion.img}
       src={imageUrl}
       // fill
@@ -146,8 +149,10 @@ const MobileImage = ({ imageUrl, slide, index }: MobileImageProps) => {
       }}
       alt="landing-image"
       sizes="100vw"
-      width={0}
-      height={0}
+      width="800"
+      height="800"
+      unoptimized
+      // width={}
       // draggable={false}
       // draggable={false}
       // initial={{ opacity: 0 }} // Initial opacity when an image enters the scene

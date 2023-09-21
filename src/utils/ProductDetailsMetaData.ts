@@ -1,6 +1,6 @@
 export const ProductDetailsMetaData = [
   {
-    id: 1,
+    id: "aa42206c-3051-4cba-9d54-079cec540f2f",
     lineupName: "Pearl White",
     color: "white",
     price: 1450,
@@ -21,7 +21,7 @@ export const ProductDetailsMetaData = [
   //   },
   // },
   {
-    id: 2,
+    id: "5642a557-bbaf-4487-b8b0-6a63c2e2c23e",
     lineupName: "Matte Black",
     color: "black",
     price: 1550,

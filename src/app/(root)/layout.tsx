@@ -7,13 +7,13 @@ import type { PropsWithChildren } from "react";
 import React from "react";
 import { Provider } from "react-redux";
 
+import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/layouts/Footer/Footer";
 import theme from "@/styles/theme";
 
-import { store } from "../store/index";
-import Navbar from "./Navbar/Navbar";
+import { store } from "../../store/index";
 
-const Layout = ({ children }: PropsWithChildren) => {
+const ClientLayout = ({ children }: PropsWithChildren) => {
   return (
     <Provider store={store}>
       <ChakraProvider theme={theme}>
@@ -23,12 +23,12 @@ const Layout = ({ children }: PropsWithChildren) => {
           flexDirection="column"
           backgroundColor="black"
         >
-          <Navbar />
           <main
             style={{
               paddingBottom: "4rem",
             }}
           >
+            <Navbar />
             {children}
           </main>
           <Footer />
@@ -37,4 +37,4 @@ const Layout = ({ children }: PropsWithChildren) => {
     </Provider>
   );
 };
-export default Layout;
+export default ClientLayout;

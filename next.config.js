@@ -7,8 +7,8 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ["."],
   },
-  output: "export",
-  poweredByHeader: false,
+  // output: "export",
+  // poweredByHeader: false,
   trailingSlash: true,
   basePath: "",
   // The starter code load resources from `public` folder with `router.basePath` in React components.
@@ -19,5 +19,6 @@ module.exports = withBundleAnalyzer({
     // loader: "imgix",
     // path: "",
     unoptimized: true,
+    domains: ["res.cloudinary.com"],
   },
 });

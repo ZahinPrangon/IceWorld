@@ -1,4 +1,7 @@
 /* eslint-disable prettier/prettier */
+
+"use client";
+
 import { Flex, Grid, GridItem, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
@@ -32,7 +35,6 @@ const CartProduct = (props: CartProductProps) => {
 
   return (
     <Flex color="white" borderBottom="1px solid #38B6FF">
-      {/* <Box position="relative"> */}
       <Image src={props.image} alt={props.lineupName} w="100px" h="100px" />
       <VStack justifyContent="center" gap="20px" alignItems="flex-start">
         <Text
@@ -56,10 +58,6 @@ const CartProduct = (props: CartProductProps) => {
             userSelect="none"
             cursor="pointer"
             textAlign="center"
-            // _hover={{
-            //   backgroundColor: "white",
-            //   color: "black",
-            // }}
             onClick={onDecrementClick}
           >
             -

@@ -1,4 +1,7 @@
 /* eslint-disable react/button-has-type */
+
+"use client";
+
 // import "./ScrollToTopButton.css"; // Import your CSS file for styling
 
 import React, { useEffect, useState } from "react";

@@ -1,4 +1,7 @@
 /* eslint-disable consistent-return */
+
+"use client";
+
 import {
   Drawer,
   DrawerBody,
@@ -9,7 +12,7 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 import { useAppDispatch } from "@/hooks/redux";
@@ -26,7 +29,18 @@ const Links = [
     name: "About Us",
     href: "/about-us",
   },
+  {
+    id: 2,
+    name: "Orders",
+    href: "/orders",
+  },
+  {
+    id: 3,
+    name: "Cart",
+    href: "/checkout",
+  },
 ];
+
 const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -49,7 +63,14 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
       >
         <DrawerCloseButton />
         <DrawerHeader borderBottom="1px solid #38B6FF" pb="30px" mx="12px" />
-        <DrawerBody mt="20px" px="20px" display="flex" justifyContent="center">
+        <DrawerBody
+          mt="20px"
+          px="20px"
+          display="flex"
+          justifyContent="center"
+          flexDir="column"
+          gap="20px"
+        >
           {Links.map((link) => (
             <Flex
               justifyContent="start"

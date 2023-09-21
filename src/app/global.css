@@ -12,8 +12,8 @@ body {
 
 .glowing-circle {
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: #00aaff; /* Circle's base color */
   animation: glow 2s ease-in-out infinite; /* Apply the glow animation */

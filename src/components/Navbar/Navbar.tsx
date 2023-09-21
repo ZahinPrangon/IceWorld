@@ -7,7 +7,6 @@
 import { Link } from "@chakra-ui/next-js";
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 // eslint-disable-next-line import/no-absolute-path
@@ -26,13 +25,14 @@ const Links = [
     id: 2,
     navName: "aboutUs",
     name: <RxHamburgerMenu size="30px" />,
+    href: "/",
   },
-  {
-    id: 1,
-    navName: "checkout",
-    name: <HiOutlineShoppingBag size="30px" />,
-    href: "/checkout",
-  },
+  // {
+  //   id: 1,
+  //   navName: "checkout",
+  //   name: <HiOutlineShoppingBag size="30px" />,
+  //   href: "/checkout",
+  // },
 ];
 
 type NavLinkProps = {
@@ -105,10 +105,10 @@ export default function Navbar() {
       background="black"
       px="1.5rem"
       py="0.5rem"
-      zIndex="99"
+      // zIndex="99"
       width="100%"
-      position="fixed"
-      top="0"
+      // position="fixed"
+      // top="0"
     >
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <HStack spacing={8} alignItems="center">

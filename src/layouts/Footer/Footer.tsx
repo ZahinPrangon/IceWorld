@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable import/no-absolute-path */
 import {
   Box,
@@ -12,7 +14,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { SocialIcon } from "react-social-icons";
@@ -30,7 +32,7 @@ const listingStyles = {
 
 const listingHeaderStyles = {
   fontSize: "0.8em",
-  letterSpacing: "0.3em",
+  letterSpacing: "0.1em",
   fontWeight: "400",
   lineHeight: "14px",
 };
@@ -206,10 +208,10 @@ const Footer = () => {
       width="100%"
       position="absolute"
       height={{ xs: "7rem", md: "4rem" }}
-      bottom="0px"
+      bottom="-50px"
     >
       <Hide below="md">
-        <Grid templateColumns="repeat(4, 2fr)" gap={4} px="20px">
+        <Grid templateColumns="repeat(3, 2fr)" gap={4} px="20px">
           <GridItem
             colSpan={1}
             display="flex"

@@ -6,6 +6,7 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import type { RootState } from ".";
 
 export interface CartSlice {
+  isLoading?: boolean;
   currentProduct?: any;
   selectedProducts: Record<string, SelectedProduct>;
   isCartOpen?: boolean;
@@ -67,7 +68,6 @@ export const cartSlice = createSlice({
         product: action.payload.selectedProduct,
         quantity: 1,
       };
-      // console.log("action", action);
       // const { product } = action.payload;
     },
     setSelectedProduct: (state, action) => {

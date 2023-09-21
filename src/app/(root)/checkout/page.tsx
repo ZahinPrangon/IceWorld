@@ -3,6 +3,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 /* eslint-disable react-hooks/rules-of-hooks */
+
+"use client";
+
 import {
   Box,
   Button,
@@ -20,9 +23,15 @@ import React, { useRef, useState } from "react";
 
 import CartProduct from "@/components/CartProduct/CartProduct";
 import CheckoutProductList from "@/components/CheckoutProductList/CheckoutProductList";
-import { useAppSelector } from "@/hooks/redux";
+import NavSidebar from "@/components/NavSidebar/NavSidebar";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { onCloseCart, onCloseMenu } from "@/store/cart.slice";
 
 const checkout = () => {
+  const dispatch = useAppDispatch();
+  const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
+  const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
   const selectedProducts = useAppSelector(
     (state) => state.cart.selectedProducts
   );
@@ -31,8 +40,8 @@ const checkout = () => {
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
-    city: "",
   });
+  const [error, setError] = useState(false);
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -42,44 +51,50 @@ const checkout = () => {
     }));
   };
 
-  // const phoneNumber = "+923335067653"; // Replace with the recipient's phone number
-  // const message = "Hello, this is my message!"; // Replace with your message
-
-  // const encodedMessage = encodeURIComponent(message);
-  // const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-
   const formRef = useRef<any>();
 
-  // const sendEmail = () => {
-  //   // e.preventDefault();
-  //   // emailjs
-  //   //   .sendForm(
-  //   //     "service_087ozop",
-  //   //     "template_5smm84l",
-  //   //     formRef.current,
-  //   //     "T6MZxkJ3gNMvU1kGi"
-  //   //   )
-  //   //   .then(
-  //   //     (result: any) => {
-  //   //       console.log(result.text);
-  //   //     },
-  //   //     (error: any) => {
-  //   //       console.log(error.text);
-  //   //     }
-  //   //   );
-  // };
+  function sendEmail(data: any) {
+    setIsLoading(true);
+
+    const productData = Object.keys(selectedProducts).map((productId) => {
+      const selectedProduct = selectedProducts[productId];
+      if (!selectedProduct) return;
+      const { quantity, product } = selectedProduct;
+      return {
+        id: product.id,
+        name: product.lineupName,
+        quantity,
+      };
+    });
+
+    const payload = {
+      ...data,
+      address: "Some Random Address",
+      selectedProducts: productData,
+      // products: selectedProducts.map((product) => ({
+    };
+    // console.log(JSON.stringify(data));
+    const apiEndpoint = "/api/email";
+    fetch(apiEndpoint, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((_response) => {
+        setOrderConfirmed(true);
+      })
+      .catch((_err) => {
+        setError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
 
   const handleCheckout = () => {
-    setIsLoading(true);
-    // console.log(formData);
-    // Simulate a 5-second delay
-    setTimeout(() => {
-      setIsLoading(false);
-      // Perform actual checkout logic here
-      setOrderConfirmed(true);
-      // console.log("Checkout completed!");
-    }, 5000);
+    sendEmail(formData);
   };
+
   return (
     <Box height="100vh">
       {Object.keys(selectedProducts).length === 0 ? (
@@ -190,9 +205,29 @@ const checkout = () => {
           <Show below="md">
             <CheckoutProductList confirmOrderView />
           </Show>
-          <Text color="white">Your Order has been confirmed</Text>
+          {error ? (
+            <Text color="white" textAlign="center">
+              Something went wrong
+            </Text>
+          ) : (
+            <Text color="white" textAlign="center">
+              Your order has been placed successfully. Welcome to ice world!
+            </Text>
+          )}
         </>
       )}
+      <Sidebar
+        isOpen={isCartOpen ?? false}
+        onClose={() => {
+          dispatch(onCloseCart());
+        }}
+      />
+      <NavSidebar
+        isOpen={isMenuOpen ?? false}
+        onClose={() => {
+          dispatch(onCloseMenu());
+        }}
+      />
     </Box>
   );
 };

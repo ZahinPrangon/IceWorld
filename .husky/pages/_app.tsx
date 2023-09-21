@@ -16,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           margin="0 auto"
           flexDir="column"
         >
-          <Component {...pageProps} />
+          {/* <ClerkProvider {...pageProps}> */}
+          {/* <Component {...pageProps} /> */}
+          {/* </ClerkProvider> */}
         </Flex>
       </Layout>
     </main>

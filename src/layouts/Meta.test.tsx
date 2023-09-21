@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { render, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 
-import { Meta } from "./Meta";
+import { Meta } from "../../.husky/pages/Meta";
 
 // Mock `next/head`: https://bradgarropy.com/blog/mocking-nextjs
 jest.mock(
@@ -10,7 +11,7 @@ jest.mock(
     function Head(props: { children: ReactNode }) {
       // eslint-disable-next-line testing-library/no-node-access
       return props.children;
-    },
+    }
 );
 
 describe("Meta component", () => {
