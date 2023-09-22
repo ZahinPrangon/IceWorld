@@ -17,6 +17,7 @@ import {
   Input,
   Show,
   Text,
+  Textarea,
   VStack,
 } from "@chakra-ui/react";
 import React, { useRef, useState } from "react";
@@ -28,6 +29,12 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { onCloseCart, onCloseMenu } from "@/store/cart.slice";
 
+type FormDataType = {
+  name: string;
+  mobile: number | undefined;
+  address: string;
+};
+
 const checkout = () => {
   const dispatch = useAppDispatch();
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
@@ -37,10 +44,12 @@ const checkout = () => {
   );
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     name: "",
-    mobile: "",
+    mobile: undefined,
+    address: "",
   });
+
   const [error, setError] = useState(false);
 
   const handleInputChange = (event: any) => {
@@ -69,7 +78,6 @@ const checkout = () => {
 
     const payload = {
       ...data,
-      address: "Some Random Address",
       selectedProducts: productData,
       // products: selectedProducts.map((product) => ({
     };
@@ -82,9 +90,11 @@ const checkout = () => {
       .then((res) => res.json())
       .then((_response) => {
         setOrderConfirmed(true);
+        // dispatch(clearCart());
       })
       .catch((_err) => {
         setError(true);
+        setOrderConfirmed(false);
       })
       .finally(() => {
         setIsLoading(false);
@@ -92,6 +102,9 @@ const checkout = () => {
   }
 
   const handleCheckout = () => {
+    if (!formData.name || !formData.mobile || !formData.address) {
+      return;
+    }
     sendEmail(formData);
   };
 
@@ -99,11 +112,11 @@ const checkout = () => {
     <Box height="100vh">
       {Object.keys(selectedProducts).length === 0 ? (
         <Flex
-          pt="20px"
           color="white"
           justifyContent="center"
           alignItems="center"
           my="auto"
+          pt="200px"
         >
           Your cart is currently empty.
         </Flex>
@@ -120,7 +133,7 @@ const checkout = () => {
                 color="white"
                 mx={{ xs: "12px", md: "40px" }}
                 borderRadius="20px"
-                paddingTop={{ xs: "120px", md: "0px" }}
+                // paddingTop={{ xs: "120px", md: "0px" }}
               >
                 <Text
                   px={1}
@@ -142,7 +155,7 @@ const checkout = () => {
                       fontWeight={500}
                       gap="30px"
                     >
-                      <FormControl>
+                      <FormControl isRequired>
                         <FormLabel>Name</FormLabel>
                         <Input
                           type="text"
@@ -151,17 +164,24 @@ const checkout = () => {
                           onChange={handleInputChange}
                         />
                       </FormControl>
-                      <FormControl>
+                      <FormControl isRequired>
                         <FormLabel>Mobile Number</FormLabel>
                         <Input
-                          type="tel"
+                          type="number"
                           name="mobile"
                           value={formData.mobile}
                           onChange={handleInputChange}
                         />
                       </FormControl>
+                      <FormControl isRequired>
+                        <FormLabel>Address</FormLabel>
+                        <Textarea
+                          name="address"
+                          value={formData.address}
+                          onChange={handleInputChange}
+                        />
+                      </FormControl>
                       <Button
-                        // type="submit"
                         mx="40px"
                         mb="20px"
                         onClick={handleCheckout}

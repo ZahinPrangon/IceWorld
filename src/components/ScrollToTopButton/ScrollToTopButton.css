@@ -1,0 +1,119 @@
+/* .react-colorful__swatch {
+  border: 2px solid grey !important;
+}
+
+.react-colorful__swatch-color {
+  border: 2px solid white !important;
+} */
+
+body {
+  background-color: #000000;
+}
+
+.glowing-circle {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #00aaff; /* Circle's base color */
+  animation: glow 2s ease-in-out infinite; /* Apply the glow animation */
+}
+
+.glowing-circle::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background-color: #38B6FF;
+  opacity: 0;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px #38B6FF; /* Glow effect */
+  }
+  50% {
+    box-shadow: 0 0 5px #38B6FF, 0 0 40px #38B6FF; /* More intense glow */
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    transform: scale(1); /* Initial and final size */
+    opacity: 0; /* Invisible at the start and end */
+  }
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.progressVisualFull {
+  display: flex;
+  /* change the value if you want different thickness */
+  height: 6px;
+  margin: 20px 0;
+}
+
+.progressVisualPart {
+  /* Number of the seconds for complete animation */
+  transition: width 2s;
+}
+
+.progressLabel {
+  /* Nothing here, move along */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* ScrollToTopButton.css */
+.scroll-to-top-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 99;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: #38B6FF;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.scroll-to-top-button.visible {
+  display: block;
+  opacity: 1;
+}
+
+.scroll-to-top-button:hover {
+  background-color: #38B6FF;
+}

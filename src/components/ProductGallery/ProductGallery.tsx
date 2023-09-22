@@ -18,7 +18,6 @@ export default function ProductGallery(props: ProductGalleryProps) {
   const galleryRef = useRef<any>(null); // Create a ref
 
   // Function to update slide index using the ref
-
   useEffect(() => {
     if (galleryRef.current) {
       galleryRef.current.slideToIndex(props.index);

@@ -9,7 +9,9 @@ import {
   Image as ChakraImage,
   Show,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { onCloseCart, onCloseMenu, onOpenCart } from "@/store/cart.slice";
@@ -34,7 +36,23 @@ const Product = () => {
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
   const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
   const images = ProductDetailsMetaData.map((product: any) => product.images);
+  // const commonRef = useRef(null);
+  // const animateElement = (inView: boolean) => {
+  //   return {
+  //     initial: { opacity: 0, translateY: 50 },
+  //     animate: inView ? { opacity: 1, translateY: 0 } : {},
+  //     exit: { opacity: 0, translateY: -50 },
+  //     transition: { duration: 0.5 },
+  //   };
+  // };
 
+  const [ref1, inView1] = useInView({
+    threshold: 0.1,
+  });
+
+  // const [ref2, inView2] = useInView({
+  //   threshold: 0.1,
+  // });
   return (
     <>
       <Grid
@@ -63,98 +81,103 @@ const Product = () => {
           }}
         />
       </Grid>
-
-      <Flex
-        flexDir="column"
-        justifyContent="center"
-        wrap={{ xs: "wrap", xl: "nowrap" }}
-        pt={{ xs: "0px", md: "48px" }}
-        gap="24px"
-        mb="4rem"
+      <motion.div
+        ref={ref1}
+        initial={{ opacity: 0, translateY: 50 }}
+        animate={inView1 ? { opacity: 1, translateY: 0 } : {}}
+        transition={{ duration: 0.5 }}
       >
-        <ChakraImage
-          src="/10mm-driver.jpeg"
-          alt="ice-touch-details-image"
-          width={{ xs: "100%", md: "35%" }}
-          height="100%"
-          alignSelf="center"
-          px={{ xs: "20px", md: "0px" }}
-        />
-        <ChakraImage src="/ice-hero.gif" />
-        <Show below="md">
-          <ChakraImage src="/sound-banner.jpeg" px="20px" />
-        </Show>
-        <Show above="md">
-          <Container>
-            <ChakraImage src="/sound-banner.jpeg" px="20px" />
-          </Container>
-        </Show>
-      </Flex>
-
-      <Flex
-        justifyContent="center"
-        wrap={{ xs: "wrap", xl: "nowrap" }}
-        mb="2rem"
-        gap="24px"
-      >
-        <ChakraImage
-          src="/fast-charging.png"
-          alt="ice-touch-details-image"
-          width={{ xs: "100%", md: "35%" }}
-          height="100%"
-          alignSelf="center"
-          px={{ xs: "12px", md: "0px" }}
-        />
-
-        <ChakraImage
-          src="/ice-model-2.jpeg"
-          alt="ice-cloud-model"
-          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-          width={{ xs: "100%", md: "48%" }}
-          objectFit="cover"
-          maxW="700px"
-          loading="eager"
-        />
-      </Flex>
-
-      <Flex
-        justifyContent="center"
-        wrap={{ xs: "wrap", xl: "nowrap" }}
-        gap="24px"
-        mb="4rem"
-      >
-        <Show below="md">
+        <Flex
+          flexDir="column"
+          justifyContent="center"
+          wrap={{ xs: "wrap", xl: "nowrap" }}
+          pt={{ xs: "0px", md: "48px" }}
+          gap="24px"
+          mb="4rem"
+        >
           <ChakraImage
-            src="/touch-controls.jpeg"
-            alt="ice-touch-controls-image"
-            width={{ xs: "100%", md: "35%" }}
-            height="100%"
-            alignSelf="center"
-            loading="eager"
-            px={{ xs: "0px", md: "0px" }}
-          />
-        </Show>
-        <ChakraImage
-          src="/ice-model-1.jpeg"
-          alt="ice-cloud-model"
-          animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
-          width={{ xs: "100%", md: "48%" }}
-          objectFit="cover"
-          maxW="700px"
-          loading="eager"
-        />
-        <Show above="md">
-          <ChakraImage
-            src="/touch-details.jpeg"
+            src="/10mm-driver.jpeg"
             alt="ice-touch-details-image"
             width={{ xs: "100%", md: "35%" }}
             height="100%"
             alignSelf="center"
-            loading="eager"
-            px={{ xs: "24px", md: "0px" }}
+            px={{ xs: "20px", md: "0px" }}
           />
-        </Show>
-      </Flex>
+          <ChakraImage src="/ice-hero.gif" />
+          <Show below="md">
+            <ChakraImage src="/sound-banner.jpeg" px="20px" />
+          </Show>
+          <Show above="md">
+            <Container>
+              <ChakraImage src="/sound-banner.jpeg" px="20px" />
+            </Container>
+          </Show>
+        </Flex>
+        <Flex
+          justifyContent="center"
+          wrap={{ xs: "wrap", xl: "nowrap" }}
+          mb="2rem"
+          gap="24px"
+        >
+          <ChakraImage
+            src="/fast-charging.png"
+            alt="ice-touch-details-image"
+            width={{ xs: "100%", md: "35%" }}
+            height="100%"
+            alignSelf="center"
+            px={{ xs: "12px", md: "0px" }}
+          />
+
+          <ChakraImage
+            src="/ice-model-2.jpeg"
+            alt="ice-cloud-model"
+            animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+            width={{ xs: "100%", md: "48%" }}
+            objectFit="cover"
+            maxW="700px"
+            loading="eager"
+          />
+        </Flex>
+        <Flex
+          justifyContent="center"
+          wrap={{ xs: "wrap", xl: "nowrap" }}
+          gap="24px"
+          mb="4rem"
+        >
+          <Show below="md">
+            <ChakraImage
+              src="/touch-controls.jpeg"
+              alt="ice-touch-controls-image"
+              width={{ xs: "100%", md: "35%" }}
+              height="100%"
+              alignSelf="center"
+              loading="eager"
+              px={{ xs: "0px", md: "0px" }}
+            />
+          </Show>
+          <ChakraImage
+            src="/ice-model-1.jpeg"
+            alt="ice-cloud-model"
+            animation="fade-in .5s cubic-bezier(.29,.65,.58,1) forwards;"
+            width={{ xs: "100%", md: "48%" }}
+            objectFit="cover"
+            maxW="700px"
+            loading="eager"
+          />
+          <Show above="md">
+            <ChakraImage
+              src="/touch-details.jpeg"
+              alt="ice-touch-details-image"
+              width={{ xs: "100%", md: "35%" }}
+              height="100%"
+              alignSelf="center"
+              loading="eager"
+              px={{ xs: "24px", md: "0px" }}
+            />
+          </Show>
+        </Flex>
+      </motion.div>
+
       <HeroProductWrapper />
       <Sidebar
         isOpen={isCartOpen ?? false}

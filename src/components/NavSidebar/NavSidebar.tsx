@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { SocialIcon } from "react-social-icons";
 
 import { useAppDispatch } from "@/hooks/redux";
 import { onCloseMenu } from "@/store/cart.slice";
@@ -25,9 +26,9 @@ type NavSidebarProps = {
 
 const Links = [
   {
-    id: 1,
-    name: "About Us",
-    href: "/about-us",
+    id: 5,
+    name: "Products",
+    href: "/ice-cloud",
   },
   {
     id: 2,
@@ -38,6 +39,16 @@ const Links = [
     id: 3,
     name: "Cart",
     href: "/checkout",
+  },
+  {
+    id: 1,
+    name: "About Us",
+    href: "/about-us",
+  },
+  {
+    id: 4,
+    name: "Contact Us",
+    href: "/contact-us",
   },
 ];
 
@@ -61,16 +72,9 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
         lineHeight="18.2px"
         fontSize="14px"
       >
-        <DrawerCloseButton />
+        <DrawerCloseButton autoFocus={false} />
         <DrawerHeader borderBottom="1px solid #38B6FF" pb="30px" mx="12px" />
-        <DrawerBody
-          mt="20px"
-          px="20px"
-          display="flex"
-          justifyContent="center"
-          flexDir="column"
-          gap="20px"
-        >
+        <DrawerBody mt="20px" px="20px" display="flex" flexDir="column">
           {Links.map((link) => (
             <Flex
               justifyContent="start"
@@ -83,6 +87,7 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
               lineHeight="24px"
               cursor="pointer"
               height="fit-content"
+              width="fit-content"
               onClick={() => {
                 router.push(link.href);
                 dispatch(onCloseMenu());
@@ -91,6 +96,26 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
               <Text py="15px">{link.name}</Text>
             </Flex>
           ))}
+          <Flex flexDir="row" gap="30px" mt="60px" justifyContent="center">
+            <Flex gap="30px" cursor="pointer">
+              <SocialIcon
+                network="instagram"
+                style={{
+                  height: "40px",
+                  width: "40px",
+                }}
+              />
+            </Flex>
+            <Flex gap="30px" cursor="pointer">
+              <SocialIcon
+                network="facebook"
+                style={{
+                  height: "40px",
+                  width: "40px",
+                }}
+              />
+            </Flex>
+          </Flex>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -30,6 +30,7 @@ const page = () => {
       [name]: value,
     }));
   };
+
   return (
     <>
       <VStack
@@ -40,6 +41,7 @@ const page = () => {
         gap="30px"
         justifyContent="center"
         px="50px"
+        pt="200px"
       >
         <Heading color="white">Track your order</Heading>
         <FormControl>

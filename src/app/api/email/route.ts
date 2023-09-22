@@ -1,8 +1,8 @@
+/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/order */
 /* eslint-disable no-console */
 /* eslint-disable func-names */
-import prismadb from "lib/prismadb";
 import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import type Mail from "nodemailer/lib/mailer";
@@ -21,14 +21,22 @@ export async function POST(request: NextRequest) {
     return new NextResponse("Product ids are required", { status: 400 });
   }
 
-  const products = await prismadb.product.findMany({
-    where: {
-      id: {
-        in: productIds,
-      },
-    },
-  });
-  console.log(products);
+  // const products = await prismadb.product.findMany({
+  //   where: {
+  //     id: {
+  //       in: productIds,
+  //     },
+  //   },
+  // });
+
+  // const order = await prismadb.product.findMany({
+  //   where: {
+  //     id: {
+  //       in: ["1ed1c012-4d68-4538-98cd-658500572612"],
+  //     },
+  //   },
+  // });
+  console.log("order");
   const transport = nodemailer.createTransport({
     service: "gmail",
     /* 
@@ -74,25 +82,32 @@ export async function POST(request: NextRequest) {
     });
 
   try {
-    // await prismadb.order.create({
+    // const createdOrder = await prismadb.order.create({
     //   data: {
-    //     address,
-    //     phone: mobile,
-    //     userId: userId || "",
+    //     address: "123 Main St, City, Country", // Replace with the actual address
+    //     phone: "123-456-7890", // Replace with the actual phone number
+    //     customerName: "John Doe", // Replace with the actual customer name
     //     orderItems: {
-    //       create: productIds.map((productId: string) => ({
-    //         product: {
-    //           connect: {
-    //             id: productId,
-    //           },
+    //       create: [
+    //         {
+    //           quantity: 2, // Replace with the desired quantity
+    //           productId: "product_id_1", // Replace with the actual product ID
     //         },
-    //       })),
+    //         {
+    //           quantity: 3, // Replace with the desired quantity
+    //           productId: "product_id_2", // Replace with the actual product ID
+    //         },
+    //         // Add more order items as needed
+    //       ],
     //     },
     //   },
     // });
+
+    // console.log("Created Order:", createdOrder);
     await sendMailPromise();
     return NextResponse.json({ message: "Email sent" });
   } catch (err) {
+    console.error("Error creating order:", err);
     return NextResponse.json({ error: err }, { status: 500 });
   }
 }

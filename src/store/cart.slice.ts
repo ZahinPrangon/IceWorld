@@ -26,6 +26,7 @@ type SelectedProduct = {
 // };
 
 const initialState: CartSlice = {
+  // selectedProducts: JSON.parse(localStorage.getItem("cart") as string) || {},
   selectedProducts: {},
 };
 
@@ -50,14 +51,6 @@ export const cartSlice = createSlice({
       // localStorage.setItem("cart", JSON.stringify(state.selectedProducts));
     },
     addToCart: (state, action) => {
-      // console.log("state", action);
-      // if (!state.selectedProducts[action.payload.selectedProduct.id]) return;
-      // if (
-      //   state.selectedProducts[action.payload.selectedProduct.id] !== undefined
-      // ) {
-      //   state.selectedProducts[action.payload.selectedProduct.id]
-      //     ?.quantity += 1;
-      // }
       const { selectedProduct } = action.payload;
       if (!selectedProduct) return;
       if (state.selectedProducts[selectedProduct.id]) {
@@ -68,10 +61,16 @@ export const cartSlice = createSlice({
         product: action.payload.selectedProduct,
         quantity: 1,
       };
-      // const { product } = action.payload;
+
+      // update the localStorage with the new state
+      // localStorage.setItem("cart", JSON.stringify(state.selectedProducts));
     },
     setSelectedProduct: (state, action) => {
       state.currentProduct = action.payload;
+    },
+    clearCart: (state) => {
+      state.selectedProducts = {};
+      // localStorage.removeItem("cart");
     },
     removeProduct: (state, action) => {
       delete state.selectedProducts[action.payload.productId];
@@ -145,6 +144,7 @@ export const {
   onCloseCart,
   onOpenMenu,
   onCloseMenu,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

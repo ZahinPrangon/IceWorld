@@ -16,7 +16,7 @@ const page = () => {
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
   const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
   return (
-    <Box>
+    <Box mb="200px">
       <Show below="md">
         <CldImage
           unoptimized
@@ -34,8 +34,6 @@ const page = () => {
           sizes="100vw"
           alt="ice-world-about-us"
         />
-        <Image src="/about-us-1.jpeg" alt="ice-world-about-us" />
-
         <CldImage
           unoptimized
           width="500"
@@ -68,11 +66,6 @@ const page = () => {
           sizes="100vw"
           alt="ice-world-about-us"
         />
-        <Image src="/about-us-landing.jpeg" alt="ice-world-about-us" />
-        <Image src="/about-us-landing-2.jpeg" alt="ice-world-about-us" />
-        <Image src="/about-us-2.jpeg" alt="ice-world-about-us" />
-        <Image src="/about-us-landing-3.jpeg" alt="ice-world-about-us" />
-        <Image src="/about-us-3.jpeg" alt="ice-world-about-us" />
       </Show>
       <Show above="md">
         <Flex direction="column" justifyContent="center" alignItems="center">

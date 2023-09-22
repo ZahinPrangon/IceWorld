@@ -2,7 +2,7 @@
 
 "use client";
 
-// import "./ScrollToTopButton.css"; // Import your CSS file for styling
+import "./ScrollToTopButton.css"; // Import your CSS file for styling
 
 import React, { useEffect, useState } from "react";
 
@@ -29,7 +29,7 @@ function ScrollToTopButton() {
   // Scroll to top when the button is clicked
   const scrollToTop = () => {
     window.scrollTo({
-      top: 999,
+      top: 350,
       behavior: "smooth",
     });
   };
