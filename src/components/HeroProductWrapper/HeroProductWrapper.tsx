@@ -42,7 +42,8 @@ const HeroProductFeatures = [
 const HeroProductWrapper = () => {
   return (
     <Grid
-      mb="100px"
+      // pb="50px"
+      mb="150px"
       justifyContent="center"
       alignItems="center"
       p={{ xs: "0px 20px 0px 20px", md: "30px 20px 30px 30px" }}

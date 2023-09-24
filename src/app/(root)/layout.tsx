@@ -31,7 +31,6 @@ const ClientLayout = ({ children }: PropsWithChildren) => {
             <Navbar />
             {children}
           </main>
-
           <Footer />
         </Flex>
       </ChakraProvider>

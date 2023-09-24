@@ -80,7 +80,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
         letterSpacing="1px !important"
         padding="13px 20px"
         borderRadius="30px"
-        color="white"
+        color="#38B6FF"
         textTransform="uppercase"
         variant="unstyled"
         mx="auto"

@@ -3,13 +3,14 @@
 /* eslint-disable import/order */
 /* eslint-disable no-console */
 /* eslint-disable func-names */
+import prismadb from "lib/prismadb";
 import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import type Mail from "nodemailer/lib/mailer";
 
 export async function POST(request: NextRequest) {
-  const { name, mobile, selectedProducts } = await request.json();
-  // const { userId } = auth();
+  const { name, mobile, selectedProducts, address, totalPrice } =
+    await request.json();
   if (!name || !mobile || !selectedProducts) {
     return new NextResponse("Name, mobile and selected products are required", {
       status: 400,
@@ -21,22 +22,6 @@ export async function POST(request: NextRequest) {
     return new NextResponse("Product ids are required", { status: 400 });
   }
 
-  // const products = await prismadb.product.findMany({
-  //   where: {
-  //     id: {
-  //       in: productIds,
-  //     },
-  //   },
-  // });
-
-  // const order = await prismadb.product.findMany({
-  //   where: {
-  //     id: {
-  //       in: ["1ed1c012-4d68-4538-98cd-658500572612"],
-  //     },
-  //   },
-  // });
-  console.log("order");
   const transport = nodemailer.createTransport({
     service: "gmail",
     /* 
@@ -47,7 +32,7 @@ export async function POST(request: NextRequest) {
       If you want to use a different email provider other than gmail, you need to provide these manually.
       Or you can go use these well known services and their settings at
       https://github.com/nodemailer/nodemailer/blob/master/lib/well-known/services.json
-  */
+    */
     auth: {
       user: process.env.MY_EMAIL,
       pass: process.env.MY_PASSWORD,
@@ -82,28 +67,26 @@ export async function POST(request: NextRequest) {
     });
 
   try {
-    // const createdOrder = await prismadb.order.create({
-    //   data: {
-    //     address: "123 Main St, City, Country", // Replace with the actual address
-    //     phone: "123-456-7890", // Replace with the actual phone number
-    //     customerName: "John Doe", // Replace with the actual customer name
-    //     orderItems: {
-    //       create: [
-    //         {
-    //           quantity: 2, // Replace with the desired quantity
-    //           productId: "product_id_1", // Replace with the actual product ID
-    //         },
-    //         {
-    //           quantity: 3, // Replace with the desired quantity
-    //           productId: "product_id_2", // Replace with the actual product ID
-    //         },
-    //         // Add more order items as needed
-    //       ],
-    //     },
-    //   },
-    // });
+    const order = await prismadb.order.create({
+      data: {
+        totalAmount: totalPrice,
+        address,
+        customerName: name,
+        phone: mobile,
+        orderItems: {
+          create: selectedProducts.map((p: any) => ({
+            product: {
+              connect: {
+                id: p.id,
+              },
+            },
+            quantity: p.quantity,
+          })),
+        },
+      },
+    });
 
-    // console.log("Created Order:", createdOrder);
+    console.log("Created Order:", order);
     await sendMailPromise();
     return NextResponse.json({ message: "Email sent" });
   } catch (err) {

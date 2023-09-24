@@ -311,7 +311,7 @@ const Socials = [
   {
     id: 1,
     name: "Facebook",
-    href: "https://www.facebook.com/icebd.official",
+    href: "https://www.facebook.com/icelagbe",
     icon: (
       <SocialIcon
         network="facebook"
@@ -325,7 +325,7 @@ const Socials = [
   {
     id: 2,
     name: "Instagram",
-    href: "https://www.instagram.com/icebd.official",
+    href: "https://www.instagram.com/icelagbe",
     icon: (
       <SocialIcon
         network="instagram"
@@ -348,7 +348,7 @@ export default function LargeWithLogoLeft() {
       width="100%"
       position="absolute"
       // height={{ xs: "7rem", md: "4rem" }}
-      bottom="-50px"
+      bottom="0px"
     >
       <Container as={Stack} maxW="6xl" py={10}>
         <SimpleGrid

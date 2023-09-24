@@ -1,18 +1,15 @@
-// export const metadata = {
-//   title: "IceLagbe",
-// };
+import { AuthProvider } from "./(root)/Providers";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // const store = prismadb.store.find;
   return (
-    // <ClerkProvider>
     <html lang="en">
-      {/* <ClientLayout> */}
-      <body>{children}</body>
-      {/* </ClientLayout> */}
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
     // </ClerkProvider>
   );

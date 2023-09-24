@@ -3,6 +3,7 @@
 import {
   Box,
   Collapse,
+  Divider,
   Flex,
   HStack,
   Image,
@@ -44,7 +45,7 @@ const CheckoutProductList = (props: CheckoutProductListProps) => {
                 <Text>{isOpen ? "Hide" : "Show"} Order Summary</Text>
                 {isOpen ? <BsChevronUp /> : <BsChevronDown />}
               </Flex>
-              <Box>৳ {getTotalPrice}</Box>
+              <Box>৳ {getTotalPrice + 100}</Box>
             </Flex>
             <Collapse in={isOpen} animateOpacity>
               <Box background="black" color="white" p="1.8rem">
@@ -92,7 +93,7 @@ const CheckoutProductList = (props: CheckoutProductListProps) => {
                             lineHeight="21px"
                             fontWeight="500"
                           >
-                            Ice Cloud
+                            ICE Cloud
                           </Text>
                           <Text
                             color="#38B6FF"
@@ -111,10 +112,27 @@ const CheckoutProductList = (props: CheckoutProductListProps) => {
                 })}
                 <Flex justifyContent="space-between">
                   <Text fontSize="17px" lineHeight="25.5px">
-                    Total
+                    Subtotal
                   </Text>
                   <Text fontSize="14px" fontWeight="500" lineHeight="21px">
                     ৳ {calculateTotalPrice}
+                  </Text>
+                </Flex>
+                <Flex justifyContent="space-between">
+                  <Text fontSize="17px" lineHeight="25.5px">
+                    Shipping
+                  </Text>
+                  <Text fontSize="14px" fontWeight="500" lineHeight="21px">
+                    ৳ 100
+                  </Text>
+                </Flex>
+                <Divider my="10px" />
+                <Flex justifyContent="space-between">
+                  <Text fontSize="17px" lineHeight="25.5px">
+                    Total
+                  </Text>
+                  <Text fontSize="14px" fontWeight="500" lineHeight="21px">
+                    ৳ {calculateTotalPrice + 100}
                   </Text>
                 </Flex>
               </Box>
@@ -163,7 +181,7 @@ const CheckoutProductList = (props: CheckoutProductListProps) => {
                     </Box>
                     <Box pl="14px">
                       <Text fontSize="14px" lineHeight="21px" fontWeight="500">
-                        Ice Cloud
+                        ICE Cloud
                       </Text>
                       <Text color="#38B6FF" fontSize="12px" lineHeight="18px">
                         {cartProduct.lineupName}

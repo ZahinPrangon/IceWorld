@@ -2,6 +2,7 @@
 
 "use client";
 
+import { Link } from "@chakra-ui/next-js";
 import {
   Drawer,
   DrawerBody,
@@ -13,6 +14,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 
@@ -52,8 +54,63 @@ const Links = [
   },
 ];
 
+const Socials = [
+  {
+    id: 1,
+    name: "Facebook",
+    href: "https://www.facebook.com/icelagbe",
+    icon: (
+      <SocialIcon
+        network="facebook"
+        style={{
+          height: "40px",
+          width: "40px",
+          cursor: "pointer",
+        }}
+      />
+    ),
+  },
+  {
+    id: 2,
+    name: "Instagram",
+    href: "https://www.instagram.com/icelagbe",
+    icon: (
+      <SocialIcon
+        network="instagram"
+        style={{
+          height: "40px",
+          width: "40px",
+          cursor: "pointer",
+        }}
+      />
+    ),
+  },
+];
+
+const AuthLinks = [
+  {
+    id: 1,
+    name: "Login",
+    href: "/login",
+  },
+  {
+    id: 2,
+    name: "Create account",
+    href: "/sign-up",
+  },
+];
+
+const ProfileLinks = [
+  {
+    id: 1,
+    name: "Profile",
+    href: "/profile",
+  },
+];
 const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
   const router = useRouter();
+  const { status } = useSession();
+
   const dispatch = useAppDispatch();
 
   return (
@@ -98,22 +155,47 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
           ))}
           <Flex flexDir="row" gap="30px" mt="60px" justifyContent="center">
             <Flex gap="30px" cursor="pointer">
-              <SocialIcon
-                network="instagram"
-                style={{
-                  height: "40px",
-                  width: "40px",
-                }}
-              />
+              {status !== "authenticated"
+                ? AuthLinks.map((auth) => (
+                    <Text
+                      onClick={() => {
+                        router.push(auth.href);
+                        dispatch(onCloseMenu());
+                      }}
+                      height="fit-content"
+                      width="fit-content"
+                      key={auth.id}
+                    >
+                      {auth.name}
+                    </Text>
+                  ))
+                : ProfileLinks.map((auth) => (
+                    <Text
+                      onClick={() => {
+                        router.push(auth.href);
+                        dispatch(onCloseMenu());
+                      }}
+                      height="fit-content"
+                      width="fit-content"
+                      key={auth.id}
+                    >
+                      {auth.name}
+                    </Text>
+                  ))}
             </Flex>
+          </Flex>
+          <Flex flexDir="row" gap="30px" mt="60px" justifyContent="center">
             <Flex gap="30px" cursor="pointer">
-              <SocialIcon
-                network="facebook"
-                style={{
-                  height: "40px",
-                  width: "40px",
-                }}
-              />
+              {Socials.map((social) => (
+                <Link
+                  key={social.id}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {social.icon}
+                </Link>
+              ))}
             </Flex>
           </Flex>
         </DrawerBody>

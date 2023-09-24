@@ -7,6 +7,7 @@
 import { Link } from "@chakra-ui/next-js";
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import Image from "next/image";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 // eslint-disable-next-line import/no-absolute-path
@@ -22,17 +23,17 @@ import {
 
 const Links = [
   {
+    id: 1,
+    navName: "checkout",
+    name: <HiOutlineShoppingBag size="30px" />,
+    href: "/checkout",
+  },
+  {
     id: 2,
     navName: "aboutUs",
     name: <RxHamburgerMenu size="30px" />,
     href: "/",
   },
-  // {
-  //   id: 1,
-  //   navName: "checkout",
-  //   name: <HiOutlineShoppingBag size="30px" />,
-  //   href: "/checkout",
-  // },
 ];
 
 type NavLinkProps = {

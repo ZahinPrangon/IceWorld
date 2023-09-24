@@ -12,6 +12,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
@@ -125,18 +126,20 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         </DrawerBody>
 
         {Object.keys(selectedProducts).length !== 0 && (
-          <>
-            <DrawerFooter
-              p="30px"
-              borderTop="1px solid #38B6FF"
-              display="flex"
-              justifyContent="space-between"
-            >
+          <DrawerFooter
+            // p="30px"
+            // w="100%"
+            borderTop="1px solid #38B6FF"
+            // display="flex"
+            // flexDir="column"
+            justifyContent="space-between"
+          >
+            <Flex justifyContent="space-between" gap="30px">
               <Text>SubTotal</Text>
               <Text ml="auto">৳ {getTotalPrice}</Text>
-            </DrawerFooter>
+            </Flex>
             <Button onClick={onClickCheckout}>Checkout</Button>
-          </>
+          </DrawerFooter>
         )}
       </DrawerContent>
     </Drawer>

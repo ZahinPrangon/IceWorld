@@ -6,28 +6,34 @@
 
 "use client";
 
+import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
   Flex,
   FormControl,
-  FormLabel,
   Grid,
   GridItem,
   Input,
+  Radio,
+  RadioGroup,
   Show,
+  Stack,
   Text,
   Textarea,
   VStack,
 } from "@chakra-ui/react";
-import React, { useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
 
 import CartProduct from "@/components/CartProduct/CartProduct";
 import CheckoutProductList from "@/components/CheckoutProductList/CheckoutProductList";
 import NavSidebar from "@/components/NavSidebar/NavSidebar";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import { SingleSelectDropdown } from "@/components/SingleSelectDropdown/SingleSelectDropdown";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { onCloseCart, onCloseMenu } from "@/store/cart.slice";
+import { cartSelectors, onCloseCart, onCloseMenu } from "@/store/cart.slice";
+import { bangladeshDistricts } from "@/utils/ProductDetailsMetaData";
 
 type FormDataType = {
   name: string;
@@ -36,12 +42,14 @@ type FormDataType = {
 };
 
 const checkout = () => {
+  const { data: session, status } = useSession();
   const dispatch = useAppDispatch();
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
   const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
   const selectedProducts = useAppSelector(
     (state) => state.cart.selectedProducts
   );
+  const calculateTotalPrice = useAppSelector(cartSelectors.calculateTotalPrice);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormDataType>({
@@ -49,8 +57,13 @@ const checkout = () => {
     mobile: undefined,
     address: "",
   });
+  const [email, setEmail] = useState(session?.user?.email || "");
 
   const [error, setError] = useState(false);
+
+  const onChangeEmail = () => {
+    setEmail(session?.user?.email ?? "");
+  };
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -59,14 +72,14 @@ const checkout = () => {
       [name]: value,
     }));
   };
-
-  const formRef = useRef<any>();
+  const isAuthenticated = status === "authenticated";
 
   function sendEmail(data: any) {
     setIsLoading(true);
 
     const productData = Object.keys(selectedProducts).map((productId) => {
       const selectedProduct = selectedProducts[productId];
+
       if (!selectedProduct) return;
       const { quantity, product } = selectedProduct;
       return {
@@ -79,9 +92,8 @@ const checkout = () => {
     const payload = {
       ...data,
       selectedProducts: productData,
-      // products: selectedProducts.map((product) => ({
+      totalPrice: calculateTotalPrice,
     };
-    // console.log(JSON.stringify(data));
     const apiEndpoint = "/api/email";
     fetch(apiEndpoint, {
       method: "POST",
@@ -109,7 +121,7 @@ const checkout = () => {
   };
 
   return (
-    <Box height="100vh">
+    <Box>
       {Object.keys(selectedProducts).length === 0 ? (
         <Flex
           color="white"
@@ -125,6 +137,45 @@ const checkout = () => {
           <Show below="md">
             <CheckoutProductList confirmOrderView={false} />
           </Show>
+          <Flex
+            color="white"
+            pt="10px"
+            px="12px"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Text
+              px={1}
+              pt="20px"
+              mb={1}
+              fontSize="21px"
+              lineHeight="24px"
+              fontWeight={500}
+              alignSelf="left"
+            >
+              Contact
+            </Text>
+            {!isAuthenticated && (
+              <Text fontSize="14px">
+                Have an account?{" "}
+                <Link href="/login" color="#38B6FF">
+                  Login
+                </Link>
+              </Text>
+            )}
+          </Flex>
+          <Box px="12px" pt="10px" color="white">
+            <FormControl isRequired>
+              <Input
+                type="email"
+                name="email"
+                value={email}
+                disabled={isAuthenticated}
+                onChange={onChangeEmail}
+                placeholder="Email"
+              />
+            </FormControl>
+          </Box>
           <Grid templateColumns={{ xs: "auto", md: "repeat(2, 1fr)" }}>
             <GridItem>
               <Flex
@@ -133,7 +184,6 @@ const checkout = () => {
                 color="white"
                 mx={{ xs: "12px", md: "40px" }}
                 borderRadius="20px"
-                // paddingTop={{ xs: "120px", md: "0px" }}
               >
                 <Text
                   px={1}
@@ -142,58 +192,102 @@ const checkout = () => {
                   fontSize="21px"
                   lineHeight="24px"
                   fontWeight={500}
-                  alignSelf="center"
+                  alignSelf="left"
+                >
+                  Delivery
+                </Text>
+                <Box p={1} pt="12px">
+                  <VStack
+                    spacing={4}
+                    fontSize="17px"
+                    lineHeight="21px"
+                    fontWeight={500}
+                    gap="15px"
+                  >
+                    <FormControl isRequired>
+                      <Input
+                        placeholder="Name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                      />
+                    </FormControl>
+                    <FormControl isRequired>
+                      <Input
+                        placeholder="Mobile Number"
+                        type="number"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                      />
+                    </FormControl>
+                    <FormControl isRequired>
+                      <Textarea
+                        placeholder="Street Address"
+                        name="streetAddress"
+                        value={formData.address}
+                        onChange={handleInputChange}
+                      />
+                    </FormControl>
+                    <Flex gap="20px">
+                      <Input
+                        placeholder="Floor No"
+                        type="number"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                      />
+                      <Input
+                        placeholder="Apartment No"
+                        type="number"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                      />
+                    </Flex>
+                    <SingleSelectDropdown
+                      options={bangladeshDistricts}
+                      onHandleChange={() => {}}
+                    />
+                  </VStack>
+                </Box>
+              </Flex>
+            </GridItem>
+            <GridItem>
+              <Flex
+                justifyContent={{ xs: "center" }}
+                flexDirection="column"
+                color="white"
+                mx={{ xs: "12px", md: "40px" }}
+                borderRadius="20px"
+              >
+                <Text
+                  px={1}
+                  pt="20px"
+                  mb={2}
+                  fontSize="21px"
+                  lineHeight="24px"
+                  fontWeight={500}
+                  alignSelf="left"
+                >
+                  Payment
+                </Text>
+                <RadioGroup value="1">
+                  <Stack direction="column" ml="4px" mb={4}>
+                    <Radio value="1">Cash on delivery</Radio>
+                  </Stack>
+                </RadioGroup>
+                <Button
+                  mx="40px"
+                  mb="20px"
+                  onClick={handleCheckout}
+                  colorScheme="blue"
+                  isLoading={isLoading}
+                  loadingText="Confirming"
                 >
                   Checkout
-                </Text>
-                <Box p={1}>
-                  <form ref={formRef}>
-                    <VStack
-                      spacing={4}
-                      fontSize="17px"
-                      lineHeight="21px"
-                      fontWeight={500}
-                      gap="30px"
-                    >
-                      <FormControl isRequired>
-                        <FormLabel>Name</FormLabel>
-                        <Input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                        />
-                      </FormControl>
-                      <FormControl isRequired>
-                        <FormLabel>Mobile Number</FormLabel>
-                        <Input
-                          type="number"
-                          name="mobile"
-                          value={formData.mobile}
-                          onChange={handleInputChange}
-                        />
-                      </FormControl>
-                      <FormControl isRequired>
-                        <FormLabel>Address</FormLabel>
-                        <Textarea
-                          name="address"
-                          value={formData.address}
-                          onChange={handleInputChange}
-                        />
-                      </FormControl>
-                      <Button
-                        mx="40px"
-                        mb="20px"
-                        onClick={handleCheckout}
-                        colorScheme="blue"
-                        isLoading={isLoading}
-                        loadingText="Confirming"
-                      >
-                        Checkout
-                      </Button>
-                    </VStack>
-                  </form>
-                </Box>
+                </Button>
               </Flex>
             </GridItem>
             <GridItem>
