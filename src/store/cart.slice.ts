@@ -26,8 +26,8 @@ type SelectedProduct = {
 // };
 
 const initialState: CartSlice = {
-  // selectedProducts: JSON.parse(localStorage.getItem("cart") as string) || {},
   selectedProducts: {},
+  // selectedProducts: {},
 };
 
 export const cartSlice = createSlice({

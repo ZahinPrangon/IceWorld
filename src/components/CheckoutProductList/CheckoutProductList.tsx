@@ -196,10 +196,27 @@ const CheckoutProductList = (props: CheckoutProductListProps) => {
             })}
             <Flex justifyContent="space-between">
               <Text fontSize="17px" lineHeight="25.5px">
-                Total
+                Subtotal
               </Text>
               <Text fontSize="14px" fontWeight="500" lineHeight="21px">
                 ৳ {calculateTotalPrice}
+              </Text>
+            </Flex>
+            <Flex justifyContent="space-between">
+              <Text fontSize="17px" lineHeight="25.5px">
+                Shipping
+              </Text>
+              <Text fontSize="14px" fontWeight="500" lineHeight="21px">
+                ৳ 100
+              </Text>
+            </Flex>
+            <Divider my="10px" />
+            <Flex justifyContent="space-between">
+              <Text fontSize="17px" lineHeight="25.5px">
+                Total
+              </Text>
+              <Text fontSize="14px" fontWeight="500" lineHeight="21px">
+                ৳ {calculateTotalPrice + 100}
               </Text>
             </Flex>
           </Box>

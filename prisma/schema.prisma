@@ -23,11 +23,14 @@ model Product {
 model Order {
   id           String      @id @default(uuid())
   totalAmount  Float
-  address      String     
+  address      String  
+  email        String  
+  district     String 
   phone        String     
   customerName String     
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
+  orderNumber  String      @unique
   orderItems OrderItem[]   // Relation to OrderItem model
 }
 

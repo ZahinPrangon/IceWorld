@@ -23,8 +23,9 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import CartProduct from "@/components/CartProduct/CartProduct";
 import CheckoutProductList from "@/components/CheckoutProductList/CheckoutProductList";
@@ -39,6 +40,7 @@ type FormDataType = {
   name: string;
   mobile: number | undefined;
   address: string;
+  district: string;
 };
 
 const checkout = () => {
@@ -56,14 +58,22 @@ const checkout = () => {
     name: "",
     mobile: undefined,
     address: "",
+    district: "",
   });
+  const [confirmedOrderItem, setConfirmedOrderItem] = useState<any>([]);
   const [email, setEmail] = useState(session?.user?.email || "");
 
   const [error, setError] = useState(false);
 
-  const onChangeEmail = () => {
-    setEmail(session?.user?.email ?? "");
+  const onChangeEmail = (e: any) => {
+    setEmail(e.target.value);
   };
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      setEmail(session.user.email);
+    }
+  }, [session]);
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -74,7 +84,7 @@ const checkout = () => {
   };
   const isAuthenticated = status === "authenticated";
 
-  function sendEmail(data: any) {
+  async function sendEmail(data: any) {
     setIsLoading(true);
 
     const productData = Object.keys(selectedProducts).map((productId) => {
@@ -91,30 +101,31 @@ const checkout = () => {
 
     const payload = {
       ...data,
+      email,
       selectedProducts: productData,
       totalPrice: calculateTotalPrice,
     };
-    const apiEndpoint = "/api/email";
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify(payload),
-    })
-      .then((res) => res.json())
-      .then((_response) => {
-        setOrderConfirmed(true);
-        // dispatch(clearCart());
-      })
-      .catch((_err) => {
-        setError(true);
-        setOrderConfirmed(false);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+
+    try {
+      const response = await axios.post("/api/email", payload);
+      setOrderConfirmed(true);
+      setConfirmedOrderItem(response.data.order);
+      setIsLoading(false);
+    } catch (err) {
+      setError(true);
+      setIsLoading(false);
+      setOrderConfirmed(false);
+    }
   }
 
   const handleCheckout = () => {
-    if (!formData.name || !formData.mobile || !formData.address) {
+    if (
+      !formData.name ||
+      !formData.mobile ||
+      !formData.address ||
+      !formData.district
+    ) {
+      // setError("Please fill all the fields");
       return;
     }
     sendEmail(formData);
@@ -133,7 +144,7 @@ const checkout = () => {
           Your cart is currently empty.
         </Flex>
       ) : !orderConfirmed ? (
-        <>
+        <Box mb="500px">
           <Show below="md">
             <CheckoutProductList confirmOrderView={false} />
           </Show>
@@ -225,30 +236,19 @@ const checkout = () => {
                     <FormControl isRequired>
                       <Textarea
                         placeholder="Street Address"
-                        name="streetAddress"
+                        name="address"
                         value={formData.address}
                         onChange={handleInputChange}
                       />
                     </FormControl>
-                    <Flex gap="20px">
-                      <Input
-                        placeholder="Floor No"
-                        type="number"
-                        name="mobile"
-                        value={formData.mobile}
-                        onChange={handleInputChange}
-                      />
-                      <Input
-                        placeholder="Apartment No"
-                        type="number"
-                        name="mobile"
-                        value={formData.mobile}
-                        onChange={handleInputChange}
-                      />
-                    </Flex>
                     <SingleSelectDropdown
                       options={bangladeshDistricts}
-                      onHandleChange={() => {}}
+                      onHandleChange={(value) => {
+                        setFormData((prevData: any) => ({
+                          ...prevData,
+                          district: value,
+                        }));
+                      }}
                     />
                   </VStack>
                 </Box>
@@ -286,7 +286,7 @@ const checkout = () => {
                   isLoading={isLoading}
                   loadingText="Confirming"
                 >
-                  Checkout
+                  Place Order
                 </Button>
               </Flex>
             </GridItem>
@@ -309,11 +309,8 @@ const checkout = () => {
                 })}
               </Show>
             </GridItem>
-            {/* <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              Send WhatsApp Message
-            </a>{" "} */}
           </Grid>
-        </>
+        </Box>
       ) : (
         <>
           <Show below="md">
@@ -324,8 +321,11 @@ const checkout = () => {
               Something went wrong
             </Text>
           ) : (
-            <Text color="white" textAlign="center">
-              Your order has been placed successfully. Welcome to ice world!
+            <Text color="white" textAlign="center" px="1.8rem">
+              Your order has been placed successfully.{" "}
+              <Text color="#38B6FF">Welcome to ICE world!</Text>
+              Your Order Number is <br />
+              <Text fontWeight="700"> {confirmedOrderItem.orderNumber}</Text>
             </Text>
           )}
         </>

@@ -256,7 +256,7 @@ const page = () => {
         >
           Google
         </Button>
-        <Button
+        {/* <Button
           leftIcon={
             <SocialIcon
               network="facebook"
@@ -276,7 +276,7 @@ const page = () => {
           loadingText="Confirming"
         >
           Facebook
-        </Button>
+        </Button> */}
       </Flex>
       <Text mt="20px" textAlign="center">
         Have an account?{" "}

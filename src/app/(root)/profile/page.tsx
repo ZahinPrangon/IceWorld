@@ -1,12 +1,25 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/rules-of-hooks */
 
 "use client";
 
-import { Box, Button, Flex, Heading, Show, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  Show,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
-import React from "react";
+import React, { useEffect } from "react";
 
+import ConfirmedOrderList from "@/components/ConfirmedOrderList/ConfirmedOrderList";
 import NavSidebar from "@/components/NavSidebar/NavSidebar";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -16,21 +29,43 @@ const page = () => {
   const dispatch = useAppDispatch();
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
   const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
-  // const router = useRouter();
-  const { data: session } = useSession();
+  const router = useRouter();
+  const [orders, setOrders] = React.useState<any[]>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const { data: session, status } = useSession();
 
-  // if (status !== "authenticated") {
-  //   router.push("/login");
-  // }
-  // const fetchOrderHistory = () => {
-  //   // const apiEndpoint = "/api/order-history";
-  //   // const response = await fetch(apiEndpoint);
-  //   // const data = await response.json();
-  //   // console.log(data);
-  //   return undefined;
-  // };
+  useEffect(() => {
+    if (status !== "authenticated") {
+      router.push("/login");
+    }
+  }, [status]);
 
-  // const orderHistory = fetchOrderHistory();
+  useEffect(() => {
+    if (!session?.user?.email) return;
+    setIsLoading(true);
+    const payload = {
+      email: session?.user?.email,
+    };
+    const apiEndpoint = "/api/track-user-orders";
+    fetch(apiEndpoint, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        setOrders(response.orders);
+        setIsLoading(false);
+      })
+      .catch((_err) => {
+        // setError(true);
+        // setOrderConfirmed(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        // setIsLoading(false);
+      });
+  }, []);
+
   return (
     <Box>
       <Flex
@@ -43,27 +78,29 @@ const page = () => {
         <Heading as="h1" textAlign="center">
           My account
         </Heading>
-        <Button
-          onClick={() => signOut()}
-          // display="flex"
-          // justifyContent="center"
-          variant="outlined"
-          textAlign="center"
-        >
+        <Button onClick={() => signOut()} variant="outlined" textAlign="center">
           LOG OUT
         </Button>
       </Flex>
       <Show below="md">
         <Box color="white" px="20px" pb="20px" pt="20px">
-          <Heading as="h3">Order History</Heading>
-          {/* {orderHistory === undefined ? (
+          <Text fontSize="24px">Order History</Text>
+          <Divider my="10px" />
+          {isLoading ? (
+            <Spinner size="md" />
+          ) : orders.length === 0 ? (
             <Text>You haven't placed any orders yet.</Text>
           ) : (
-            <Text>Order history</Text>
-          )} */}
+            <Box>
+              {orders.length > 0 &&
+                orders.map((x) => {
+                  return <ConfirmedOrderList key={x.id} order={x} />;
+                })}
+            </Box>
+          )}
         </Box>
         <Box color="white" px="20px">
-          <Heading as="h3">Account details</Heading>
+          <Heading as="h1">Account details</Heading>
           <Text textTransform="uppercase">{session?.user?.name}</Text>
           <Text>{session?.user?.email}</Text>
         </Box>

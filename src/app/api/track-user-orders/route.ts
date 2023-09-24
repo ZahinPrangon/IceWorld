@@ -3,14 +3,14 @@ import prismadb from "lib/prismadb";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { orderNumber } = await request.json();
-  if (!orderNumber) {
-    return new NextResponse("Order number is required", { status: 400 });
+  const { email } = await request.json();
+  if (!email) {
+    return new NextResponse("Email is required", { status: 400 });
   }
   try {
     const orders = await prismadb.order.findMany({
       where: {
-        orderNumber,
+        email,
       },
       include: {
         orderItems: {

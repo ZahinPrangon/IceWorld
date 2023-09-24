@@ -13,6 +13,7 @@ import {
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 
+import ConfirmedOrderList from "@/components/ConfirmedOrderList/ConfirmedOrderList";
 import NavSidebar from "@/components/NavSidebar/NavSidebar";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -22,7 +23,7 @@ const page = () => {
   // const session = await getServerSession(authOptions);
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
-    phone: "",
+    order_number: "",
   });
   const [orders, setOrders] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ const page = () => {
   const handleApi = () => {
     setIsLoading(true);
     const payload = {
-      ...formData,
+      orderNumber: formData.order_number,
     };
     const apiEndpoint = "/api/track-order";
     fetch(apiEndpoint, {
@@ -48,9 +49,6 @@ const page = () => {
     })
       .then((res) => res.json())
       .then((response) => {
-        // setOrderConfirmed(true);
-        // dispatch(clearCart());
-        console.log(response.orders);
         setOrders(response.orders);
       })
       .catch((_err) => {
@@ -64,8 +62,7 @@ const page = () => {
   };
 
   const onClickSubmit = () => {
-    if (formData.phone.length === 0) return;
-    // console.log(formData);
+    if (formData.order_number.length === 0) return;
     handleApi();
   };
 
@@ -83,17 +80,16 @@ const page = () => {
       >
         <Heading color="white">Track your order</Heading>
         <FormControl>
-          <FormLabel color="white">Phone Number</FormLabel>
+          <FormLabel color="white">Order Number</FormLabel>
           <Input
             background="white"
-            type="number"
-            name="phone"
-            value={formData.phone}
+            type="string"
+            name="order_number"
+            value={formData.order_number}
             onChange={handleInputChange}
           />
         </FormControl>
         <Button
-          // type="submit"
           mx="40px"
           mb="20px"
           onClick={onClickSubmit}
@@ -107,7 +103,7 @@ const page = () => {
       </VStack>
       {orders.length > 0 &&
         orders.map((x) => {
-          return <div key={Math.random()}>{x.id}</div>;
+          return <ConfirmedOrderList key={x.id} order={x} />;
         })}
       <Sidebar
         isOpen={isCartOpen ?? false}

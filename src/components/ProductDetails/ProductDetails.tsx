@@ -4,6 +4,7 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsFillBoxFill, BsTruck } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
+import { GiSoundWaves } from "react-icons/gi";
 import { TbShieldCheckFilled } from "react-icons/tb";
 
 import { useAppDispatch } from "@/hooks/redux";
@@ -13,7 +14,6 @@ import ProductPicker from "../ProductPicker/ProductPicker";
 
 type ProductDetailsProps = {
   description: string;
-  // onClick: (index: number) => void;
   selectedProduct: any;
   setSelectedProduct: (index: number) => void;
   details: any[];
@@ -25,6 +25,11 @@ const productHeroFeatures = [
     id: 1,
     title: "Now shipping all over Bangladesh",
     icon: <BsFillBoxFill size="20px" />,
+  },
+  {
+    id: 2,
+    title: "ENC",
+    icon: <GiSoundWaves size="20px" />,
   },
   {
     id: 2,

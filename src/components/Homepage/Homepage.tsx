@@ -41,9 +41,9 @@ const Homepage = () => {
         <Carousel images={images} index={index} setIndex={onChangeIndex} />
       </Suspense>
       <Section
-        title="Ice Cloud"
+        title="ICE Cloud"
         subTitle="
-              Engineered to fit. Great calls and music, designed for comfort.
+              Great call and music. Designed for comfort.
             "
       >
         {/* {/* <Grid */}
