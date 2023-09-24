@@ -6,7 +6,6 @@
 
 "use client";
 
-import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Button,
@@ -166,14 +165,14 @@ const checkout = () => {
             >
               Contact
             </Text>
-            {!isAuthenticated && (
+            {/* {!isAuthenticated && (
               <Text fontSize="14px">
                 Have an account?{" "}
                 <Link href="/login" color="#38B6FF">
                   Login
                 </Link>
               </Text>
-            )}
+            )} */}
           </Flex>
           <Box px="12px" pt="10px" color="white">
             <FormControl isRequired>
@@ -285,8 +284,9 @@ const checkout = () => {
                   colorScheme="blue"
                   isLoading={isLoading}
                   loadingText="Confirming"
+                  letterSpacing="1px"
                 >
-                  Place Order
+                  PLACE ORDER
                 </Button>
               </Flex>
             </GridItem>

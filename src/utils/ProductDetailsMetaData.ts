@@ -10,16 +10,6 @@ export const ProductDetailsMetaData = [
     },
     cartImage: "/ice-white-cart.jpeg",
   },
-  // {
-  //   id: 2,
-  //   lineupName: "Pearl White",
-  //   color: "white",
-  //   price: 1450,
-  //   images: {
-  //     original: "/ice-white.jpeg",
-  //     thumbnail: "/ice-white.jpeg",
-  //   },
-  // },
   {
     id: "3163f84a-75e2-406b-bc01-7e4110610338",
     lineupName: "Matte Black",

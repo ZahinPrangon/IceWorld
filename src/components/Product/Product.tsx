@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import Section from "@/layouts/Section/Section";
 import { onCloseCart, onCloseMenu, onOpenCart } from "@/store/cart.slice";
 import { ProductDetailsMetaData } from "@/utils/ProductDetailsMetaData";
 
@@ -66,6 +67,13 @@ const Product = () => {
         color="white"
         px="14px"
       >
+        <Section
+          title="ICE Cloud"
+          subTitle="
+              Great call and music. Designed for comfort.
+            "
+        />
+
         <ProductGallery
           images={images}
           index={index}

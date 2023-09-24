@@ -134,11 +134,18 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             // flexDir="column"
             justifyContent="space-between"
           >
-            <Flex justifyContent="space-between" gap="30px">
+            <Flex justifyContent="space-between" gap="15px">
               <Text>SubTotal</Text>
               <Text ml="auto">৳ {getTotalPrice}</Text>
             </Flex>
-            <Button onClick={onClickCheckout}>Checkout</Button>
+            <Button
+              background="#38B6FF"
+              color="white"
+              onClick={onClickCheckout}
+              letterSpacing="1px"
+            >
+              CHECKOUT
+            </Button>
           </DrawerFooter>
         )}
       </DrawerContent>

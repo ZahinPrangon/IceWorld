@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       // cc: process.env.MY_EMAIL, (uncomment this line if you want to send a copy to your email)
       subject: `Order placed from ${name}`,
       html: `
-      <img src="https://www.icelagbe.com/_next/static/media/logo.60229123.png" style="width:180px; height:102px;" alt="Order Confirmation Image">
+      <img src="https://www.icelagbe.com/_next/static/media/logo.60229123.png" style="width:120px; height:102px;" alt="Order Confirmation Image">
       <p>Dear ${name},</p>
       <p>Thank you for placing an order with us. Your order details are as follows:</p>
       <ul>
@@ -118,7 +118,6 @@ export async function POST(request: NextRequest) {
           .join("")}
       </ul>
       <p>Total Price: ৳ ${totalPrice}</p>
-      <p>Your order confirmation number is: </p>
       <p>We appreciate your business and look forward to serving you again.</p>
       <p>Your order confirmation number is: <strong>${orderNumber}</strong></p>
       <p>Best regards,<br>Ice Lagbe Team</p>

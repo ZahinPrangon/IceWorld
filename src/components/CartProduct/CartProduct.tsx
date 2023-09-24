@@ -34,19 +34,21 @@ const CartProduct = (props: CartProductProps) => {
   };
 
   return (
-    <Flex color="white" borderBottom="1px solid #38B6FF">
-      <Image src={props.image} alt={props.lineupName} w="100px" h="100px" />
+    <Flex color="white" borderBottom="1px solid #38B6FF" flexDirection="column">
+      <Flex justifyContent="center" alignItems="center">
+        <Image src={props.image} alt={props.lineupName} w="200px" h="200px" />
+      </Flex>
       <VStack justifyContent="center" gap="20px" alignItems="flex-start">
         <Text
           color="white"
-          fontSize="16px"
-          // letterSpacing="1px"
+          fontSize="24px"
           lineHeight="19.5px"
+          textAlign="center"
         >
           {props.lineupName}
         </Text>
         <Grid
-          maxW="100px"
+          maxW="200px"
           minW="80px"
           border="1px solid #38B6FF"
           templateColumns="repeat(3, 1fr)"
@@ -83,18 +85,17 @@ const CartProduct = (props: CartProductProps) => {
             +
           </GridItem>
         </Grid>
+        <Text
+          textAlign="center"
+          m="auto"
+          fontSize="16px"
+          letterSpacing="0.7px"
+          lineHeight="14px"
+          fontWeight="200"
+        >
+          ৳ {computedPrice}
+        </Text>
       </VStack>
-
-      <Text
-        textAlign="center"
-        m="auto"
-        fontSize="16px"
-        letterSpacing="0.7px"
-        lineHeight="14px"
-        fontWeight="200"
-      >
-        ৳ {computedPrice}
-      </Text>
     </Flex>
   );
 };

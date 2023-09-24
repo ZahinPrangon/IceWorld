@@ -4,8 +4,6 @@ import { Flex } from "@chakra-ui/react";
 import React, { Suspense, useState } from "react";
 import type { ReactImageGalleryItem } from "react-image-gallery";
 
-import Section from "@/layouts/Section/Section";
-
 import Carousel from "../Carousel/Carousel";
 import Product from "../Product/Product";
 import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
@@ -40,14 +38,6 @@ const Homepage = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Carousel images={images} index={index} setIndex={onChangeIndex} />
       </Suspense>
-      <Section
-        title="ICE Cloud"
-        subTitle="
-              Great call and music. Designed for comfort.
-            "
-      >
-        {/* {/* <Grid */}
-      </Section>
       <Product />
       <ScrollToTopButton />
     </Flex>

@@ -10,32 +10,32 @@ const HeroProductFeatures = [
   {
     id: 3,
     description: "Bluetooth v5.3",
-    icon: <BsBluetooth size="50px" color="white" />,
+    icon: <BsBluetooth size="30px" color="white" />,
   },
   {
     id: 5,
     description: "ENC + Dual Mic Clarity",
-    icon: <IoIosMic size="50px" color="white" />,
+    icon: <IoIosMic size="30px" color="white" />,
   },
   {
     id: 2,
-    description: "24 hours of playtime",
-    icon: <RiBatteryChargeLine size="50px" color="white" />,
+    description: "30 hours of playtime",
+    icon: <RiBatteryChargeLine size="30px" color="white" />,
   },
   {
     id: 4,
     description: "6+ Hrs Non-Stop",
-    icon: <HiPlay size="50px" color="white" />,
+    icon: <HiPlay size="30px" color="white" />,
   },
   {
     id: 3,
     description: "10 mm dynamic drivers",
-    icon: <BsSoundwave size="50px" color="white" />,
+    icon: <BsSoundwave size="30px" color="white" />,
   },
   {
     id: 6,
     description: "Smart Touch Controls",
-    icon: <MdOutlineTouchApp size="50px" color="white" />,
+    icon: <MdOutlineTouchApp size="30px" color="white" />,
   },
 ];
 
