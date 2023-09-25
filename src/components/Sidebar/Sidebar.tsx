@@ -79,8 +79,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       onClose={onClose}
       allowPinchZoom
       size={{ xs: "xs", md: "sm" }}
+      autoFocus={false}
     >
-      <DrawerOverlay />
+      <DrawerOverlay autoFocus={false} />
       <DrawerContent
         background="black"
         color="white"

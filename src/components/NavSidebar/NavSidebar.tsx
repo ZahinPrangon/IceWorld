@@ -120,6 +120,7 @@ const NavSidebar = ({ isOpen, onClose }: NavSidebarProps) => {
       onClose={onClose}
       allowPinchZoom
       size={{ xs: "xs", md: "sm" }}
+      autoFocus={false}
     >
       <DrawerOverlay />
       <DrawerContent
