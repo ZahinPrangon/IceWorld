@@ -23,15 +23,24 @@ const Homepage = () => {
     },
     {
       original:
-        "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/ice_landing_1?_a=BAVAicGd0",
+        "https://res.cloudinary.com/dpurin337/image/upload/v1695749025/banner-2.png",
       thumbnail:
-        "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/ice_landing_1?_a=BAVAicGd0",
+        "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/banner-2?_a=BAVAicGd0",
+      originalHeight: 800,
+      loading: "eager",
+    },
+    {
+      original:
+        "https://res.cloudinary.com/dpurin337/image/upload/v1695749025/banner-3.png",
+      thumbnail:
+        "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/banner-3?_a=BAVAicGd0",
       originalHeight: 800,
       loading: "eager",
     },
   ];
   const onChangeIndex = (i: number) => {
     setIndex(i);
+    console.log(i);
   };
   return (
     <Flex flexDir="column">

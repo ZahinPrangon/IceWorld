@@ -47,6 +47,14 @@ const Product = () => {
   //   };
   // };
 
+  // useEffect(() => {
+  //   console.log(index);
+  //   if (index === 0) {
+  //     setSelectedProduct(ProductDetailsMetaData[0]);
+  //   }
+  //   setSelectedProduct(ProductDetailsMetaData[index]);
+  // }, [index]);
+
   const [ref1, inView1] = useInView({
     threshold: 0.1,
   });

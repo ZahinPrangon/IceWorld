@@ -8,17 +8,17 @@ import { RiBatteryChargeLine } from "react-icons/ri";
 
 const HeroProductFeatures = [
   {
-    id: 3,
+    id: 1,
     description: "Bluetooth v5.3",
     icon: <BsBluetooth size="30px" color="white" />,
   },
   {
-    id: 5,
+    id: 2,
     description: "ENC + Dual Mic Clarity",
     icon: <IoIosMic size="30px" color="white" />,
   },
   {
-    id: 2,
+    id: 3,
     description: "30 hours of playtime",
     icon: <RiBatteryChargeLine size="30px" color="white" />,
   },
@@ -28,7 +28,7 @@ const HeroProductFeatures = [
     icon: <HiPlay size="30px" color="white" />,
   },
   {
-    id: 3,
+    id: 5,
     description: "10 mm dynamic drivers",
     icon: <BsSoundwave size="30px" color="white" />,
   },

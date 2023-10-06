@@ -45,7 +45,9 @@ const Carousel = (props: CarouselProps) => {
         // infinite
         startIndex={0}
         autoPlay
+        showBullets
         slideDuration={600}
+        showNav={false}
         // onImageLoad
         // onThumbnailClick={onClickGalleryItem}
         // onSlide={onClickSideArrow}

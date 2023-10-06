@@ -32,17 +32,17 @@ const productHeroFeatures = [
     icon: <GiSoundWaves size="20px" />,
   },
   {
-    id: 2,
+    id: 3,
     title: "6 months warranty",
     icon: <TbShieldCheckFilled size="20px" />,
   },
   {
-    id: 2,
+    id: 4,
     title: "2 days delivery",
     icon: <FaShoppingCart size="20px" />,
   },
   {
-    id: 2,
+    id: 5,
     title: "In stock, ready to ship",
     icon: <BsTruck size="20px" />,
   },
