@@ -20,6 +20,7 @@ const Homepage = () => {
         "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/ice_landing_1?_a=BAVAicGd0",
       originalHeight: 800,
       loading: "eager",
+      bulletClass: "custom-bullet",
     },
     {
       original:
@@ -28,6 +29,7 @@ const Homepage = () => {
         "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/banner-2?_a=BAVAicGd0",
       originalHeight: 800,
       loading: "eager",
+      bulletClass: "custom-bullet",
     },
     {
       original:
@@ -36,11 +38,12 @@ const Homepage = () => {
         "https://res.cloudinary.com/dpurin337/image/upload/c_limit,w_800/banner-3?_a=BAVAicGd0",
       originalHeight: 800,
       loading: "eager",
+      bulletClass: "custom-bullet",
     },
   ];
   const onChangeIndex = (i: number) => {
     setIndex(i);
-    console.log(i);
+    // console.log(i);
   };
   return (
     <Flex flexDir="column">

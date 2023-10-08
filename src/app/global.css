@@ -117,3 +117,7 @@ body {
 .scroll-to-top-button:hover {
   background-color: #38B6FF;
 }
+
+.image-gallery-bullets {
+  bottom: 5px !important;
+}
