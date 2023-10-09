@@ -19,7 +19,7 @@ export const ProductDetailsMetaData = [
       original: "/ice-black.jpeg",
       thumbnail: "/ice-black.jpeg",
     },
-    cartImage: "/ice-black-cart.jpg",
+    cartImage: "/ice-black-cart.jpeg",
   },
 ];
 
