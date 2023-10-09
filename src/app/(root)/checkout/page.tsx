@@ -35,6 +35,8 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { cartSelectors, onCloseCart, onCloseMenu } from "@/store/cart.slice";
 import { bangladeshDistricts } from "@/utils/ProductDetailsMetaData";
 
+import * as pixel from "../../../lib/fpixel";
+
 type FormDataType = {
   name: string;
   mobile: number | undefined;
@@ -110,6 +112,14 @@ const checkout = () => {
       setOrderConfirmed(true);
       setConfirmedOrderItem(response.data.order);
       setIsLoading(false);
+      pixel.event("Purcharse", {
+        content_ids: Object.keys(selectedProducts),
+        currency: "BDT",
+        value: calculateTotalPrice,
+        contents: productData,
+        content_name: "Ice Cloud",
+        content_type: "Earbuds",
+      });
     } catch (err) {
       setError(true);
       setIsLoading(false);
@@ -124,7 +134,6 @@ const checkout = () => {
       !formData.address ||
       !formData.district
     ) {
-      // setError("Please fill all the fields");
       return;
     }
     sendEmail(formData);

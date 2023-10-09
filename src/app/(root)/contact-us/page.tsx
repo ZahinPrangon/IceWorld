@@ -21,6 +21,8 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { onCloseCart, onCloseMenu } from "@/store/cart.slice";
 
+import * as pixel from "../../../lib/fpixel";
+
 const page = () => {
   const dispatch = useAppDispatch();
 
@@ -81,6 +83,7 @@ const page = () => {
       return;
     }
     sendEmail(formData);
+    pixel.event("Contact");
   };
   return (
     <Flex
