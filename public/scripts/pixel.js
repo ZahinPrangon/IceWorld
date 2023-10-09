@@ -36,8 +36,6 @@ function initializeFacebookPixel(f, b, e, v, n, t, s) {
   s.parentNode.insertBefore(t, s);
 }
 
-console.log("PIXEL_ID", PIXEL_ID);
-
 initializeFacebookPixel(
   window,
   document,

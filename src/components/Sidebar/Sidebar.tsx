@@ -21,6 +21,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { cartSelectors, onCloseCart } from "@/store/cart.slice";
 
+import * as pixel from "../../lib/fpixel";
 import CartProduct from "../CartProduct/CartProduct";
 
 type SidebarProps = {
@@ -35,42 +36,10 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   );
   const getTotalPrice = useAppSelector(cartSelectors.calculateTotalPrice);
 
-  // useEffect(() => {
-  //   // fetch("http://localhost:3000/api/checkout").then((res) =>
-  //   //   console.log(res.json())
-  //   // );
-
-  //   fetch("http://localhost:3000/api/checkout", {
-  //     method: "GET", // This is the default, so you can omit it if you're making a GET request
-  //     headers: {
-  //       // You can set headers if needed
-  //       "Content-Type": "application/json",
-  //       // Add any other headers as required
-  //     },
-  //     // You can also add other options like a request body, mode, credentials, etc.
-  //   })
-  //     .then((response) => {
-  //       // Check if the response status is in the 200-299 range (success)
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       // Parse the response body as JSON
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       // Do something with the JSON data
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors that occurred during the fetch
-  //       console.error("Fetch error:", error);
-  //     });
-  //   // console.log(response);
-  // }, []);
-
   const onClickCheckout = () => {
     router.push("/checkout");
     dispatch(onCloseCart());
+    pixel.event("Checkout", selectedProducts);
   };
   return (
     <Drawer

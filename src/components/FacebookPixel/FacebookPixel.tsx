@@ -13,7 +13,6 @@ const FacebookPixel = () => {
   useEffect(() => {
     if (!loaded) return;
 
-    // console.log("pageview");
     pixel.pageview();
   }, [pathname, loaded]);
 
