@@ -10,6 +10,7 @@ import { TbShieldCheckFilled } from "react-icons/tb";
 import { useAppDispatch } from "@/hooks/redux";
 import { addToCart } from "@/store/cart.slice";
 
+import * as pixel from "../../lib/fpixel";
 import ProductPicker from "../ProductPicker/ProductPicker";
 
 type ProductDetailsProps = {
@@ -56,6 +57,12 @@ const ProductDetails = (props: ProductDetailsProps) => {
   const handleBuyNowClick = () => {
     props.onOpen();
     dispatch(addToCart({ selectedProduct: props.selectedProduct }));
+    pixel.event("AddToCart", {
+      content_ids: [props.selectedProduct.id],
+      content_name: props.selectedProduct.lineupName,
+      content_type: "Earbuds",
+      currency: "BDT",
+    });
   };
 
   return (
