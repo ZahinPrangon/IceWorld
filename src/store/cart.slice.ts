@@ -35,7 +35,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     updateProduct: (state, action) => {
-      // console.log("state", action);
       if (!state.selectedProducts[action.payload.productId]) return;
       const product = state.selectedProducts[action.payload.productId]?.product;
       if (!product) return;
@@ -46,9 +45,6 @@ export const cartSlice = createSlice({
       } else if (state.selectedProducts[product.id] !== undefined) {
         state.selectedProducts[product.id]!.quantity -= 1;
       }
-
-      // update the localStorage with the new state
-      // localStorage.setItem("cart", JSON.stringify(state.selectedProducts));
     },
     addToCart: (state, action) => {
       const { selectedProduct } = action.payload;
@@ -61,9 +57,6 @@ export const cartSlice = createSlice({
         product: action.payload.selectedProduct,
         quantity: 1,
       };
-
-      // update the localStorage with the new state
-      // localStorage.setItem("cart", JSON.stringify(state.selectedProducts));
     },
     setSelectedProduct: (state, action) => {
       state.currentProduct = action.payload;
