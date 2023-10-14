@@ -6,7 +6,10 @@ import "./ScrollToTopButton.css"; // Import your CSS file for styling
 
 import React, { useEffect, useState } from "react";
 
-function ScrollToTopButton() {
+type ScrollToTopButtonProps = {
+  buyNowButtonRef: any;
+};
+function ScrollToTopButton({ buyNowButtonRef }: ScrollToTopButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   // Show/hide the button based on scroll position
@@ -26,22 +29,27 @@ function ScrollToTopButton() {
     };
   }, []);
 
-  // Scroll to top when the button is clicked
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 350,
-      behavior: "smooth",
-    });
+  const scrollToBuyNow = () => {
+    if (buyNowButtonRef.current) {
+      buyNowButtonRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
+  // // Scroll to top when the button is clicked
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 350,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   return (
     <button
       className={`scroll-to-top-button ${isVisible ? "visible" : ""}`}
-      onClick={() => scrollToTop()}
+      onClick={() => scrollToBuyNow()}
       title="Go to top"
       // variant="unstyled"
     >
-      Get now
+      GET NOW
     </button>
   );
 }

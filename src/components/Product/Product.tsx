@@ -10,7 +10,7 @@ import {
   Show,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -22,6 +22,7 @@ import HeroProductWrapper from "../HeroProductWrapper/HeroProductWrapper";
 import NavSidebar from "../NavSidebar/NavSidebar";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductGallery from "../ProductGallery/ProductGallery";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Product = () => {
@@ -33,6 +34,8 @@ const Product = () => {
     setIndex(i);
     setSelectedProduct(ProductDetailsMetaData[i]);
   };
+
+  const buyNowButtonRef = useRef<any>();
 
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
   const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
@@ -82,20 +85,23 @@ const Product = () => {
             "
         />
 
-        <ProductGallery
-          images={images}
-          index={index}
-          setIndex={onChangeIndex}
-        />
-        <ProductDetails
-          description="Elevate your moment"
-          selectedProduct={selectedProduct}
-          setSelectedProduct={onChangeIndex}
-          details={ProductDetailsMetaData}
-          onOpen={() => {
-            dispatch(onOpenCart());
-          }}
-        />
+        <div ref={buyNowButtonRef}>
+          <ProductGallery
+            images={images}
+            index={index}
+            setIndex={onChangeIndex}
+          />
+          <ProductDetails
+            description="Elevate your moment"
+            selectedProduct={selectedProduct}
+            setSelectedProduct={onChangeIndex}
+            details={ProductDetailsMetaData}
+            onOpen={() => {
+              dispatch(onOpenCart());
+            }}
+            buyNowButtonRef={buyNowButtonRef}
+          />
+        </div>
       </Grid>
       <motion.div
         ref={ref1}
@@ -207,6 +213,8 @@ const Product = () => {
           dispatch(onCloseMenu());
         }}
       />
+
+      <ScrollToTopButton buyNowButtonRef={buyNowButtonRef} />
     </>
   );
 };

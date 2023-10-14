@@ -19,6 +19,7 @@ type ProductDetailsProps = {
   setSelectedProduct: (index: number) => void;
   details: any[];
   onOpen: () => void;
+  buyNowButtonRef: any;
 };
 
 const productHeroFeatures = [
@@ -66,7 +67,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
   };
 
   return (
-    <Flex flexDirection="column" my="auto">
+    <Flex flexDirection="column" my="auto" ref={props.buyNowButtonRef}>
       <Heading as="h1" fontSize="32px" marginBottom="24px" textAlign="center">
         {props.selectedProduct.lineupName}
       </Heading>

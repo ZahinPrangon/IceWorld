@@ -6,7 +6,6 @@ import type { ReactImageGalleryItem } from "react-image-gallery";
 
 import Carousel from "../Carousel/Carousel";
 import Product from "../Product/Product";
-import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 const Homepage = () => {
   // const router = useRouter();
@@ -43,7 +42,6 @@ const Homepage = () => {
   ];
   const onChangeIndex = (i: number) => {
     setIndex(i);
-    // console.log(i);
   };
   return (
     <Flex flexDir="column">
@@ -51,7 +49,7 @@ const Homepage = () => {
         <Carousel images={images} index={index} setIndex={onChangeIndex} />
       </Suspense>
       <Product />
-      <ScrollToTopButton />
+      {/* <ReviewsContainer /> */}
     </Flex>
   );
 };

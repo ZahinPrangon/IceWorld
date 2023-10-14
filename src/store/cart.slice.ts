@@ -11,6 +11,7 @@ export interface CartSlice {
   selectedProducts: Record<string, SelectedProduct>;
   isCartOpen?: boolean;
   isMenuOpen?: boolean;
+  currentView?: any;
 }
 
 type SelectedProduct = {
@@ -80,6 +81,9 @@ export const cartSlice = createSlice({
     onCloseMenu: (state) => {
       state.isMenuOpen = false;
     },
+    updateCur: (state, action) => {
+      state.currentView = action.payload;
+    },
   },
 });
 
@@ -138,6 +142,7 @@ export const {
   onOpenMenu,
   onCloseMenu,
   clearCart,
+  updateCur,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
