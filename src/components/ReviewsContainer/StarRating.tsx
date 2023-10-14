@@ -23,7 +23,7 @@ export default function StarRating({
   const [hover, setHover] = useState<number | null>(null);
   return (
     <HStack spacing="2px">
-      {[...Array(count || 5)].map((star, index) => {
+      {[...Array(count || 5)].map((_, index) => {
         const ratingValue = index + 1;
         return (
           <Box

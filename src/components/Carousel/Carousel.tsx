@@ -27,15 +27,6 @@ const Carousel = (props: CarouselProps) => {
 
   return (
     <MotionConfig transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}>
-      {/* {images.map((item, idx) => (
-        <MobileImage
-          key={item.id}
-          index={idx}
-          slide={0}
-          imageUrl={item.imageUrl}
-        />
-      ))} */}
-      {/* <Image */}
       <ImageGallery
         ref={galleryRef}
         items={props.images}
@@ -45,12 +36,7 @@ const Carousel = (props: CarouselProps) => {
         startIndex={0}
         autoPlay
         showBullets
-        // slideDuration={8000}
         showNav={false}
-        // onImageLoad
-        // onThumbnailClick={onClickGalleryItem}
-        // slideToIndex={setSlideIndex}
-        // onImageLoad={props.setIndex}
       />
     </MotionConfig>
   );

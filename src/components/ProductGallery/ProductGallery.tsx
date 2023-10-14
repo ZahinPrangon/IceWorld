@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable import/no-extraneous-dependencies */
 // import "./styles.css";
 import "react-image-gallery/styles/css/image-gallery.css";
