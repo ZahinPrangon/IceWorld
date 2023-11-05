@@ -11,7 +11,6 @@ import { useAppDispatch } from "@/hooks/redux";
 import { addToCart } from "@/store/cart.slice";
 
 import * as pixel from "../../lib/fpixel";
-import ProductPicker from "../ProductPicker/ProductPicker";
 
 type ProductDetailsProps = {
   description: string;
@@ -71,7 +70,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
       <Heading as="h1" fontSize="32px" marginBottom="24px" textAlign="center">
         {props.selectedProduct.lineupName}
       </Heading>
-      <Flex mb="14px" wrap="wrap" gap="10px" mt="10px" justifyContent="center">
+      {/* <Flex mb="14px" wrap="wrap" gap="10px" mt="10px" justifyContent="center">
         {props.details.map((detail, index) => {
           return (
             <ProductPicker
@@ -84,7 +83,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
             />
           );
         })}
-      </Flex>
+      </Flex> */}
       <Button
         onClick={handleBuyNowClick}
         border="1px solid white"

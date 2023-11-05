@@ -36,10 +36,10 @@ const Product = () => {
   };
 
   const buyNowButtonRef = useRef<any>();
-
   const isCartOpen = useAppSelector((state) => state.cart.isCartOpen);
   const isMenuOpen = useAppSelector((state) => state.cart.isMenuOpen);
   const images = ProductDetailsMetaData.map((product: any) => product.images);
+
   // const commonRef = useRef(null);
   // const animateElement = (inView: boolean) => {
   //   return {
