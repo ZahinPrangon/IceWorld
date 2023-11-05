@@ -338,7 +338,7 @@ const Socials = [
   },
 ];
 
-export default function LargeWithLogoLeft() {
+export default function Footer() {
   return (
     <Box
       background="#000f15"
@@ -350,7 +350,7 @@ export default function LargeWithLogoLeft() {
       // height={{ xs: "7rem", md: "4rem" }}
       bottom="0px"
     >
-      <Container as={Stack} maxW="6xl" py={10}>
+      <Container as={Stack} maxW="6xl" pt="4rem" pb="4.5rem">
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr 1fr", md: "2fr 1fr 1fr 1fr 1fr" }}
           spacing={8}

@@ -87,11 +87,11 @@ const page = () => {
   };
   return (
     <Flex
-      justifyContent={{ xs: "center" }}
       flexDirection="column"
       color="white"
       mx={{ xs: "12px", md: "40px" }}
       borderRadius="20px"
+      height="100vh"
     >
       <Text
         px={1}
@@ -106,9 +106,25 @@ const page = () => {
       </Text>
       <Text fontSize="14px" lineHeight="18px" textAlign="center" py="20px">
         Whatever you need, we’re here to help. Just get in touch, we’ll try our
-        best to respond within 24 hours. You can email us directly at
-        icelagbe@gmail.com 24/7, or enter your enquiry below and we'll be happy
-        to assist you:
+        best to respond within 24 hours. You can email us directly at{" "}
+        <span
+          style={{
+            fontWeight: "bold",
+            color: "#38B6FF",
+          }}
+        >
+          icelagbe@gmail.com
+        </span>{" "}
+        24/7, call us directly at{" "}
+        <span
+          style={{
+            fontWeight: "bold",
+            color: "#38B6FF",
+          }}
+        >
+          +880171140240
+        </span>{" "}
+        or enter your enquiry below and we'll be happy to assist you:
       </Text>
       <Box p={1}>
         <form ref={formRef}>

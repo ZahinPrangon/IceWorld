@@ -85,6 +85,21 @@ const Socials = [
       />
     ),
   },
+  {
+    id: 2,
+    name: "WhatsApp",
+    href: "https://api.whatsapp.com/send?phone=447599487949",
+    icon: (
+      <SocialIcon
+        network="whatsapp"
+        style={{
+          height: "40px",
+          width: "40px",
+          cursor: "pointer",
+        }}
+      />
+    ),
+  },
 ];
 
 const AuthLinks = [

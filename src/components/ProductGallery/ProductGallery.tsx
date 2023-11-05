@@ -3,7 +3,7 @@
 // import "./styles.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import ImageGallery from "react-image-gallery";
 
 type ProductGalleryProps = {
@@ -19,11 +19,11 @@ export default function ProductGallery(props: ProductGalleryProps) {
   const galleryRef = useRef<any>(null); // Create a ref
 
   // Function to update slide index using the ref
-  // useEffect(() => {
-  //   if (galleryRef.current) {
-  //     galleryRef.current.slideToIndex(props.index);
-  //   }
-  // }, [props.index]);
+  useEffect(() => {
+    if (galleryRef.current) {
+      galleryRef.current.slideToIndex(props.index);
+    }
+  }, [props.index]);
 
   const onClickGalleryItem = (_: any, index: number) => {
     props.setIndex(index);
@@ -37,7 +37,7 @@ export default function ProductGallery(props: ProductGalleryProps) {
       showFullscreenButton={false}
       startIndex={0}
       onThumbnailClick={onClickGalleryItem}
-      onSlide={(currentIndex) => props.setIndex(currentIndex)}
+      disableSwipe
     />
   );
 }

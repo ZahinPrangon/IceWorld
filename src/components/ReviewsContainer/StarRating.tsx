@@ -17,9 +17,6 @@ export default function StarRating({
   count,
   size,
 }: StarRatingProps) {
-  // count:  number of stars you want, pass as props
-  // size: size of star that you want
-
   const [hover, setHover] = useState<number | null>(null);
   return (
     <HStack spacing="2px">
@@ -37,13 +34,8 @@ export default function StarRating({
               name="rating"
               onChange={() => setRating(ratingValue)}
               value={ratingValue.toString()}
-              // d="none"
             />
-            <FaStar
-              cursor="pointer"
-              size={size || 20}
-              // transition="color 200ms"
-            />
+            <FaStar cursor="pointer" size={size || 20} />
           </Box>
         );
       })}

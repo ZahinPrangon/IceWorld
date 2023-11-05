@@ -79,9 +79,9 @@ const Product = () => {
         px="14px"
       >
         <Section
-          title="ICE Cloud"
+          title="Cloud"
           subTitle="
-              Great call and music. Designed for comfort.
+              Great for call and music. Designed for comfort.
             "
         />
 

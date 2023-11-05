@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -21,14 +21,22 @@ const Section = (props: SectionProps) => {
         color: "white",
       }}
     >
-      <Text
-        as="h1"
-        // pb="1.25rem"
-        fontSize={{ sm: "32px", md: "64px", lg: "64px" }}
-        color="#38B6FF"
-      >
-        {props.title}
-      </Text>
+      <Flex justifyContent="center" alignItems="center" gap="10px">
+        <Image
+          alt="logo"
+          src="/logo.png"
+          width={{ sm: "64px", md: "128px", lg: "256px" }}
+          height={{ sm: "32px", md: "64px", lg: "64px" }}
+        />
+        <Text
+          as="h1"
+          // pb="1.25rem"
+          fontSize={{ sm: "32px", md: "64px", lg: "64px" }}
+          color="#38B6FF"
+        >
+          {props.title}
+        </Text>
+      </Flex>
       <Text
         as="h4"
         size="md"

@@ -1,11 +1,12 @@
 "use client";
 
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React, { Suspense, useState } from "react";
 import type { ReactImageGalleryItem } from "react-image-gallery";
 
 import Carousel from "../Carousel/Carousel";
 import Product from "../Product/Product";
+import ReviewsContainer from "../ReviewsContainer/ReviewsContainer";
 
 const Homepage = () => {
   // const router = useRouter();
@@ -49,7 +50,9 @@ const Homepage = () => {
         <Carousel images={images} index={index} setIndex={onChangeIndex} />
       </Suspense>
       <Product />
-      {/* <ReviewsContainer /> */}
+      <Box my="100px" color="white">
+        <ReviewsContainer />
+      </Box>
     </Flex>
   );
 };
