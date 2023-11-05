@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable prettier/prettier */
+/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -6,14 +9,10 @@
 
 import {
   Box,
-  Button,
   Flex,
-  Grid,
-  GridItem,
   HStack,
   Icon,
   IconButton,
-  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -31,10 +30,8 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { CldImage, CldUploadWidget } from "next-cloudinary";
 import React, { useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { BsCardImage } from "react-icons/bs";
 import { MdKeyboardBackspace } from "react-icons/md";
 
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -102,94 +99,94 @@ const StarRating = (props: StarRatingProps) => {
   );
 };
 
-const UploadImages = () => {
-  const [imageIds, setImageIds] = useState<string[]>([]);
+// const UploadImages = () => {
+//   const [imageIds, setImageIds] = useState<string[]>([]);
 
-  const handleUpload = (result: any) => {
-    setImageIds([...imageIds, result.info.public_id]);
-  };
-  return (
-    <Flex justifyContent="center" alignItems="center" flexDir="column">
-      <Text fontSize="20px" lineHeight="1.4" mb="6px" fontWeight="bold">
-        Show it off
-      </Text>
-      <Text fontSize="16px" lineHeight="1.5" mb="32px">
-        We'd love to see it in action!
-      </Text>
-      {imageIds.length === 0 && (
-        <CldUploadWidget
-          uploadPreset="tuhhojqk"
-          onUpload={(result) => handleUpload(result)}
-        >
-          {({ open }) => {
-            function handleOnClick(e) {
-              e.preventDefault();
-              open();
-            }
-            return (
-              <Box
-                border="1px solid black"
-                borderRadius="10px"
-                padding="16px"
-                maxW="480px"
-              >
-                <Button
-                  background="black"
-                  color="white"
-                  leftIcon={<BsCardImage />}
-                  onClick={handleOnClick}
-                  px="32px"
-                  variant="unstyled"
-                  justifyContent="center"
-                  display="flex"
-                >
-                  Upload an Image
-                </Button>
-              </Box>
-            );
-          }}
-        </CldUploadWidget>
-      )}
-      {imageIds.length > 0 && (
-        <Grid templateColumns="1fr 1fr 1fr" p="16px">
-          {["ymfyo53ohmbtihwsdqwg"].map((id) => (
-            <GridItem key={Math.random()}>
-              <CldImage
-                key={id}
-                width="100"
-                height="100"
-                alt="Review Ice Image"
-                src={id}
-                sizes="100vw"
-              />
-            </GridItem>
-          ))}
-        </Grid>
-      )}
-      {/* 
-      {imageIds && (
-        <CldImage
-          width="150"
-          height="300"
-          alt="Review Ice Image"
-          src={imageId}
-          sizes="100vw"
-        />
-      )} */}
-    </Flex>
-  );
-};
+//   const handleUpload = (result: any) => {
+//     setImageIds([...imageIds, result.info.public_id]);
+//   };
+//   return (
+//     <Flex justifyContent="center" alignItems="center" flexDir="column">
+//       <Text fontSize="20px" lineHeight="1.4" mb="6px" fontWeight="bold">
+//         Show it off
+//       </Text>
+//       <Text fontSize="16px" lineHeight="1.5" mb="32px">
+//         We'd love to see it in action!
+//       </Text>
+//       {imageIds.length === 0 && (
+//         <CldUploadWidget
+//           uploadPreset="tuhhojqk"
+//           onUpload={(result) => handleUpload(result)}
+//         >
+//           {({ open }) => {
+//             function handleOnClick(e: any) {
+//               e.preventDefault();
+//               open();
+//             }
+//             return (
+//               <Box
+//                 border="1px solid black"
+//                 borderRadius="10px"
+//                 padding="16px"
+//                 maxW="480px"
+//               >
+//                 <Button
+//                   background="black"
+//                   color="white"
+//                   leftIcon={<BsCardImage />}
+//                   onClick={handleOnClick}
+//                   px="32px"
+//                   variant="unstyled"
+//                   justifyContent="center"
+//                   display="flex"
+//                 >
+//                   Upload an Image
+//                 </Button>
+//               </Box>
+//             );
+//           }}
+//         </CldUploadWidget>
+//       )}
+//       {imageIds.length > 0 && (
+//         <Grid templateColumns="1fr 1fr 1fr" p="16px">
+//           {["ymfyo53ohmbtihwsdqwg"].map((id) => (
+//             <GridItem key={Math.random()}>
+//               <CldImage
+//                 key={id}
+//                 width="100"
+//                 height="100"
+//                 alt="Review Ice Image"
+//                 src={id}
+//                 sizes="100vw"
+//               />
+//             </GridItem>
+//           ))}
+//         </Grid>
+//       )}
+//       {/*
+//       {imageIds && (
+//         <CldImage
+//           width="150"
+//           height="300"
+//           alt="Review Ice Image"
+//           src={imageId}
+//           sizes="100vw"
+//         />
+//       )} */}
+//     </Flex>
+//   );
+// };
 
-const MessageSection = () => {
-  return (
-    <Flex justifyContent="center" alignItems="center" flexDir="column">
-      <Text fontSize="20px" lineHeight="1.4">
-        Tell us more!
-      </Text>
-      <Input placeholder="large size" size="lg" />
-    </Flex>
-  );
-};
+// const MessageSection = () => {
+//   return (
+//     <Flex justifyContent="center" alignItems="center" flexDir="column">
+//       <Text fontSize="20px" lineHeight="1.4">
+//         Tell us more!
+//       </Text>
+//       <Input placeholder="large size" size="lg" />
+//     </Flex>
+//   );
+// };
 
 const AddReviewModal = (props: AddReviewModalProps) => {
   const [step, setStep] = useState(0);
@@ -212,9 +209,9 @@ const AddReviewModal = (props: AddReviewModalProps) => {
       </Box>
     </Box>,
     <Box key={Math.random()}>
-      <UploadImages onChangeView={nextStep} />
+      {/* <UploadImages onChangeView={nextStep} /> */}
     </Box>,
-    <div>Step 3 Content</div>,
+    // <div>Step 3 Content</div>,
   ];
 
   return (
@@ -240,7 +237,7 @@ const AddReviewModal = (props: AddReviewModalProps) => {
         </ModalBody>
         <ModalFooter display="flex" justifyContent="center" alignItems="center">
           <Stepper index={step}>
-            {steps.map((x, index) => (
+            {steps.map((_x, _index) => (
               <Step key={Math.random()}>
                 <StepIndicator>
                   <StepStatus

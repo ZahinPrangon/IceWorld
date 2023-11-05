@@ -3,15 +3,14 @@
 
 "use client";
 
-import { Button, Flex, Heading, Step, useDisclosure } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Button, Flex, Heading, useDisclosure } from "@chakra-ui/react";
+import React from "react";
 
 import AddReviewModal from "./AddReviewModal";
 // import AddReviewModal from "./AddReviewModal";
-import StarRating from "./Star";
 
 const ReviewsContainer = () => {
-  const [rating, setRating] = useState(0);
+  // const [rating, setRating] = useState(0);
   const { onClose, isOpen, onOpen } = useDisclosure();
 
   return (

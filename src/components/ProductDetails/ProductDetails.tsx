@@ -50,9 +50,9 @@ const productHeroFeatures = [
 ];
 const ProductDetails = (props: ProductDetailsProps) => {
   const dispatch = useAppDispatch();
-  const handleProductPickerClick = (index: number) => {
-    props.setSelectedProduct(index); // Update the selected product index
-  };
+  // const handleProductPickerClick = (index: number) => {
+  //   props.setSelectedProduct(index); // Update the selected product index
+  // };
 
   const handleBuyNowClick = () => {
     props.onOpen();
