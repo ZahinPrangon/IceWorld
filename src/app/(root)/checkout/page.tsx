@@ -112,7 +112,7 @@ const checkout = () => {
       setOrderConfirmed(true);
       setConfirmedOrderItem(response.data.order);
       setIsLoading(false);
-      pixel.event("Purcharse", {
+      pixel.event("Purchase", {
         content_ids: Object.keys(selectedProducts),
         currency: "BDT",
         value: calculateTotalPrice,
