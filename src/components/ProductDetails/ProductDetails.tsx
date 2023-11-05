@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable tailwindcss/no-custom-classname */
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsFillBoxFill, BsTruck } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
@@ -67,9 +67,9 @@ const ProductDetails = (props: ProductDetailsProps) => {
 
   return (
     <Flex flexDirection="column" my="auto" ref={props.buyNowButtonRef}>
-      <Heading as="h1" fontSize="32px" marginBottom="24px" textAlign="center">
+      <Text as="h1" fontSize="32px" my="24px" textAlign="center">
         {props.selectedProduct.lineupName}
-      </Heading>
+      </Text>
       {/* <Flex mb="14px" wrap="wrap" gap="10px" mt="10px" justifyContent="center">
         {props.details.map((detail, index) => {
           return (
