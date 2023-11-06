@@ -101,6 +101,7 @@ const page = () => {
       color="white"
       mx={{ xs: "12px", md: "40px" }}
       borderRadius="20px"
+      mb="400px"
     >
       <Text
         px={1}
