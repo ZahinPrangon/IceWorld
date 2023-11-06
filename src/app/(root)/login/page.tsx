@@ -84,8 +84,10 @@ const page = () => {
       if (res?.error) {
         // setError("Invalid Credentials");
       }
+      if (res?.status === 200) {
+        router.replace("/profile");
+      }
       setIsLoading(false);
-      router.replace("/orders");
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -99,7 +101,6 @@ const page = () => {
       color="white"
       mx={{ xs: "12px", md: "40px" }}
       borderRadius="20px"
-      // paddingTop={{ xs: "120px", md: "0px" }}
     >
       <Text
         px={1}
